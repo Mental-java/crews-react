@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../component/common/Header';
 import LayoutCSS from './Layout.module.css';
+import NavBar from '../component/common/NavBar'
 
 function Layout(){
 
@@ -8,9 +9,10 @@ function Layout(){
 
         <>
             <Header/>
-            <main className={LayoutCSS.main}>
+            <NavBar/>
+            <section className={LayoutCSS.section}>
                 <Outlet/>
-            </main>
+            </section>
         </>
 
     )

@@ -1,0 +1,113 @@
+.navMain {
+    display: flex;
+}
+
+.navAside{
+    background-color: #eee;
+    padding: 0;
+    height: 100vh;
+    width: 220px;
+    margin: 0;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+.navLink{
+    margin: 10px 0;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navLink:hover{
+    background-color: skyblue;
+}
+
+.introduceBox {
+    background-color: #000928;
+    height: 200px;
+    margin-top: auto;
+}
+
+.sideBar {
+    display: flex;
+    justify-content: center;
+    margin: 1em auto;
+  }
+
+.userLogo {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userName {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    margin-top: 5px;
+}
+.diamondInfo {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.imageNumber {
+    font-size: 18px;
+    color: #777;
+    margin-left: 10px;
+    display: inline-block; /* Add this line */
+}
+
+.diamondInfo img {
+    max-width: 30px;
+    max-height: 30px;
+    display: inline-block; /* Add this line */
+}
+
+
+.logoutButton {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logoutButton button:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.logoutButton button {
+    background-color: #D9D9D9;
+    color: #0f0b0b;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.crewList {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.crewList h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.crewList ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+}
