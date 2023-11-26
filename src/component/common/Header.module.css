@@ -1,0 +1,66 @@
+.header {
+    background-color: #ffffff;
+    color: #fff;
+    padding: 0px;
+    height: 90px;
+    border-bottom: 1px solid #ccc;
+}
+
+.mainLogo{
+    max-height: 60px;
+    max-width: auto;
+}
+
+.topBox {
+    background-color: #000928;
+    height: 17px;
+    margin: 0;
+    padding: 0;
+}
+
+.mainNav {
+    display: flex; 
+    align-items: center; 
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mainLink:hover{
+    color: rgb(96, 96, 211);
+}
+
+.mainLink{
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+}
+
+.mainNav ul{
+    display: flex;
+    justify-content: flex-end; /* li 항목을 오른쪽에 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.logoContainer {
+    margin-right: 390px;
+    margin-bottom: 10px;
+}
+
+.mainNav ul {
+    display: flex;
+    justify-content: flex-end; /* li 항목을 오른쪽에 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.mainNav li {
+    display: inline;
+    margin-left: 20px;
+    margin-right: 30px;
+    
+}
