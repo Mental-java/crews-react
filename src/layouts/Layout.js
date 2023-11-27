@@ -9,10 +9,12 @@ function Layout(){
 
         <>
             <Header/>
-            <NavBar/>
-            <section className={LayoutCSS.section}>
-                <Outlet/>
-            </section>
+            <main className={LayoutCSS.navMain}>
+                <NavBar/>
+                <section className={LayoutCSS.content}>
+                    <Outlet/>
+                </section>
+            </main>
         </>
 
     )

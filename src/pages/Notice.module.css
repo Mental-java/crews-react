@@ -1,0 +1,43 @@
+.noticeMain{
+    /* width: 100%; */
+    height: 90%;
+    background-color: white;
+}
+.informationBar{
+    width: 100%;
+    height: 55px;
+    background-color: white;
+    border-top: solid 15px;
+    border-top-color: #000928;
+    border-bottom: solid 2px;
+    border-bottom-color: #000928;
+    /* margin-top: 40px; */
+}
+.barContent{
+    padding-top: 5px;
+    font-size: 25px;
+}
+.list-div{
+    width: 100%;
+    height: 90%;
+}
+.notice-list{
+    border-bottom: solid 1px lightgray;
+    margin-bottom: 5px;
+}
+.list-table{
+    border-collapse: collapse;
+}
+th{
+    height: 50px;
+}
+.page{
+    width: 150px;
+    height: 30px;
+    margin: auto;
+}
+
+.list-table th:nth-child(2):hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

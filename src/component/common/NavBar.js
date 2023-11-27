@@ -4,7 +4,6 @@ import NavBarCSS from './NavBar.module.css';
 function NavBar(){
 
     return(
-        <main className={ NavBarCSS.navMain }>
             <aside className={ NavBarCSS.navAside }>
                 <div className={ NavBarCSS.sideBar}>
                     <div className={ NavBarCSS.userInfo }>
@@ -28,7 +27,7 @@ function NavBar(){
                     </div>
                     <div className={ NavBarCSS.introduceBox}></div>
             </aside>
-        </main>
+        
     );
 }
 
