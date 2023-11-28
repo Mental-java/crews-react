@@ -18,7 +18,7 @@ function Header(){
                 </div>
                 <nav className={ HeaderCSS.mainNav }>
                     <div className={ HeaderCSS.logoContainer }>
-                        <Link onClick={ onClickLogo }>
+                        <Link to="/" onClick={ onClickLogo }>
                             <img src="img/crews-logo.png" alt="메인 로고" className={HeaderCSS.mainLogo}/>     
                         </Link>
                     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './CrewSearch.module.css';
+import { Link } from 'react-router-dom';
 
 function CrewSearch() {
     const [selectedCategory, setSelectedCategory] = useState('전체');
@@ -15,13 +16,7 @@ function CrewSearch() {
 
     return (
         <div>
-            <header>
-                {/* Header content */}
-            </header>
             <main>
-                <aside>
-                    {/* Sidebar content */}
-                </aside>
                 <section>
                     <div className={styles['crew-search']}>
                         <ul className={styles['crew-categories']}>
@@ -53,11 +48,9 @@ function CrewSearch() {
                                 </li>
                             ))}
                         </ul>
-                        <button className={styles['create-crew-button']} onClick={() => (window.location.href = 'create-crews.html')}>+크루 만들기</button>
-                    </div>
-
-                    <div className={styles['Posting-zone']}>
-                        {/* Posting content */}
+                        <Link to="/createcrew" className={styles['create-crew-button']}>
+                            크루 만들기
+                        </Link>
                     </div>
                 </section>
             </main>
