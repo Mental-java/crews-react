@@ -1,0 +1,200 @@
+section .crew-search {
+    border: 2px solid #000928;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.crew-categories {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.crew-categories li {
+    padding: 15px 30px;
+    margin-right: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* 선택된 카테고리 스타일링 */
+.crew-categories li.selected {
+    background-color: #000928;
+    color: #fff;
+}
+
+/* 크루 찾기 섹션 스타일링 */
+section .crew-search {
+    border: 2px solid #000928;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.crew-categories {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.crew-categories li {
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* 크루 검색 스타일링 */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* 크루 찾기 섹션 스타일링 */
+section .crew-search {
+    border: 2px solid #000928;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 크루 검색창 스타일링 */
+.recruitment-status ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-right: 10px;
+}
+
+.recruitment-status li {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 80px;
+    list-style-type: none;
+    float: right;
+    margin-left: -60px;
+}
+.recruitment-status {
+    float: left;
+    margin-right: 10px;
+}
+
+.recruitment-status li.selected {
+    background-color: #000928;
+    color: #fff;
+}
+
+/* 크루 만들기 버튼 스타일링 */
+.create-crew-button {
+    background-color: #000928;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
+
+.create-crew-button:hover {
+    background-color: #007bff;
+}
+
+/* 크루 검색창 스타일링 */
+.recruitment {
+    padding: 20px;
+    padding-top: 20px;
+}
+
+.Posting{
+    padding: 20px;
+    display:flex;
+    align-items: center;
+    border-top: 1px solid #000;
+}
+
+
+.Posting-On{
+    background-color: #000928;
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.Posting-Off{
+    background-color: #ADADAD;
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.Posting-crew-name{
+    font-weight: bold;
+    margin-left: 30px;
+}
+.Posting-people{
+    margin-left: 30px;
+}
+
+.Posting-Title {
+    margin-top: 0;
+}
+
+.Posting-Title h1 {
+    margin: 0;
+    margin-left: 40px;
+    color: rgb(77, 77, 77);
+    cursor: pointer;
+}
+
+.Posting-Title h1:hover {
+    color: rgb(0, 0, 61);
+}
+
+.Posting-writer-date{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 2px solid #000 ;
+}
+
+.Posting-writer, .Posting-date{
+    color: black;
+    margin-right: 10px;
+}
+
+.Posting-zone{
+    margin-top: 60px;
+}
