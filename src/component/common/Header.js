@@ -25,7 +25,7 @@ function Header(){
                     <ul>                           
                         <li><NavLink to="/" className={HeaderCSS.mainLink}>내캘린더</NavLink></li>
                         <li><NavLink to="/notice" className={HeaderCSS.mainLink}>공지사항</NavLink></li>
-                        <li><NavLink to="/crew" className={HeaderCSS.mainLink}>크루찾기</NavLink></li>
+                        <li><NavLink to="/crewsearch" className={HeaderCSS.mainLink}>크루찾기</NavLink></li>
                         <li><NavLink to="/myPage" className={HeaderCSS.mainLink}>나의 활동</NavLink></li>
                     </ul>
                 </nav>
