@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function CreateCrew() {
     return (
         <div>
@@ -8,7 +9,7 @@ function CreateCrew() {
                     <h1>크루 만들기</h1>
 
                     <form>
-                        <p>크루 유형:</p>
+                        <p>크루 유형</p>
 
                         <input
                             className="radio-input"
@@ -56,12 +57,12 @@ function CreateCrew() {
 
                         <div className="team-and-date">
                             <div className="team-name">
-                                <p>팀 이름:</p>
+                                <p>크루 이름</p>
                                 <input type="text" id="teamName" name="teamName" required />
                             </div>
 
                             <div className="date-input">
-                                <p>날짜:</p>
+                                <p>활동기간</p>
                                 <input type="date" id="startDate" name="startDate" required />
                                 <span className="date-separator">~</span>
                                 <input type="date" id="endDate" name="endDate" required />
@@ -70,7 +71,7 @@ function CreateCrew() {
 
                         <div className="title-and-status">
                             <div className="title-input">
-                                <p>공고 제목:</p>
+                                <p>모집글 제목</p>
                                 <input
                                     type="text"
                                     id="advertisementTitle"
@@ -80,7 +81,7 @@ function CreateCrew() {
                             </div>
 
                             <div className="status-select">
-                                <p>모집 상태:</p>
+                                <p>모집 상태</p>
                                 <select
                                     id="recruitmentStatus"
                                     name="recruitmentStatus"
@@ -93,7 +94,7 @@ function CreateCrew() {
 
                         <div className="recruitment-content">
                             <div className="left-content">
-                                <p>모집 내용:</p>
+                                <p>모집 내용</p>
                                 <textarea
                                     id="recruitmentContent"
                                     name="recruitmentContent"
