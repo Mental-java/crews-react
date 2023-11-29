@@ -1,0 +1,105 @@
+.upDiv{
+    width: 100%;
+    height: 30%;
+    display: flex;
+}
+.downDiv{
+    width: 100%;
+    height: 60%;
+}
+.nicknameDiv{
+    width: 30%;
+    height: 100%;
+}
+.spaceDiv{
+    width: 37%;
+    height: 100%;
+    background-color: white;
+}
+.recodeDiv{
+    width: 33%;
+    height: 100%;
+}
+.levelImage{
+    width: 100px;
+    height: 100px;
+    margin-left: 120px;
+}
+.nickname{
+    text-align: center;
+}
+.editImage{
+    width: 18px;
+    height: 18px;
+}
+.tableTitle{
+    width: 90px;
+    height: 20px;
+    background-color: #000928;
+}
+.recodeTitle{
+    color: white;
+}
+.recodeTable{
+    width: 410px;
+    height: 170px;
+    background-color: white;
+    border: solid 1px #000928;
+}
+.recodeTr{
+    height: 15px;
+}
+.category{
+    background-color: #000928;
+    border-radius: 10px;
+    color: white;
+    height: 15px;
+    width: 40px;
+}
+.recodeTh{
+    font-size: 10px;
+}
+.rate{
+    font-size: 10px;
+    background-color: skyblue;
+    border-radius: 10px;
+    color: white;
+    height: 15px;
+    width: 60px;
+}
+.rated{
+    font-size: 10px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    color: white;
+    height: 15px;
+    width: 60px;
+}
+.informationBar{
+    width: 100%;
+    height: 45px;
+    background-color: white;
+    border-top: solid 10px;
+    border-top-color: #000928;
+    border-bottom: solid 2px;
+}
+.barContent{
+    padding-top: 3px;
+    font-size: 17px;
+}
+.listTitle{
+    font-size: 20px;
+}
+.noticeList{
+    border-bottom: solid 1px lightgray;
+    margin-bottom: 5px;
+}
+.myListTable{
+    border-collapse: collapse;
+}
+.listContent{
+    height: 40px;
+}
+.myList{
+    height: 80%;
+}
