@@ -1,20 +1,23 @@
-import { createAction, handleAction } from "redux-actions";
+import { createActions, handleActions } from "redux-actions";
 
+/* 초기값 */
 const initialState = [];
 
+/* 액션 */
 export const GET_NOTICE = 'notice/GET_NOTICE';
 
-const actions = createAction({
-    [GET_PURCHASE]: () => {}
+const actions = createActions({
+    [GET_NOTICE]: () => { },
 });
 
-const noticeReducer = handleAction(
+
+const noticeReducer = handleActions(
     {
-        [GET_PURCHASE]: (state, { payload }) => {
+        [GET_NOTICE]: (state, { payload }) => {
             return payload;
-        }
+        },
     },
     initialState
 );
 
-export default purchaseReducer;
+export default noticeReducer;
