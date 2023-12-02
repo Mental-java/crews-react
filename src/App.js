@@ -6,7 +6,6 @@ import MyPage from "./pages/MyPage";
 import CrewSearch from "./pages/CrewSearch";
 import CreateCrew from "./pages/CreateCrew";
 import Login from './pages/login/Login';
-import LoginHandler from './apis/LoginHandler';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="/" element={ <LoginLayout/>}>
 
           <Route index element={ <Login/>}/>
-          <Route path="oauth" element={ <LoginHandler/>}/>
         
         </Route>
 
