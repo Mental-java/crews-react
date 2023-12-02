@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={ <LoginLayout/>}>
 
           <Route index element={ <Login/>}/>
-          <Route path="callback" element={ <LoginHandler/>}/>
+          <Route path="oauth" element={ <LoginHandler/>}/>
         
         </Route>
 
