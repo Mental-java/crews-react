@@ -1,10 +1,11 @@
 import NoticeCSS from "./Notice.module.css";
 import {
     callNoticeListAPI
-} from '../apis/NoticeAPICalls'
+} from '../../apis/NoticeAPICalls'
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
 import { useEffect } from "react";
+import NoticeHandler from "../../component/pages/NoticeHandler";
 
 function Notice() {
 
@@ -50,14 +51,7 @@ function Notice() {
                     <tbody className={ NoticeCSS.listBody}>
                     {Array.isArray(noticeList) && noticeList.map(
                         (notice) => (
-                            <tr 
-                                className= { NoticeCSS.noticeLists }
-                                key={notice.noticeId}
-                            >
-                                <td className= { NoticeCSS.noticeContent}>{notice.noticeTitle}</td>
-                                <td className= { NoticeCSS.noticeContent}>{notice.adminId.adminId == 'admin1' ? '관리자' : notice.adminId.adminId}</td>
-                                <td className= { NoticeCSS.noticeContent}>{notice.noticeDate}</td>
-                            </tr>
+                            <NoticeHandler  key={notice.noticeId} notice = {notice}/>
                         )
                     )}
                     <div style={{ listStyleType: "none", display: "flex"}} className = {NoticeCSS.btnStyle}>

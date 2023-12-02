@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import LoginLayout from './layouts/LoginLayout';
-import Notice from './pages/Notice';
+import Notice from './pages/notice/Notice';
+import NoticeDetail from './pages/notice/NoticeDetail';
 import MyPage from "./pages/MyPage";
 import CrewSearch from "./pages/CrewSearch";
 import CreateCrew from "./pages/CreateCrew";
@@ -21,6 +22,7 @@ function App() {
 
         <Route path="main" element={ <Layout/> }>
             <Route path="notice" element={<Notice/>}/>
+            <Route path="noticeDetail/:noticeId" element={<NoticeDetail/>}/>
             <Route path="mypage" element={<MyPage/>}/>
             <Route path="crewsearch" element={<CrewSearch/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
