@@ -1,0 +1,17 @@
+.logoContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.kakaoButton{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.loginButton{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
