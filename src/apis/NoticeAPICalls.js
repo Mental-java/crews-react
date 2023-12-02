@@ -1,8 +1,15 @@
 import { GET_NOTICE } from "../module/NoticeModule";
 
-export const callNoticeListAPI = () => {
+export const callNoticeListAPI = ({currentPage}) => {
+    let requestURL;
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list`
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list?offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list`;
+    }
+
+
 
     return async (dispatch, getState) => {
 
