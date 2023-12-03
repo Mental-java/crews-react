@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.sidebar{
+    height: 100vh;
+    width : 350px;
+    background-color: #d3d3d3;
+}
+ul{
+    list-style: none;
+}
+.menuList li{
+    margin-top: 50px;
+    margin-left: 35px;
+}
+.menuList a{
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.menuList a:hover{
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+}
+.logoContainer{
+    display: flex;
+    justify-content: center;
+}
+.logo{
+    width: 300px;
+    height: 150px;
+}
+
+aside {
+    padding: 0;
+    margin: 0; /* 화면의 높이에 맞게 설정 */
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+}
+section {
+    flex: 1;
+}

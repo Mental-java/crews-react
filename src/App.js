@@ -8,6 +8,8 @@ import CrewSearch from "./pages/CrewSearch";
 import CreateCrew from "./pages/CreateCrew";
 import Login from './pages/login/Login';
 import LoginHandler from './pages/login/LoginHandler';
+import AdminLayout from "./layouts/AdminLayout";
+import AdminNotice from "./pages/admin/AdminNotice";
 
 function App() {
   return (
@@ -32,6 +34,12 @@ function App() {
             <Route path="createcrew" element={<CreateCrew/>}/>
         </Route>
         
+      </Routes>
+
+      <Routes>
+          <Route path="admin" element={ <AdminLayout/> }>
+            <Route path="notice" element={<AdminNotice/>}/>
+          </Route>
       </Routes>
 
    </BrowserRouter>
