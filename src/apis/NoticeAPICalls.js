@@ -28,7 +28,7 @@ export const callNoticeListAPI = ({currentPage}) => {
     };
 }
 
-export const callNoticeDetail = ({noticeId}) => {
+export const callNoticeDetailAPI = ({noticeId}) => {
 
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list/${noticeId}/edit`;
 
@@ -46,6 +46,6 @@ export const callNoticeDetail = ({noticeId}) => {
 
         console.log("detail ======="+ result);
         
-        dispatch({ type: GET_NOTICES,payload: result.data});
+        dispatch({ type: GET_NOTICES, payload: result.data});
     };
 }

@@ -1,5 +1,5 @@
 import {
-    callNoticeDetail
+    callNoticeDetailAPI
 } from '../../apis/NoticeAPICalls'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -14,7 +14,7 @@ function NoticeDetail(){
 
     useEffect(
         () => {
-            dispatch(callNoticeDetail({
+            dispatch(callNoticeDetailAPI({
                 noticeId : params.noticeId
             }));
         }
