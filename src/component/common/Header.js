@@ -18,15 +18,15 @@ function Header(){
                 </div>
                 <nav className={ HeaderCSS.mainNav }>
                     <div className={ HeaderCSS.logoContainer }>
-                        <Link to="/" onClick={ onClickLogo }>
+                        <Link to="/main" onClick={ onClickLogo }>
                             <img src="img/crews-logo.png" alt="메인 로고" className={HeaderCSS.mainLogo}/>     
                         </Link>
                     </div>
                     <ul>                           
-                        <li><NavLink to="/" className={HeaderCSS.mainLink}>내캘린더</NavLink></li>
-                        <li><NavLink to="/notice" className={HeaderCSS.mainLink}>공지사항</NavLink></li>
-                        <li><NavLink to="/crewsearch" className={HeaderCSS.mainLink}>크루찾기</NavLink></li>
-                        <li><NavLink to="/myPage" className={HeaderCSS.mainLink}>나의 활동</NavLink></li>
+                        <li><NavLink to="/main" className={HeaderCSS.mainLink}>내캘린더</NavLink></li>
+                        <li><NavLink to="/main/notice" className={HeaderCSS.mainLink}>공지사항</NavLink></li>
+                        <li><NavLink to="/main/crewsearch" className={HeaderCSS.mainLink}>크루찾기</NavLink></li>
+                        <li><NavLink to="/main/myPage" className={HeaderCSS.mainLink}>나의 활동</NavLink></li>
                     </ul>
                 </nav>
             </header>
