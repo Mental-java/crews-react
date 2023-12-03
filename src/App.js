@@ -20,7 +20,9 @@ function App() {
           <Route index element={ <Login/>}/>
         
         </Route>
-        <Route path="/oauth" element={<LoginHandler/>}/>
+
+        <Route path="/oauth" element ={<LoginHandler/>}/>
+    
 
         <Route path="main" element={ <Layout/> }>
             <Route path="notice" element={<Notice/>}/>
