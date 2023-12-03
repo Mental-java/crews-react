@@ -1,6 +1,23 @@
 import MyPageCSS from "./MyPage.module.css";
+import {
+    callMyPageListAPI
+} from '../apis/MyPageAPICalls'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {Link} from "react-router-dom";
 
 function MyPage(){
+
+    const dispatch = useDispatch();
+    const mypage = useSelector(state => state.myPageReducer);
+    const myPageList = mypage.data;
+
+    useEffect(
+        () => {
+            dispatch(callMyPageListAPI());
+        }
+        , []
+    );
 
     return(
         <>
@@ -36,22 +53,30 @@ function MyPage(){
                     </div>
                     <div className={MyPageCSS.informationBar}>
                         <table>
-                            <tr>
-                                <th className={MyPageCSS.barContent} width="100">번호</th>
-                                <th className={MyPageCSS.barContent} width="700">제목</th>
-                                <th className={MyPageCSS.barContent} width="200">조회수</th>
-                                <th className={MyPageCSS.barContent} width="300">작성일</th>
-                            </tr>
-                        </table>
-                    </div>
-                    <div className={MyPageCSS.myList}>
-                        <table className={MyPageCSS.myListTable}>
-                            <tr className={MyPageCSS.noticeList}>
-                                <th className={MyPageCSS.listContent} width="100">&nbsp;1</th>
-                                <th className={MyPageCSS.listContent} width="700">제명호 산책해요</th>
-                                <th className={MyPageCSS.listContent} width="200">&nbsp;316</th>
-                                <th className={MyPageCSS.listContent} width="300">2023.10.24</th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th className={MyPageCSS.barContent} width="100">번호</th>
+                                    <th className={MyPageCSS.barContent} width="700">제목</th>
+                                    <th className={MyPageCSS.barContent} width="200">조회수</th>
+                                    <th className={MyPageCSS.barContent} width="300">작성일</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {Array.isArray(myPageList) && myPageList.map(
+                                (mypage, index) => (
+                                    <tr
+                                        key={mypage.captain}
+                                    >
+                                        <td>{index + 1}</td>
+                                        <Link to={'/'} className={MyPageCSS.postdetaillink}><td>{mypage.crewRecruitmentPost}</td></Link>
+                                        <td>3</td>
+                                        <td>{mypage.creationDate}</td>
+                                        <div className={MyPageCSS.endline}></div>
+                                    </tr>
+                                )
+                            )}
+
+                            </tbody>
                         </table>
                     </div>
                 </div>

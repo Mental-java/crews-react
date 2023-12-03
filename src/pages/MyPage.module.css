@@ -83,6 +83,13 @@
     border-top-color: #000928;
     border-bottom: solid 2px;
 }
+.postdetaillink{
+    text-decoration: none;
+    color: black;
+}
+.postdetaillink:hover{
+    color: lightgray;
+}
 .barContent{
     padding-top: 3px;
     font-size: 17px;
