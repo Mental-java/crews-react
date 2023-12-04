@@ -10,10 +10,15 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
     }
 
     return (
-        <tr>
-            <td></td>
-        </tr>
+        <>
+            <tr>
+                <td>{crewId}</td>
+                <td>{crewName}</td>
+            </tr>
+        </>
     )
 
 
 }
+
+export default CrewSearchHandler;
