@@ -29,6 +29,7 @@ function MyCalendar() {
                 plugins={[dayGridPlugin]}
                 events={myCalendarList}
                 height={'95vh'}
+                editable={true}
             />
         </div>
     );

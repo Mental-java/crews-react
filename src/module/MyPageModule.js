@@ -4,7 +4,7 @@ import { createActions, handleActions } from "redux-actions";
 const initialState = [];
 
 /* 액션 */
-export const GET_MYPAGE = 'notice/GET_MYPAGE';
+export const GET_MYPAGE = 'mypage/GET_MYPAGE';
 
 const actions = createActions({
     [GET_MYPAGE]: () => { },
