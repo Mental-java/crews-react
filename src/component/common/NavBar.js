@@ -7,16 +7,17 @@ function NavBar(){
     
   const navBar = useSelector(state => state.LoginReducer);
   const userData = navBar.userData;
+  console.log(userData);
 
     return(
             <aside className={ NavBarCSS.navAside }>
                 <div className={ NavBarCSS.sideBar}>
                     <div className={ NavBarCSS.userInfo }>
                             <img src="img/level-image.png" alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
-                            <p className={NavBarCSS.userName}>{userData.nickname}</p>
+                            <p className={NavBarCSS.userName}>{userData.data.nickname}</p>
                             <div className={ NavBarCSS.diamondInfo}>
                                 <img src="img/diamond-image.png" alt="보석"/>
-                                <p className={ NavBarCSS.imageNumber }><p>126</p></p>
+                                <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>
                             </div>
                             <div className={ NavBarCSS.logoutButton }>
                                 <button>로그아웃</button>
