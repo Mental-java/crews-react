@@ -1,8 +1,44 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './CrewSearch.module.css';
 import { Link } from 'react-router-dom';
+import CrewSearchHandler from "../../component/pages/CrewSearchHandler";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
+
+import {
+    callCrewSearchListAPI
+} from "../../apis/CrewSearchAPICalls";
+import {GET_CREWSEARCHLIST} from "../../module/CrewSearchModule";
 
 function CrewSearch() {
+    const dispatch = useDispatch();
+    const crewSearchs = useSelector(state => state.crewSearchListReducer);
+    const crewSearchList = crewSearchs.data;
+
+    const pageInfo = crewSearchs.pageInfo;
+
+    const [start, setStart] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageEnd, setPageEnd] = useState(1);
+
+    const pageNumber = [];
+    if(pageInfo){
+        for(let i =1; i <= pageInfo.pageEnd; i++){
+            pageNumber.push(i);
+        }
+    }
+
+    useEffect(
+        () => {
+            setStart((currentPage - 1) * 5);
+            dispatch(callCrewSearchListAPI({
+                currentPage: currentPage
+            }));
+        }
+        ,[currentPage]
+    );
+
     const [selectedCategory, setSelectedCategory] = useState('전체');
     const [selectedStatus, setSelectedStatus] = useState('모집중');
 
@@ -51,6 +87,11 @@ function CrewSearch() {
                         <Link to="/createcrew" className={styles['create-crew-button']}>
                             크루 만들기
                         </Link>
+                    </div>
+                    <div className="Posting-zone">
+                        {
+                            Array.isArray(crewSearchList) && crewSearchList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
+                        }
                     </div>
                 </section>
             </main>

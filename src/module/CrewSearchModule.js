@@ -5,7 +5,7 @@ const initialState = [];
 export const GET_CREWSEARCHLIST = 'crewSearch/GET_CREWSEARCHLIST';
 
 const actions = createActions({
-    [GET_CREWSEARCHLIST]: () => {}
+    [GET_CREWSEARCHLIST]: () => { },
 });
 
 const crewSearchListReducer = handleActions(
@@ -13,7 +13,7 @@ const crewSearchListReducer = handleActions(
         [GET_CREWSEARCHLIST]: (state, { payload }) => {
 
             return payload;
-        }
+        },
     },
     initialState
 );
