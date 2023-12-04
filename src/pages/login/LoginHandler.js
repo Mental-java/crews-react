@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { LOGIN_SUCCESS } from "../../module/LoginModule";
 
 const LoginHandeler = (props) => {
   const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get("code");
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -18,13 +21,14 @@ const LoginHandeler = (props) => {
         },
       }).then((res) => { //백에서 완료후 우리사이트 전용 토큰 넘겨주는게 성공했다면
         console.log(res);
-      
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data});
+
         //로그인이 성공하면 이동할 페이지
         navigate("/main");
       });
     };
     kakaoLogin();
-  }, [props.history]);
+  }, [props.history,dispatch]);
 
   return (
     <div>
