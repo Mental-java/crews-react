@@ -1,14 +1,19 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import NavBarCSS from './NavBar.module.css';
 
 function NavBar(){
+
+    
+  const navBar = useSelector(state => state.LoginReducer);
+  const userData = navBar.userData;
 
     return(
             <aside className={ NavBarCSS.navAside }>
                 <div className={ NavBarCSS.sideBar}>
                     <div className={ NavBarCSS.userInfo }>
                             <img src="img/level-image.png" alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
-                            <p className={ NavBarCSS.userName}>크루원 123455</p>
+                            <p className={NavBarCSS.userName}>{userData.nickname}</p>
                             <div className={ NavBarCSS.diamondInfo}>
                                 <img src="img/diamond-image.png" alt="보석"/>
                                 <p className={ NavBarCSS.imageNumber }><p>126</p></p>
