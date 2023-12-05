@@ -4,13 +4,14 @@ import LoginLayout from './layouts/LoginLayout';
 import Notice from './pages/notice/Notice';
 import NoticeDetail from './pages/notice/NoticeDetail';
 import MyPage from "./pages/MyPage";
-import CrewSearch from "./pages/crewSearch/CrewSearch";
+import CrewSearchAll from "./pages/crewSearch/CrewSearchAll";
 import CreateCrew from "./pages/CreateCrew";
 import Login from './pages/login/Login';
 import LoginHandler from './pages/login/LoginHandler';
 import AdminLayout from "./layouts/AdminLayout";
 import AdminNotice from "./pages/admin/AdminNotice";
 import MyCalendar from "./pages/Calendar/MyCalendar";
+import CrewSearchPage from "./pages/crewSearch/CrewSearchPage";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
             <Route path="notice" element={<Notice/>}/>
             <Route path="noticeDetail/:noticeId" element={<NoticeDetail/>}/>
             <Route path="mypage" element={<MyPage/>}/>
-            <Route path="crewsearch" element={<CrewSearch/>}/>
+            <Route path="crewsearch" element={<CrewSearchPage/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
         </Route>
