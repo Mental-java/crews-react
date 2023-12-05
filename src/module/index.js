@@ -4,6 +4,7 @@ import myPageReducer from './MyPageModule';
 import LoginReducer from './LoginModule';
 import crewSearchListReducer from "./CrewSearchModule";
 import myCalendarReducer from "./MyCalendarModule";
+import crewListReducer from './CrewListModule';
 
 // 항상 새로운 모듈을 추가하면 까먹지말고 등록을 해줘야한다.
 // 여기에 추가하지 않으면 상태관리 대상에서 제외된다.
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     myPageReducer,
     LoginReducer,
     crewSearchListReducer,
-    myCalendarReducer
+    myCalendarReducer,
+    crewListReducer
 });
 
 export default rootReducer;

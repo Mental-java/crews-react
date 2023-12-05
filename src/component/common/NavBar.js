@@ -1,13 +1,33 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { callCrewListAPI } from '../../apis/CrewListAPICalls';
 import NavBarCSS from './NavBar.module.css';
+import CrewListHandler from './CrewListHandler';
 
 function NavBar(){
 
     
   const navBar = useSelector(state => state.LoginReducer);
-  const userData = navBar.userData;
-  console.log(userData);
+  const userData = navBar ? navBar.userData : null;
+
+
+
+  const dispatch = useDispatch();
+  const crew = useSelector(state => state.crewListReducer);
+  const crewList = crew.data;
+
+
+  useEffect(
+    () => {
+        if (userData && userData.data && userData.data.userId) {
+            dispatch(callCrewListAPI({
+                userId: userData.data.userId
+            }));
+        }
+    },
+    []
+  );
 
     return(
             <aside className={ NavBarCSS.navAside }>
@@ -24,8 +44,14 @@ function NavBar(){
                             </div>
                             <div className={ NavBarCSS.crewList }>
                                 <h2>내 크루 목록</h2>
-                                <ul>
-                                    <li><NavLink to="/crew/detail" className={ NavBarCSS.navLink }>코딩크루</NavLink></li>
+                                <ul
+                                    className={ NavBarCSS.crewBox}
+                                 >
+                                {Array.isArray(crewList)&& crewList.map(
+                                    (crewlist) => (
+                                        <li><a>{crewlist.crew.crewName}</a></li>
+                                    )
+                                )}
                                 </ul>
                             </div>
                             
