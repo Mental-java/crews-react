@@ -9,7 +9,7 @@ function NavBar(){
 
     
   const navBar = useSelector(state => state.LoginReducer);
-  const userData = navBar ? navBar.userData : null;
+  const userData = navBar.userData;
 
 
 
