@@ -51,7 +51,7 @@ function CrewSearch() {
     };
 
     return (
-        <div>
+        <div className={styles.divMain}>
             <main>
                 <section>
                     <div className={styles['crew-search']}>
@@ -93,12 +93,14 @@ function CrewSearch() {
                         </div>
                     </div>
 
-                    <div className={styles.crewListMain}>
-                        <table>
-                            {
-                                Array.isArray(crewSearchList) && crewSearchList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
-                            }
-                        </table>
+                    <div>
+                        <div className={styles.crewListMain}>
+                            <table>
+                                {
+                                    Array.isArray(crewSearchList) && crewSearchList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
+                                }
+                            </table>
+                        </div>
                     </div>
 
                     <div className={styles.btnMain}>

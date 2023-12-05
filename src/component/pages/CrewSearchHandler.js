@@ -16,12 +16,17 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
                 <td>
                     <div className={HandlerCSS.content}>
                         <div className={HandlerCSS.div1}>
-                            <div className={HandlerCSS.recruitmentStatus}>
-                                {recruitmentStatus}
+                            <div className={HandlerCSS.recruitmentStatusOn}>
+                                { recruitmentStatus === "1" ? '모집중' : '모집종료'}
+                            </div>
+                            <div className={HandlerCSS.crewNameDiv}>
+                                {crewName}
                             </div>
                         </div>
                         <div className={HandlerCSS.div2}>
-                            {crewId}
+                            <div>
+
+                            </div>
                         </div>
                     </div>
                 </td>
