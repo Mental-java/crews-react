@@ -19,7 +19,7 @@ function Header(){
                 <nav className={ HeaderCSS.mainNav }>
                     <div className={ HeaderCSS.logoContainer }>
                         <Link to="/main" onClick={ onClickLogo }>
-                            <img src="img/crews-logo.png" alt="메인 로고" className={HeaderCSS.mainLogo}/>     
+                            <img src="../img/crews-logo.png" alt="메인 로고" className={HeaderCSS.mainLogo}/>
                         </Link>
                     </div>
                     <ul>                           

@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import HandlerCSS from "./CrewSearchHandler.module.css"
 
 function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, crewCategory, startDate,
     endDate, crewRecruitmentPost, crewRecruitmentContent, recruitmentStatus, creationDate}}) {
@@ -10,12 +11,22 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
     }
 
     return (
-        <>
+
             <tr>
-                <td>{crewId}</td>
-                <td>{crewName}</td>
+                <td>
+                    <div className={HandlerCSS.content}>
+                        <div className={HandlerCSS.div1}>
+                            <div className={HandlerCSS.recruitmentStatus}>
+                                {recruitmentStatus}
+                            </div>
+                        </div>
+                        <div className={HandlerCSS.div2}>
+                            {crewId}
+                        </div>
+                    </div>
+                </td>
             </tr>
-        </>
+
     )
 
 
