@@ -72,26 +72,66 @@ function CrewSearch() {
                         </div>
                     </div>
 
-                    <div className={styles['recruitment']}>
-                        <ul className={styles['recruitment-status']}>
-                            {['모집중', '모집종료'].map((status) => (
-                                <li
-                                    key={status}
-                                    className={selectedStatus === status ? styles['selected'] : ''}
-                                    onClick={() => handleStatusClick(status)}
+                    <div className={styles.recruitmentMain}>
+                        <div className={styles.recruitmentStatusDiv}>
+                            <ul className={styles.recruitmentStatus}>
+                                {['모집중', '모집종료'].map((status) => (
+                                    <li
+                                        key={status}
+                                        className={selectedStatus === status ? styles.selected : ''}
+                                        onClick={() => handleStatusClick(status)}
+                                    >
+                                        {status}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className={styles.createCrewDiv}>
+                            <Link to="/createcrew" className={styles.createCrewButton}>
+                                크루 만들기
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className={styles.crewListMain}>
+                        <table>
+                            {
+                                Array.isArray(crewSearchList) && crewSearchList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
+                            }
+                        </table>
+                    </div>
+
+                    <div className={styles.btnMain}>
+                        <div className={styles.btnDiv}>
+                            {Array.isArray(crewSearchList) &&
+                                <button
+                                    onClick={() => setCurrentPage(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className={styles.pagingBtn}
                                 >
-                                    {status}
+                                    &lt;
+                                </button>
+                            }
+                            {pageNumber.map((num) => (
+                                <li key={num} onClick={() => setCurrentPage(num)}>
+                                    <button
+                                        style={ currentPage === num ? {background : '#000928'} : null}
+                                        className={styles.pagingBtn}
+                                    >
+                                        {num}
+                                    </button>
                                 </li>
                             ))}
-                        </ul>
-                        <Link to="/createcrew" className={styles['create-crew-button']}>
-                            크루 만들기
-                        </Link>
-                    </div>
-                    <div className="Posting-zone">
-                        {
-                            Array.isArray(crewSearchList) && crewSearchList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
-                        }
+                            { Array.isArray(crewSearchList) &&
+                                <button
+                                    onClick={() => setCurrentPage(currentPage + 1)}
+                                    disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                                    className={styles.pagingBtn}
+                                >
+                                    &gt;
+                                </button>
+                            }
+                        </div>
                     </div>
                 </section>
             </main>

@@ -86,35 +86,41 @@ section .crew-search {
 }
 
 /* 크루 검색창 스타일링 */
-.recruitment-status ul {
-    list-style: none;
-    padding: 0;
+.recruitmentMain{
+    height: 60px;
     display: flex;
-    margin-right: 10px;
+    border-bottom: 1px solid #000928;
+    background-color: tan;
 }
 
-.recruitment-status li {
+.recruitmentStatusDiv{
+    width: 80%;
+    height: 100%;
+}
+
+.recruitmentStatus li{
     cursor: pointer;
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 80px;
     list-style-type: none;
-    float: right;
-    margin-left: -60px;
-}
-.recruitment-status {
     float: left;
     margin-right: 10px;
 }
 
-.recruitment-status li.selected {
+.selected{
     background-color: #000928;
     color: #fff;
 }
 
+.createCrewDiv{
+    width: 20%;
+    height: 100%;
+}
+
 /* 크루 만들기 버튼 스타일링 */
-.create-crew-button {
+.createCrewButton {
     background-color: #000928;
     color: #fff;
     border: none;
@@ -123,79 +129,88 @@ section .crew-search {
     cursor: pointer;
     float: right;
     margin-top: 10px;
+    margin-right: 10px;
     text-decoration: none;
 }
 
-.create-crew-button:hover {
+.createCrewButton:hover {
     background-color: #007bff;
 }
 
-/* 크루 검색창 스타일링 */
-.recruitment {
-    padding: 20px;
-    padding-top: 20px;
+.crewListMain {
+    margin: 10px;
+    background-color: lightgrey;
 }
 
-.Posting{
-    padding: 20px;
-    display:flex;
-    align-items: center;
-    border-top: 1px solid #000;
+.btnMain {
+    list-style-type: none;
+    background-color: salmon;
 }
 
-
-.Posting-On{
-    background-color: #000928;
-    font-weight: bold;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin-right: 10px;
-}
-
-.Posting-Off{
-    background-color: #ADADAD;
-    font-weight: bold;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin-right: 10px;
-}
-
-.Posting-crew-name{
-    font-weight: bold;
-    margin-left: 30px;
-}
-.Posting-people{
-    margin-left: 30px;
-}
-
-.Posting-Title {
-    margin-top: 0;
-}
-
-.Posting-Title h1 {
-    margin: 0;
-    margin-left: 40px;
-    color: rgb(77, 77, 77);
-    cursor: pointer;
-}
-
-.Posting-Title h1:hover {
-    color: rgb(0, 0, 61);
-}
-
-.Posting-writer-date{
+.btnDiv{
     display: flex;
-    justify-content: flex-end;
-    border-bottom: 2px solid #000 ;
+    margin-left: 45%;
 }
+/*.Posting{*/
+/*    padding: 20px;*/
+/*    display:flex;*/
+/*    align-items: center;*/
+/*    border-top: 1px solid #000;*/
+/*}*/
 
-.Posting-writer, .Posting-date{
-    color: black;
-    margin-right: 10px;
-}
 
-.Posting-zone{
-    margin-top: 60px;
-}
+/*.Posting-On{*/
+/*    background-color: #000928;*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    border-radius: 10px;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+/*.Posting-Off{*/
+/*    background-color: #ADADAD;*/
+/*    font-weight: bold;*/
+/*    color: white;*/
+/*    padding: 5px 10px;*/
+/*    border-radius: 10px;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+/*.Posting-crew-name{*/
+/*    font-weight: bold;*/
+/*    margin-left: 30px;*/
+/*}*/
+/*.Posting-people{*/
+/*    margin-left: 30px;*/
+/*}*/
+
+/*.Posting-Title {*/
+/*    margin-top: 0;*/
+/*}*/
+
+/*.Posting-Title h1 {*/
+/*    margin: 0;*/
+/*    margin-left: 40px;*/
+/*    color: rgb(77, 77, 77);*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.Posting-Title h1:hover {*/
+/*    color: rgb(0, 0, 61);*/
+/*}*/
+
+/*.Posting-writer-date{*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    border-bottom: 2px solid #000 ;*/
+/*}*/
+
+/*.Posting-writer, .Posting-date{*/
+/*    color: black;*/
+/*    margin-right: 10px;*/
+/*}*/
+
+/*.Posting-zone{*/
+/*    margin-top: 60px;*/
+/*}*/

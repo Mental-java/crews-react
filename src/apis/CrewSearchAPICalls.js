@@ -6,9 +6,9 @@ export const callCrewSearchListAPI = ({currentPage}) => {
     let requestURL;
 
     if(currentPage !== undefined || currentPage !== null){
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list?offset=${currentPage}`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/five?offset=${currentPage}`;
     }else {
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/five`;
     }
 
     console.log('[CrewSearchAPICalls] requestURL : ', requestURL);
