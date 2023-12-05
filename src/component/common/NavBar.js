@@ -9,25 +9,30 @@ function NavBar(){
 
     
   const navBar = useSelector(state => state.LoginReducer);
-  const userData = navBar ? navBar.userData : null;
+  const userData = navBar.userData;
 
 
 
   const dispatch = useDispatch();
   const crew = useSelector(state => state.crewListReducer);
-  const crewList = crew.data;
+  const crewList = crew?.data;
 
 
   useEffect(
+    
     () => {
-        if (userData && userData.data && userData.data.userId) {
-            dispatch(callCrewListAPI({
-                userId: userData.data.userId
-            }));
-        }
+        
+        dispatch(callCrewListAPI({
+            userId: userData.data.userId
+        }));
+        
     },
-    []
+    [dispatch, userData.data.userId]
   );
+
+  console.log("크루리스트"+crewList);
+
+  
 
     return(
             <aside className={ NavBarCSS.navAside }>
@@ -49,7 +54,7 @@ function NavBar(){
                                  >
                                 {Array.isArray(crewList)&& crewList.map(
                                     (crewlist) => (
-                                        <li><a>{crewlist.crew.crewName}</a></li>
+                                        <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>
                                     )
                                 )}
                                 </ul>
