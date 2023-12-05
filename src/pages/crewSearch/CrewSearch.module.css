@@ -94,7 +94,6 @@ section .crew-search {
     height: 60px;
     display: flex;
     border-bottom: 1px solid #000928;
-    background-color: tan;
 }
 
 .recruitmentStatusDiv{
@@ -148,12 +147,10 @@ section .crew-search {
 .crewListMain {
     height: 100%;
     margin: 10px;
-    background-color: lightgrey;
 }
 
 .btnMain {
     list-style-type: none;
-    background-color: salmon;
 }
 
 .btnDiv{

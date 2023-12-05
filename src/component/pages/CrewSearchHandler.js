@@ -24,8 +24,11 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
                             </div>
                         </div>
                         <div className={HandlerCSS.div2}>
-                            <div>
-
+                            <div className={HandlerCSS.post}>
+                                {crewRecruitmentPost}
+                            </div>
+                            <div className={HandlerCSS.makeInfo}>
+                                {creationDate} | {captain.userId}
                             </div>
                         </div>
                     </div>
