@@ -19,8 +19,8 @@ function MyCalendar() {
     }, []);
 
     const handleEventClick = (info) => {
-        setModalIsOpen(true);
         setSelectedEvent(info.event);
+        setModalIsOpen(true);
     };
 
     return (
@@ -34,14 +34,19 @@ function MyCalendar() {
                         end: calendar.endDate,
                         start: calendar.startDate,
                         title: calendar.title,
+                        extendedProps: {
+                            content: calendar.calendarContent
+                        }
                     }))
                     : []
                 }
                 height={'95vh'}
                 editable={true}
                 eventClick={handleEventClick}
+                eventBackgroundColor={'gray'}
+                eventBorderColor={'lightgray'}
             />
-            {modalIsOpen && (
+            {selectedEvent && (
                 <MyModal
                     isOpen={modalIsOpen}
                     onRequestClose={() => setModalIsOpen(false)}

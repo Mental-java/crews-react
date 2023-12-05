@@ -23,6 +23,7 @@ function MyModal({ isOpen, onRequestClose, event }) {
                     <h2>{event.title}</h2>
                     <p>시작일: {event.start.toLocaleString()}</p>
                     <p>종료일: {event.end.toLocaleString()}</p>
+                    <p>일정 내용: {event.extendedProps.content}</p>
                 </div>
             )}
             <button onClick={onRequestClose}>닫기</button>
