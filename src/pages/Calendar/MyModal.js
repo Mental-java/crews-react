@@ -1,14 +1,15 @@
 import React from 'react';
 import Modal from 'react-modal';
+import MyCalendar from "./MyCalendar";
 
-function MyModal({ isOpen, onRequestClose }) {
+function MyModal({ isOpen, onRequestClose, event }) {
     return (
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             style={{
                 overlay: {
-                    zIndex: 1000, // 제일 앞에 보이게 배치
+                    zIndex: 1000,
                 },
                 content: {
                     width: '50%',
@@ -17,7 +18,13 @@ function MyModal({ isOpen, onRequestClose }) {
                 },
             }}
         >
-            <h2>Event Title</h2>
+            {event && (
+                <div>
+                    <h2>{event.title}</h2>
+                    <p>시작일: {event.start.toLocaleString()}</p>
+                    <p>종료일: {event.end.toLocaleString()}</p>
+                </div>
+            )}
             <button onClick={onRequestClose}>닫기</button>
         </Modal>
     );
