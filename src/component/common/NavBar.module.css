@@ -101,7 +101,7 @@
     color: #333;
 }
 
-.crewList ul {
+.crewBox {
     list-style: none;
     padding: 0;
     display: flex;
