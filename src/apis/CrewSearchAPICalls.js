@@ -4,8 +4,10 @@ import {
     GET_CREWLIST_EXERCISE,
     GET_CREWLIST_STUDY,
     GET_CREWLIST_HABIT,
-    GET_CREWLIST_ETC
+    GET_CREWLIST_ETC,
+    GET_CREWSEARCH_DETAIL
 } from "../module/CrewSearchModule";
+import {request} from "axios";
 
 export const callCrewSearchListAPI = ({currentPage}) => {
 
@@ -142,4 +144,25 @@ export const callCrewListAboutEtcAPI = ({currentPage}) => {
             dispatch({type: GET_CREWLIST_ETC, payload: result.data});
         }
     }
+}
+
+export  const callCrewSearchDetailAPI = ({crewId}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/detail/${crewId}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "*/*"
+            }
+        })
+            .then(response => response.json());
+        if(result.status === 200){
+            console.log('[CrewSearchAPICalls] callCrewSearchDetailAPI SUCCESS');
+            dispatch({type: GET_CREWSEARCH_DETAIL, payload: result.data});
+        }
+    }
+
 }
