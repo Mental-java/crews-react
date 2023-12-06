@@ -4,13 +4,14 @@ import LoginLayout from './layouts/LoginLayout';
 import Notice from './pages/notice/Notice';
 import NoticeDetail from './pages/notice/NoticeDetail';
 import MyPage from "./pages/MyPage";
-import CrewSearchAll from "./pages/crewSearch/CrewSearchAll";
+import CrewSearch from "./pages/crewSearch/CrewSearch";
 import CreateCrew from "./pages/CreateCrew";
 import Login from './pages/login/Login';
 import LoginHandler from './pages/login/LoginHandler';
 import AdminLayout from "./layouts/AdminLayout";
 import AdminNotice from "./pages/admin/AdminNotice";
 import MyCalendar from "./pages/Calendar/MyCalendar";
+import CrewCalendar from "./pages/crew/CrewCalendar";
 import CrewSearchPage from "./pages/crewSearch/CrewSearchPage";
 import CrewSearchDetail from "./pages/crewSearch/CrewSearchDetail";
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="crewsearchdetail/:crewId" element={<CrewSearchDetail/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
+            <Route path="crewCalendar" element={<CrewCalendar/>}/>
         </Route>
         
       </Routes>
