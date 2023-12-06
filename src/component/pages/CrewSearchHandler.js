@@ -1,13 +1,24 @@
 import {useNavigate} from "react-router-dom";
 import HandlerCSS from "./CrewSearchHandler.module.css"
+import {useSelector} from "react-redux";
 
 function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, crewCategoryCode, startDate,
     endDate, crewRecruitmentPost, crewRecruitmentContent, recruitmentStatus, creationDate}}) {
 
     const navigate = useNavigate();
+    const login = useSelector(state => state.LoginReducer);
+    const loginUser = login.userData;
+
 
     const onClickCrewSearchHandler = (crewId) => {
-        navigate(`/main/crewsearchdetail/${crewId}`, {replace: false});
+        console.log("login ==> " + loginUser.data.userId);
+        console.log("pageinfo ==> " + captain.userId);
+
+        if (loginUser.data.userId === captain.userId){
+            navigate(`/main/crewsearchdetail/mycrew/${crewId}`, {replace: false})
+        } else {
+            navigate(`/main/crewsearchdetail/${crewId}`, {replace: false});
+        }
     }
 
     return (
@@ -31,7 +42,7 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
                                 {crewRecruitmentPost}
                             </div>
                             <div className={HandlerCSS.makeInfo}>
-                                {creationDate} | {captain.userId}
+                                {captain.nickname} | {creationDate}
                             </div>
                         </div>
                     </div>

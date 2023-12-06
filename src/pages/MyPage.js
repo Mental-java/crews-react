@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {Link} from "react-router-dom";
 import { useState } from "react";
+import MypageModal from "./MypageModal";
 
 function MyPage(){
 
@@ -16,47 +17,41 @@ function MyPage(){
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
 
-    const [editMode, setEditMode] = useState(false);
+    const [mypageModal, setMypageModal ] = useState(false);
+    const [nickname,setNickname] = useState(0);
+    const [userId,setUserId] = useState(0);
+
+
 
     useEffect(
         () => {
             dispatch(callMyPageListAPI());
         }
-        , []
+        ,[]
     );
 
-    const toggleEditMode = () => {
-        setEditMode(!editMode);
+    const onClickNickNameHandler = (fromNickname,fromUserId) => {
+        setNickname(fromNickname);
+        setMypageModal(true);
+        setUserId(fromUserId);
     }
-    const handleConfirmClick = () => {
-        // TODO: 서버로 새로운 닉네임을 전송하는 로직 추가
-        
 
-        // 수정 모드 종료
-        setEditMode(false);
-    }
 
     return(
         <>
             <div>
                 <div className={MyPageCSS.upDiv}>
-                    <div className={MyPageCSS.nicknameDiv}>
-                    <img src="../img/level-image.png" className={MyPageCSS.levelImage}/>
-                    {editMode ? (
-                        <>
-                            <input
-                                type="text"
-                                value={userData.data.nickname}
-                                onChange={(e) => console.log(e.target.value)}
-                                className={MyPageCSS.editInput}
-                            />
-                            <button onClick={handleConfirmClick}>확인</button>
-                        </>
-                            ) : (
+                    { mypageModal ? <MypageModal nickname ={ nickname } userId={ userId } setMypageModal = { setMypageModal }/> : null }
+                        <div className={MyPageCSS.nicknameDiv}>
+                            <img src="../img/level-image.png" className={MyPageCSS.levelImage}/>                                                                
+                            <p className={MyPageCSS.nickname}>{ userData.data.nickname } 
+                            <img 
+                                src="../img/editButton.png" 
+                                className={MyPageCSS.editImage} 
+                                onClick={()=> onClickNickNameHandler(userData.data.nickname,userData.data.userId)}
+                            /></p>
                             
-                            <p className={MyPageCSS.nickname}>{ userData.data.nickname } <img src="../img/editButton.png" className={MyPageCSS.editImage} onClick={toggleEditMode} /></p>
                             
-                            )}
                         </div>
                     <div className={MyPageCSS.spaceDiv}></div>
                     <div className={MyPageCSS.recodeDiv}>
