@@ -5,12 +5,18 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {Link} from "react-router-dom";
+import { useState } from "react";
 
 function MyPage(){
 
     const dispatch = useDispatch();
     const mypage = useSelector(state => state.myPageReducer);
     const myPageList = mypage.data;
+
+    const navBar = useSelector(state => state.LoginReducer);
+    const userData = navBar.userData;
+
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(
         () => {
@@ -19,14 +25,39 @@ function MyPage(){
         , []
     );
 
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
+    }
+    const handleConfirmClick = () => {
+        // TODO: 서버로 새로운 닉네임을 전송하는 로직 추가
+        
+
+        // 수정 모드 종료
+        setEditMode(false);
+    }
+
     return(
         <>
             <div>
                 <div className={MyPageCSS.upDiv}>
                     <div className={MyPageCSS.nicknameDiv}>
-                        <img src="img/level-image.png" className={MyPageCSS.levelImage}/>
-                            <p className={MyPageCSS.nickname}>삼육이 <img src="img/edit_button.png" className={MyPageCSS.editImage}/></p>
-                    </div>
+                    <img src="../img/level-image.png" className={MyPageCSS.levelImage}/>
+                    {editMode ? (
+                        <>
+                            <input
+                                type="text"
+                                value={userData.data.nickname}
+                                onChange={(e) => console.log(e.target.value)}
+                                className={MyPageCSS.editInput}
+                            />
+                            <button onClick={handleConfirmClick}>확인</button>
+                        </>
+                            ) : (
+                            
+                            <p className={MyPageCSS.nickname}>{ userData.data.nickname } <img src="../img/editButton.png" className={MyPageCSS.editImage} onClick={toggleEditMode} /></p>
+                            
+                            )}
+                        </div>
                     <div className={MyPageCSS.spaceDiv}></div>
                     <div className={MyPageCSS.recodeDiv}>
                         <div className={MyPageCSS.tableTitle}>

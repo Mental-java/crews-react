@@ -21,9 +21,7 @@ export const callMyCalendarListAPI = ({userId}) => {
     };
 }
 
-export const updateEventAPI = ({ userId, updatedTitle, updatedContent, updateStartDate, updateEndDate }) => {
-    const formattedStartDate = moment(updateStartDate).format('YYYY-MM-DD');
-    const formattedEndDate = moment(updateEndDate).format('YYYY-MM-DD');
+export const updateEventAPI = ({ userId, updatedTitle, updatedContent, updatedStartDate, updatedEndDate }) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/update/${userId}`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -36,8 +34,8 @@ export const updateEventAPI = ({ userId, updatedTitle, updatedContent, updateSta
             body: JSON.stringify({
                 title: updatedTitle,
                 calendarContent: updatedContent,
-                startDate: formattedStartDate,
-                endDate: formattedEndDate,
+                startDate: updatedStartDate,
+                endDate: updatedEndDate,
             }),
         });
         console.log("result test==============================>" + result.status)
