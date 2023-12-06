@@ -10,36 +10,28 @@ function MypageModal (nickname,userId,setMypageModal){
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [ form,setForm ] = useState({
-
-        nickname: nickname,
-        userId: userId,
-        newNickName: ' '
-
-    });
+    const [newNickName, setNewNickName] = useState(null);
+   
 
     const onClickNickNameHandler = () => {        
         console.log('닉네임변경 시작');        
                 
         dispatch(callNickNameChangeAPI({	
-            form: form
+            userId: userId,
+            nickname: newNickName
         }));
 
-        setMypageModal(false);
+        // setMypageModal(false);
 
         alert('닉네임 변경이 완료되었습니다.');
 
         navigate(`/main/mypage`, { replace: true});
-        window.location.reload();
+        // window.location.reload();
 
     }
 
     const onChangeHandler = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        });
+        setNewNickName(e.target.value);
     };
 
     return(
@@ -49,11 +41,13 @@ function MypageModal (nickname,userId,setMypageModal){
                     <h1>닉네임 변경</h1>
                     <input 
                         type="text" 
-                        name='newNickName'
+                        value={newNickName}
                         placeholder="변경할 닉네임을 입력하세요" 
                         autoComplete='off'
                         onChange={ onChangeHandler }
                     />
+                    
+                            
                     <button
                         onClick={ onClickNickNameHandler }
                     >

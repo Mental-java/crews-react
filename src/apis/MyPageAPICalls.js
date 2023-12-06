@@ -1,9 +1,9 @@
 import { GET_MYPAGE, PUT_NICKNAME } from "../module/MyPageModule";
 
 
-export const callMyPageListAPI = () => {
+export const callMyPageListAPI = ({ captain }) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list`
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/${captain}/mypost`
 
     return async (dispatch, getState) => {
 
@@ -21,7 +21,7 @@ export const callMyPageListAPI = () => {
     };
 }
 
-export const callNickNameChangeAPI = ({form}) => {
+export const callNickNameChangeAPI = ({userId,nickname}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/editnickname`
 
     return async (dispatch, getState) => {
@@ -34,13 +34,14 @@ export const callNickNameChangeAPI = ({form}) => {
                 "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify({
-                "userId": "form.userId",
-                "nickname": "form.nickname"
+                userId: userId,
+                nickname: nickname
             })
         })
         .then(response => response.json());
+        
 
-        dispatch({ type:PUT_NICKNAME, payload: result.data});
+        dispatch({ type:PUT_NICKNAME });
     };
 
 }
