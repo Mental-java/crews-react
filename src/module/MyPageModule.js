@@ -17,10 +17,8 @@ const myPageReducer = handleActions(
     {
         [GET_MYPAGE]: (state, { payload }) => {
             return payload;
-        },
-        [PUT_NICKNAME]: (state, {payload})=> {
-            return payload;
         }
+
     },
     initialState
 );
