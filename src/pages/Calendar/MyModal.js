@@ -90,9 +90,11 @@ function MyModal({ isOpen, onRequestClose, event }) {
                             <h2>수정할 종료일</h2>
                             <input type="datetime-local" value={updatedEndDate} onChange={handleEndDateChange} />
                             <button onClick={handleUpdateClick}>수정</button>
+                            <button onClick={() => setIsEditMode(false)}>수정 창 닫기</button>
                         </>
                     ) : (
                         <button onClick={() => setIsEditMode(true)}>수정하기</button>
+
                     )}
                     <button onClick={onRequestClose}>닫기</button>
                 </div>
