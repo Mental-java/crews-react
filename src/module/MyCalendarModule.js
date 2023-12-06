@@ -5,11 +5,12 @@ const initialState = [];
 
 /* 액션 */
 export const GET_MYCALENDAR = 'mycalendar/GET_MYCALENDAR';
+export const UPDATE_EVENT_SUCCESS = 'mycalendar/UPDATE_EVENT_SUCCESS';
+export const UPDATE_EVENT_FAILURE = 'mycalendar/UPDATE_EVENT_FAILURE';
 
 const actions = createActions({
     [GET_MYCALENDAR]: () => { },
 });
-
 
 const myCalendarReducer = handleActions(
     {

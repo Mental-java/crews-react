@@ -6,6 +6,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import MyModal from "./MyModal";
 
+
 function MyCalendar() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
@@ -14,9 +15,14 @@ function MyCalendar() {
     const myCalendarList = mycalendar.data;
     console.log(myCalendarList)
 
+    const navBar = useSelector(state => state.LoginReducer);
+    const userData = navBar.userData;
+
     useEffect(() => {
-        dispatch(callMyCalendarListAPI());
+        dispatch(callMyCalendarListAPI({
+            userId:userData.data.userId}));
     }, []);
+
 
     const handleEventClick = (info) => {
         setSelectedEvent(info.event);
@@ -31,6 +37,7 @@ function MyCalendar() {
                 plugins={[dayGridPlugin]}
                 events={Array.isArray(myCalendarList)
                     ? myCalendarList.map((calendar) => ({
+                        id: userData.data.userId,
                         end: calendar.endDate,
                         start: calendar.startDate,
                         title: calendar.title,
