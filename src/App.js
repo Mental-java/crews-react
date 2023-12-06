@@ -11,6 +11,7 @@ import LoginHandler from './pages/login/LoginHandler';
 import AdminLayout from "./layouts/AdminLayout";
 import AdminNotice from "./pages/admin/AdminNotice";
 import MyCalendar from "./pages/Calendar/MyCalendar";
+import CrewCalendar from "./pages/crew/CrewCalendar";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="crewsearch" element={<CrewSearch/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
+            <Route path="crewCalendar" element={<CrewCalendar/>}/>
         </Route>
         
       </Routes>
