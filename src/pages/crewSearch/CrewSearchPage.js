@@ -57,7 +57,7 @@ function CrewSearchPage() {
                             ))}
                         </ul>
                         <div className={styles['search-bar']}>
-                            <input type="text" placeholder="크루 검색" />
+                            <input type="text" placeholder="검색어를 입력하세요" />
                             <button>검색</button>
                         </div>
                     </div>

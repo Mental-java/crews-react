@@ -17,6 +17,8 @@ function CreateCrew() {
     const user = useSelector(state => state.LoginReducer);
     const loginUser = user.userData;
 
+    const today = new Date().toLocaleDateString('en-CA');
+
     const [form, setFrom] = useState( {
         crewName: '',
         captain: {userId: loginUser && loginUser.data ? loginUser.data.userId : null},
@@ -56,8 +58,7 @@ function CreateCrew() {
         }));
 
         alert('크루 등록 성공');
-        navigate('/main/crewsearch', {replace: true});
-        window.location.reload();
+        navigate(`/main/crewsearch`, {replace: true});
     }
 
     return (
@@ -82,9 +83,9 @@ function CreateCrew() {
 
                             <div className="date-input">
                                 <p>활동기간</p>
-                                <input type="date" name="startDate" onChange={onChangeHandler} required />
+                                <input type="date" name="startDate" min={today} onChange={onChangeHandler} required />
                                 <span className="date-separator">&nbsp; ~ &nbsp;</span>
-                                <input type="date" name="endDate" onChange={onChangeHandler} required />
+                                <input type="date" name="endDate" min={today} onChange={onChangeHandler} required />
                             </div>
                         </div>
 

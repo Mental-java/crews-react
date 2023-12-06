@@ -1,5 +1,5 @@
 import CrewSearchDetailCSS from './CrewSearchDetail.module.css';
-import { useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 
@@ -12,7 +12,8 @@ function CrewSearchDetailForCaptain() {
     const dispatch = useDispatch();
     const params = useParams();
     const crew = useSelector(state => state.crewSearchListReducer);
-    // let nickname = crew.captain.nickname;
+    const navigate = useNavigate();
+
     console.log(crew);
     useEffect(
         () => {
@@ -68,7 +69,7 @@ function CrewSearchDetailForCaptain() {
                             <div className={CrewSearchDetailCSS.deleteBtn}>
                                 삭제하기
                             </div>
-                            <div className={CrewSearchDetailCSS.backpageBtn}>
+                            <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
                                 목록으로 돌아가기
                             </div>
                         </div>
