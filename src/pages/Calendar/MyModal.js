@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateEventAPI } from '../../apis/MyCalendarAPICalls';
+import MyModalCSS from './MyModal.module.css'
 
 function MyModal({ isOpen, onRequestClose, event }) {
     const dispatch = useDispatch();
@@ -67,8 +68,8 @@ function MyModal({ isOpen, onRequestClose, event }) {
                 },
             }}
         >
-            <div style={{ display: "flex" }}>
-                <div style={{ marginRight: '20%' }}>
+            <div className={MyModalCSS.modalContainer}>
+                <div className={MyModalCSS.originInfo}>
                     <h2>일정 제목</h2>
                     <p>{event.title}</p>
                     <h2>일정 내용</h2>
@@ -78,7 +79,7 @@ function MyModal({ isOpen, onRequestClose, event }) {
                     <h2>종료일</h2>
                     <p>{event.end.toISOString()}</p>
                 </div>
-                <div>
+                <div className={MyModalCSS.updateInfo}>
                     {isEditMode ? (
                         <>
                             <h2>수정할 제목</h2>
@@ -89,16 +90,16 @@ function MyModal({ isOpen, onRequestClose, event }) {
                             <input type="datetime-local" value={updatedStartDate} onChange={handleStartDateChange} />
                             <h2>수정할 종료일</h2>
                             <input type="datetime-local" value={updatedEndDate} onChange={handleEndDateChange} />
-                            <button onClick={handleUpdateClick}>수정</button>
-                            <button onClick={() => setIsEditMode(false)}>수정 창 닫기</button>
+                            <button onClick={handleUpdateClick}>적용</button>
+                            <button onClick={() => setIsEditMode(false)}>취소</button>
                         </>
                     ) : (
-                        <button onClick={() => setIsEditMode(true)}>수정하기</button>
+                        <button onClick={() => setIsEditMode(true)}>수정</button>
 
                     )}
-                    <button onClick={onRequestClose}>닫기</button>
                 </div>
             </div>
+            <button className={MyModalCSS.closeButton} onClick={onRequestClose}>X</button>
         </Modal>
     );
 }
