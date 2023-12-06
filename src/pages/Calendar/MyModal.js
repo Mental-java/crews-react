@@ -60,9 +60,9 @@ function MyModal({ isOpen, onRequestClose, event }) {
             <h2>일정 내용</h2>
             <textarea value={updatedContent} onChange={handleContentChange} />
             <h2>시작 일자</h2>
-            <input type="date" value={updatedStartDate} onChange={handleStartDateChange} />
+            <input type="datetime-local" value={updatedStartDate} onChange={handleStartDateChange} />
             <h2>종료 일자</h2>
-            <input type="date" value={updatedEndDate} onChange={handleEndDateChange} />
+            <input type="datetime-local" value={updatedEndDate} onChange={handleEndDateChange} />
 
             <button onClick={handleUpdateClick}>수정</button>
             <button onClick={onRequestClose}>닫기</button>
