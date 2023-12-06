@@ -19,7 +19,7 @@ function CreateCrew() {
 
     const [form, setFrom] = useState( {
         crewName: '',
-        captain: {userId: loginUser.data.userId},
+        captain: {userId: loginUser && loginUser.data ? loginUser.data.userId : null},
         introduction: '',
         crewCategoryCode: {categoryCode: ''},
         startDate: '',
@@ -51,19 +51,8 @@ function CreateCrew() {
 
         console.log('[CrewRegistration] onClickCrewRegistrationHandler');
 
-        const formData = new FormData();
-
-        formData.append("crewName", form.crewName);
-        formData.append("captain.userId", form.userId);
-        formData.append("introduction", form.introduction);
-        formData.append("crewCategoryCode.categoryCode", form.categoryCode);
-        formData.append("startDate", form.startDate);
-        formData.append("endDate", form.endDate);
-        formData.append("crewRecruitmentPost", form.crewRecruitmentPost);
-        formData.append("crewRecruitmentContent", form.crewRecruitmentContent);
-
         dispatch(callCrewRegistAPI( {
-            form: formData
+            form: form
         }));
 
         alert('크루 등록 성공');

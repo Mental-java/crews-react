@@ -5,7 +5,8 @@ import {
     GET_CREWLIST_STUDY,
     GET_CREWLIST_HABIT,
     GET_CREWLIST_ETC,
-    GET_CREWSEARCH_DETAIL, POST_CREW
+    GET_CREWSEARCH_DETAIL,
+    POST_CREW
 } from "../module/CrewSearchModule";
 import {request} from "axios";
 
@@ -178,9 +179,19 @@ export const callCrewRegistAPI = ({form}) => {
         const result = await fetch(requestURL, {
             method: "POST",
             headers: {
+                "Content-Type": "application/json",
                 "Accept": "*/*"
             },
-            body: JSON.stringify(form)
+            body: JSON.stringify( {
+                crewName: form.crewName,
+                captain: {userId: form.captain.userId},
+                introduction: form.introduction,
+                crewCategoryCode: {categoryCode: form.crewCategoryCode.categoryCode},
+                startDate: form.startDate,
+                endDate: form.endDate,
+                crewRecruitmentPost: form.crewRecruitmentPost,
+                crewRecruitmentContent: form.crewRecruitmentContent
+            })
         })
             .then(response => response.json());
 
