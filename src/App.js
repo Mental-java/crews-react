@@ -4,7 +4,6 @@ import LoginLayout from './layouts/LoginLayout';
 import Notice from './pages/notice/Notice';
 import NoticeDetail from './pages/notice/NoticeDetail';
 import MyPage from "./pages/MyPage";
-import CrewSearch from "./pages/crewSearch/CrewSearch";
 import CreateCrew from "./pages/CreateCrew";
 import Login from './pages/login/Login';
 import LoginHandler from './pages/login/LoginHandler';

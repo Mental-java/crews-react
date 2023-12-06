@@ -1,10 +1,14 @@
 import {useNavigate} from "react-router-dom";
 import HandlerCSS from "./CrewSearchHandler.module.css"
+import {useSelector} from "react-redux";
 
 function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, crewCategoryCode, startDate,
     endDate, crewRecruitmentPost, crewRecruitmentContent, recruitmentStatus, creationDate}}) {
 
     const navigate = useNavigate();
+    const login = useSelector(state => state.LoginReducer);
+    const loginUser = login.userData;
+    console.log("login ==> " + loginUser.data.userId);
 
     const onClickCrewSearchHandler = (crewId) => {
         navigate(`/main/crewsearchdetail/${crewId}`, {replace: false});
