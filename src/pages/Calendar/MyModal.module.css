@@ -1,0 +1,85 @@
+/* MyModal.module.css */
+
+.modalContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.originInfo, .updateInfo {
+    width: 45%;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.originInfo h2, .updateInfo h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #343a40;
+}
+
+.originInfo p, .updateInfo input, .updateInfo textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.updateInfo input[type="text"], .updateInfo input[type="datetime-local"] {
+    width: 100%;
+}
+
+.updateInfo textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.updateInfo button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #000928;;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.updateInfo button:hover {
+    background-color: #373857;;
+}
+
+.updateInfo button:active {
+    background-color: #000928;;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.closeButton:hover {
+    background-color: #ff8787;
+}
+
+.closeButton:active {
+    background-color: #fa5252;
+}
+
