@@ -8,10 +8,17 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
     const navigate = useNavigate();
     const login = useSelector(state => state.LoginReducer);
     const loginUser = login.userData;
-    console.log("login ==> " + loginUser.data.userId);
+
 
     const onClickCrewSearchHandler = (crewId) => {
-        navigate(`/main/crewsearchdetail/${crewId}`, {replace: false});
+        console.log("login ==> " + loginUser.data.userId);
+        console.log("pageinfo ==> " + captain.userId);
+
+        if (loginUser.data.userId === captain.userId){
+            navigate(`/main/crewsearchdetail/mycrew/${crewId}`, {replace: false})
+        } else {
+            navigate(`/main/crewsearchdetail/${crewId}`, {replace: false});
+        }
     }
 
     return (
@@ -35,7 +42,7 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
                                 {crewRecruitmentPost}
                             </div>
                             <div className={HandlerCSS.makeInfo}>
-                                {creationDate} | {captain.userId}
+                                {captain.nickname} | {creationDate}
                             </div>
                         </div>
                     </div>
