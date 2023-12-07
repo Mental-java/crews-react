@@ -6,7 +6,7 @@ import {
 } from '../apis/MyPageAPICalls'
 import MypageModalCSS from "./MypageModal.module.css";
 
-function MypageModal (setMypageModal){
+function MypageModal ({ setMypageModal }){
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
