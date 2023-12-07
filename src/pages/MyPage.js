@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import {Link} from "react-router-dom";
 import { useState } from "react";
 import MypageModal from "./MypageModal";
+import MyCrewHandler from "./MyCrewHandler";
 
 function MyPage(){
 
@@ -21,11 +22,15 @@ function MyPage(){
     const [nickname,setNickname] = useState(0);
     const [userId,setUserId] = useState(0);
 
+    
+
 
 
     useEffect(
         () => {
-            dispatch(callMyPageListAPI());
+            dispatch(callMyPageListAPI({
+                captain: userData.data.userId
+            }));
         }
         ,[]
     );
@@ -81,24 +86,15 @@ function MyPage(){
                         <table>
                             <thead>
                                 <tr>
-                                    <th className={MyPageCSS.barContent} width="100">번호</th>
+                                    {/* <th className={MyPageCSS.barContent} width="100">번호</th> */}
                                     <th className={MyPageCSS.barContent} width="700">제목</th>
-                                    <th className={MyPageCSS.barContent} width="200">조회수</th>
                                     <th className={MyPageCSS.barContent} width="300">작성일</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {Array.isArray(myPageList) && myPageList.map(
-                                (mypage, index) => (
-                                    <tr
-                                        key={mypage.captain}
-                                    >
-                                        <td>{index + 1}</td>
-                                        <Link to={'/'} className={MyPageCSS.postdetaillink}><td>{mypage.crewRecruitmentPost}</td></Link>
-                                        <td>3</td>
-                                        <td>{mypage.creationDate}</td>
-                                        <div className={MyPageCSS.endline}></div>
-                                    </tr>
+                                (mycrew) => (
+                                    <MyCrewHandler key={ mycrew.crewId } crewInfo= {mycrew}/>                            
                                 )
                             )}
 

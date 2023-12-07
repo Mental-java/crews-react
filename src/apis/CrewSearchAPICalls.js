@@ -5,7 +5,8 @@ import {
     GET_CREWLIST_STUDY,
     GET_CREWLIST_HABIT,
     GET_CREWLIST_ETC,
-    GET_CREWSEARCH_DETAIL
+    GET_CREWSEARCH_DETAIL,
+    POST_CREW
 } from "../module/CrewSearchModule";
 import {request} from "axios";
 
@@ -62,7 +63,7 @@ export const callCrewListAboutExerciseAPI = ({currentPage}) => {
             console.log('[CrewSearchAPICalls] callCrewListAboutExerciseAPI RESULT : ', result);
             dispatch({type: GET_CREWLIST_EXERCISE, payload: result.data});
         }
-    }
+    };
 }
 
 export const callCrewListAboutStudyAPI = ({currentPage}) => {
@@ -89,7 +90,7 @@ export const callCrewListAboutStudyAPI = ({currentPage}) => {
             console.log('[CrewSearchAPICalls] callCrewListAboutStudyAPI RESULT : ', result);
             dispatch({type: GET_CREWLIST_STUDY, payload: result.data});
         }
-    }
+    };
 }
 
 export const callCrewListAboutHabitAPI = ({currentPage}) => {
@@ -116,7 +117,7 @@ export const callCrewListAboutHabitAPI = ({currentPage}) => {
             console.log('[CrewSearchAPICalls] callCrewListAboutHabitAPI RESULT : ', result);
             dispatch({type: GET_CREWLIST_HABIT, payload: result.data});
         }
-    }
+    };
 }
 
 export const callCrewListAboutEtcAPI = ({currentPage}) => {
@@ -143,10 +144,10 @@ export const callCrewListAboutEtcAPI = ({currentPage}) => {
             console.log('[CrewSearchAPICalls] callCrewListAboutEtcAPI RESULT : ', result);
             dispatch({type: GET_CREWLIST_ETC, payload: result.data});
         }
-    }
+    };
 }
 
-export  const callCrewSearchDetailAPI = ({crewId}) => {
+export const callCrewSearchDetailAPI = ({crewId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/detail/${crewId}`;
 
     return async (dispatch, getState) => {
@@ -163,6 +164,40 @@ export  const callCrewSearchDetailAPI = ({crewId}) => {
             console.log('[CrewSearchAPICalls] callCrewSearchDetailAPI SUCCESS');
             dispatch({type: GET_CREWSEARCH_DETAIL, payload: result.data});
         }
-    }
+    };
+
+}
+
+export const callCrewRegistAPI = ({form}) => {
+
+    console.log('[CrewSearchAPICalls] callCrewRegistAPI Call');
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/register`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            },
+            body: JSON.stringify( {
+                crewName: form.crewName,
+                captain: {userId: form.captain.userId},
+                introduction: form.introduction,
+                crewCategoryCode: {categoryCode: form.crewCategoryCode.categoryCode},
+                startDate: form.startDate,
+                endDate: form.endDate,
+                crewRecruitmentPost: form.crewRecruitmentPost,
+                crewRecruitmentContent: form.crewRecruitmentContent
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[CrewSearchAPICalls] callCrewRegistAPI RESULT : ', result);
+
+        dispatch({type: POST_CREW, payload: result});
+    };
 
 }

@@ -77,8 +77,8 @@ function CrewSearchPage() {
                             </ul>
                         </div>
                         <div className={styles.createCrewDiv}>
-                            <Link to="/createcrew" className={styles.createCrewButton}>
-                                크루 만들기
+                            <Link to="/main/createcrew" className={styles.createCrewButton}>
+                                + 크루 만들기
                             </Link>
                         </div>
                     </div>
