@@ -1,5 +1,7 @@
 import LoginCSS from './Login.module.css';
 
+import mainLogo from '../../img/crews-logo.png';
+import kakaoBtn from '../../img/kakaoButton.png';
 
 const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
@@ -12,12 +14,12 @@ function Login(){
     return(
         <>
             <div className={ LoginCSS.logoContainer }>
-                <img src="img/crews-logo.png" alt="메인 로고" className={LoginCSS.mainLogo}/>
+                <img src={mainLogo} alt="메인 로고" className={LoginCSS.mainLogo}/>
             </div>
 
             <div className={ LoginCSS.loginButton }>
                 <a href={ KAKAO_AUTH_URL } >
-                <img src="img/kakaoButton.png" alt="카카오 버튼" className={LoginCSS.kakaoButton}/>    
+                <img src={kakaoBtn} alt="카카오 버튼" className={LoginCSS.kakaoButton}/>
                 </a> 
             </div>
         </>
