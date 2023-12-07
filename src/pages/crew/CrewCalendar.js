@@ -4,14 +4,14 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 function CrewCalendar() {
-    const crewcalendar = useSelector((state) => state.myCalendarReducer);
-    const crewCalendarList = crewcalendar.data;
-
-    const events = crewCalendarList.map(event => ({
-        title: event.title,
-        start: event.start,
-        end: event.end
-    }));
+    // const crewcalendar = useSelector((state) => state.myCalendarReducer);
+    // const crewCalendarList = crewcalendar.data;
+    //
+    // const events = crewCalendarList.map(event => ({
+    //     title: event.title,
+    //     start: event.start,
+    //     end: event.end
+    // }));
 
     return (
         <div>
@@ -21,10 +21,9 @@ function CrewCalendar() {
                 plugins={[dayGridPlugin]}
 
                 height={'95vh'}
-                editable={true}
                 eventBackgroundColor={'gray'}
                 eventBorderColor={'lightgray'}
-                events={events}
+                // events={events}
             />
         </div>
     );

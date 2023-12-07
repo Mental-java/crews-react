@@ -1,23 +1,26 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
     callNickNameChangeAPI
 } from '../apis/MyPageAPICalls'
 import MypageModalCSS from "./MypageModal.module.css";
 
-function MypageModal (nickname,userId,setMypageModal){
+function MypageModal ({ setMypageModal }){
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [newNickName, setNewNickName] = useState(null);
+
+    const navBar = useSelector(state => state.LoginReducer);
+    const userData = navBar.userData;
    
 
     const onClickNickNameHandler = () => {        
         console.log('닉네임변경 시작');        
                 
         dispatch(callNickNameChangeAPI({	
-            userId: userId,
+            userId: userData.data.userId,
             nickname: newNickName
         }));
 

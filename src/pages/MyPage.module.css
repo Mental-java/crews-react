@@ -110,3 +110,28 @@
 .myList{
     height: 80%;
 }
+
+
+.myCrewList {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .myCrewList:hover {
+    background-color: #f0f0f0; 
+  }
+  
+  .myCrewList td {
+    padding: 10px;
+    border-bottom: 2px solid black; 
+    text-align: center
+  }
+  
+  .myCrewList td:first-child {
+    border-right: none; 
+  }
+  
+  .myCrewList td:last-child {
+    border-left: none; 
+  }
+  

@@ -15,7 +15,7 @@ function NavBar(){
 
   const dispatch = useDispatch();
   const crew = useSelector(state => state.crewListReducer);
-  const crewList = crew?.data;
+  const crewList = crew.data;
 
 
   useEffect(
@@ -52,11 +52,14 @@ function NavBar(){
                                 <ul
                                     className={ NavBarCSS.crewBox}
                                  >
-                                {Array.isArray(crewList)&& crewList.map(
-                                    (crewlist) => (
-                                        <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>
-                                    )
-                                )}
+                                    <NavLink to="/main/crewCalendar">
+                                        {Array.isArray(crewList)&& crewList.map(
+                                            (crewlist) => (
+                                                <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>
+                                            )
+                                        )}
+                                    </NavLink>
+
                                 </ul>
                             </div>
                             
