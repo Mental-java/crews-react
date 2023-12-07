@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateEventAPI } from '../../apis/MyCalendarAPICalls';
 import MyModalCSS from './MyModal.module.css'
 
-function MyModal({ isOpen, onRequestClose, event }) {
+function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
     const dispatch = useDispatch();
     const [isEditMode, setIsEditMode] = useState(false);
     const [updatedTitle, setUpdatedTitle] = useState(event?.title || '');
@@ -38,7 +38,6 @@ function MyModal({ isOpen, onRequestClose, event }) {
     const handleEndDateChange = (e) => {
         setUpdatedEndDate(e.target.value);
     };
-
     const handleUpdateClick = () => {
         dispatch(updateEventAPI({
             userId: userData.data.userId,
@@ -46,8 +45,11 @@ function MyModal({ isOpen, onRequestClose, event }) {
             updatedContent,
             updatedStartDate,
             updatedEndDate
-        }));
-        onRequestClose();
+        }))
+            .then(() => {
+                onRequestClose();
+                onUpdated && onUpdated(); // 수정이 성공적으로 완료된 후에 onUpdated 콜백을 호출
+            });
     };
 
     const navBar = useSelector(state => state.LoginReducer);
