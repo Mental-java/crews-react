@@ -19,11 +19,6 @@ function MyPage(){
     const userData = navBar.userData;
 
     const [mypageModal, setMypageModal ] = useState(false);
-    const [nickname,setNickname] = useState(0);
-    const [userId,setUserId] = useState(0);
-
-    
-
 
 
     useEffect(
@@ -35,25 +30,26 @@ function MyPage(){
         ,[]
     );
 
-    const onClickNickNameHandler = (fromNickname,fromUserId) => {
-        setNickname(fromNickname);
+    const onClickNickNameHandler = () => {
+        
         setMypageModal(true);
-        setUserId(fromUserId);
+        
     }
 
 
     return(
         <>
+        { mypageModal ? <MypageModal 
+                     setMypageModal = { setMypageModal }/> : null }
             <div>
                 <div className={MyPageCSS.upDiv}>
-                    { mypageModal ? <MypageModal nickname ={ nickname } userId={ userId } setMypageModal = { setMypageModal }/> : null }
                         <div className={MyPageCSS.nicknameDiv}>
                             <img src="../img/level-image.png" className={MyPageCSS.levelImage}/>                                                                
                             <p className={MyPageCSS.nickname}>{ userData.data.nickname } 
                             <img 
                                 src="../img/editButton.png" 
                                 className={MyPageCSS.editImage} 
-                                onClick={()=> onClickNickNameHandler(userData.data.nickname,userData.data.userId)}
+                                onClick={()=> onClickNickNameHandler()}
                             /></p>
                             
                             
@@ -86,7 +82,7 @@ function MyPage(){
                         <table>
                             <thead>
                                 <tr>
-                                    {/* <th className={MyPageCSS.barContent} width="100">번호</th> */}
+                                    <th className={MyPageCSS.barContent} width="200">작성자</th>
                                     <th className={MyPageCSS.barContent} width="700">제목</th>
                                     <th className={MyPageCSS.barContent} width="300">작성일</th>
                                 </tr>
