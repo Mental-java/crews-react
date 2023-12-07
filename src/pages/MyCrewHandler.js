@@ -1,7 +1,7 @@
 import MyPageCSS from "./MyPage.module.css";
 import { useNavigate } from "react-router-dom";
 
-function MyCrewHandler({ crewInfo: { crewId,crewRecruitmentPost,creationDate}}){
+function MyCrewHandler({ crewInfo: { captain,crewId,crewRecruitmentPost,creationDate}}){
 
     const navigate = useNavigate();
 
@@ -13,7 +13,9 @@ function MyCrewHandler({ crewInfo: { crewId,crewRecruitmentPost,creationDate}}){
         <>
             <tr
                 onClick={ () => onClickCaptainCrwHandler(crewId)}
+                className = { MyPageCSS.myCrewList }
             >
+                    <td>{captain.nickname}</td>
                     <td>{crewRecruitmentPost}</td>
                     <td>{creationDate}</td>
             </tr>
