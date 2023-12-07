@@ -15,7 +15,7 @@ function NavBar(){
 
   const dispatch = useDispatch();
   const crew = useSelector(state => state.crewListReducer);
-  const crewList = crew?.data;
+  const crewList = crew.data;
 
 
   useEffect(
