@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { callCrewListAPI } from '../../apis/CrewListAPICalls';
 import NavBarCSS from './NavBar.module.css';
 import CrewListHandler from './CrewListHandler';
+import levelImg from '../../img/level-image.png'
+import diamondImg from '../../img/diamond-image.png';
 
 function NavBar(){
 
@@ -38,10 +40,10 @@ function NavBar(){
             <aside className={ NavBarCSS.navAside }>
                 <div className={ NavBarCSS.sideBar}>
                     <div className={ NavBarCSS.userInfo }>
-                            <img src="../img/level-image.png" alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
+                            <img src={levelImg} alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
                             <p className={NavBarCSS.userName}>{userData.data.nickname}</p>
                             <div className={ NavBarCSS.diamondInfo}>
-                                <img src="../img/diamond-image.png" alt="보석"/>
+                                <img src={diamondImg} alt="보석"/>
                                 <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>
                             </div>
                             <div className={ NavBarCSS.logoutButton }>

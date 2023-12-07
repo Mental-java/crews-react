@@ -1,6 +1,7 @@
 import HeaderCSS from './Header.module.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import mainLogo from '../../img/crews-logo.png';
 
 function Header(){
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Header(){
                 <nav className={ HeaderCSS.mainNav }>
                     <div className={ HeaderCSS.logoContainer }>
                         <Link to="/main/myCalendar" onClick={ onClickLogo }>
-                            <img src="../img/crews-logo.png" alt="메인 로고" className={HeaderCSS.mainLogo}/>
+                            <img src={mainLogo} alt="메인 로고" className={HeaderCSS.mainLogo}/>
                         </Link>
                     </div>
                     <ul>                           

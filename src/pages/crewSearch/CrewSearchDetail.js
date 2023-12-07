@@ -2,6 +2,8 @@ import CrewSearchDetailCSS from './CrewSearchDetail.module.css';
 import {useNavigate, useParams} from "react-router-dom";
 import { useSelector, useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
+import calenderIcon from '../../img/calendar.png';
+import userIcon from '../../img/userImg.png';
 
 import {
     callCrewSearchDetailAPI
@@ -35,9 +37,9 @@ function CrewSearchDetail() {
                         <div className={CrewSearchDetailCSS.crewDiv}>
                             <br/>
                             <h2>{crew.crewName}</h2>
-                            <img src="../../img/calendar.png" className={CrewSearchDetailCSS.calendarImage}/>
+                            <img src={calenderIcon} className={CrewSearchDetailCSS.calendarImage}/>
                             <h5 className={CrewSearchDetailCSS.crewh4a1}>목표기간 : {crew.startDate} ~ {crew.endDate}</h5>
-                            <img src="../../img/userImg.png" className={CrewSearchDetailCSS.userImage}/>
+                            <img src={userIcon} className={CrewSearchDetailCSS.userImage}/>
                             <h5 className={CrewSearchDetailCSS.crewh4a2}>캡틴 : {crew.captain && crew.captain.nickname}</h5>
                         </div>
                     </div>
