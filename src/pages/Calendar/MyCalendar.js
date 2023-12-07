@@ -58,6 +58,9 @@ function MyCalendar() {
                     isOpen={modalIsOpen}
                     onRequestClose={() => setModalIsOpen(false)}
                     event={selectedEvent}
+                    onUpdated={() => dispatch(callMyCalendarListAPI({
+                        userId:userData.data.userId}))}
+                    /// 캘린더 수정후 새로고침
                 />
             )}
         </div>
