@@ -107,3 +107,22 @@
     display: flex;
     flex-direction: column; 
 }
+
+.myCrewList{
+    margin: 10px 0;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
+    border-radius: 5px;
+}
+
+.myCrewList:hover{
+    background-color: skyblue;
+}
+
+.myCrewEffect{
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px;
+
+}
