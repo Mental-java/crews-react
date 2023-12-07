@@ -14,6 +14,8 @@ import CrewCalendar from "./pages/crew/CrewCalendar";
 import CrewSearchPage from "./pages/crewSearch/CrewSearchPage";
 import CrewSearchDetail from "./pages/crewSearch/CrewSearchDetail";
 import CrewSearchDetailForCaptian from "./pages/crewSearch/CrewSearchDetailForCaptian";
+import CrewCertification from "./pages/crew/CrewCertification";
+import ActiveStatus from "./pages/crew/ActiveStatus";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
             <Route path="crewCalendar" element={<CrewCalendar/>}/>
+            <Route path="crewCertification" element={<CrewCertification/>}/>
+            <Route path="activeStatus" element={<ActiveStatus/>}/>
         </Route>
         
       </Routes>
