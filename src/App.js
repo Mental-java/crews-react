@@ -10,7 +10,7 @@ import LoginHandler from './pages/login/LoginHandler';
 import AdminLayout from "./layouts/AdminLayout";
 import AdminNotice from "./pages/admin/AdminNotice";
 import MyCalendar from "./pages/Calendar/MyCalendar";
-import CrewCalendar from "./pages/crew/CrewCalendar";
+import CrewMain from "./pages/crew/CrewMain";
 import CrewSearchPage from "./pages/crewSearch/CrewSearchPage";
 import CrewSearchDetail from "./pages/crewSearch/CrewSearchDetail";
 import CrewSearchDetailForCaptian from "./pages/crewSearch/CrewSearchDetailForCaptian";
@@ -42,7 +42,7 @@ function App() {
             <Route path="crewsearchdetail/mycrew/:crewId" element={<CrewSearchDetailForCaptian/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
-            <Route path="crewCalendar" element={<CrewCalendar/>}/>
+            <Route path="crewMain" element={<CrewMain/>}/>
             <Route path="crewCertification" element={<CrewCertification/>}/>
             <Route path="activeStatus" element={<ActiveStatus/>}/>
         </Route>

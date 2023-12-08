@@ -4,14 +4,14 @@ ul {
     justify-content: space-around;
 }
 
-.mainLink {
+.crewPage {
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
     color: black;
+}
 
-    &:hover {
-         color: blue;
-     }
+.crewPage:hover {
+    color: darkblue;
 }
 
