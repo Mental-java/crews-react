@@ -17,10 +17,10 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
         setIsEditMode(false);
 
         // 모달이 열릴 때마다 이벤트 데이터를 받아와서 상태 업데이트
-        setUpdatedTitle(event?.title || '');
-        setUpdatedContent(event?.extendedProps?.content || '');
-        setUpdatedStartDate(event?.start || '');
-        setUpdatedEndDate(event?.end || '');
+        setUpdatedTitle('');
+        setUpdatedContent('');
+        setUpdatedStartDate('');
+        setUpdatedEndDate('');
     }, [isOpen, event]);
 
     const handleTitleChange = (e) => {
@@ -39,6 +39,11 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
         setUpdatedEndDate(e.target.value);
     };
     const handleUpdateClick = () => {
+        if(!updatedStartDate || !updatedEndDate){
+            alert("시작일과 종료일을 입력해주세요.");
+            return;
+        }
+
         dispatch(updateEventAPI({
             userId: userData.data.userId,
             updatedTitle,
