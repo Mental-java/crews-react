@@ -3,3 +3,27 @@
     text-decoration: underline;
 }
 
+.bar {
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    padding: 10px 20px;
+}
+
+.writeButton {
+    background-color: #000928;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+    margin-left: 100px;
+    text-decoration: none;
+}
+
+.writeButton:hover {
+    background-color: #007bff;
+}
