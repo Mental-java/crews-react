@@ -16,7 +16,7 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
         // 모달이 열릴 때마다 수정 모드를 초기화
         setIsEditMode(false);
 
-        // 모달이 열릴 때마다 이벤트 데이터를 받아와서 상태 업데이트
+        // 모달이 열릴 때마다 빈칸으로 상태 업데이트
         setUpdatedTitle('');
         setUpdatedContent('');
         setUpdatedStartDate('');
@@ -95,9 +95,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
                     {isEditMode ? (
                         <>
                             <h2>수정할 제목</h2>
-                            <input type="text" value={updatedTitle} onChange={handleTitleChange} />
+                            <input type="text" placeholder="제목을 입력하세요" value={updatedTitle} onChange={handleTitleChange} />
                             <h2>수정할 일정</h2>
-                            <textarea value={updatedContent} onChange={handleContentChange} />
+                            <textarea placeholder="일정 내용" value={updatedContent} onChange={handleContentChange} />
                             <h2>수정할 시작일</h2>
                             <input type="datetime-local" value={updatedStartDate} onChange={handleStartDateChange} />
                             <h2>수정할 종료일</h2>
