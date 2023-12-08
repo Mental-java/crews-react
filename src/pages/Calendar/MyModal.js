@@ -44,6 +44,11 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
             return;
         }
 
+        if (updatedStartDate >= updatedEndDate) {
+            alert("종료일은 시작일보다 미래의 날짜여야 합니다.");
+            return;
+        }
+
         dispatch(updateEventAPI({
             userId: userData.data.userId,
             updatedTitle,
