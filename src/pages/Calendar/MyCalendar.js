@@ -45,7 +45,8 @@ function MyCalendar() {
                 plugins={[dayGridPlugin]}
                 events={Array.isArray(myCalendarList)
                     ? myCalendarList.map((calendar) => ({
-                        id: userData.data.userId,
+                        // id: calendar.userCalendarId, 해당 코드로 변경하면 일정 다수 조회 가능
+                        id: userData.data.userId, // 일정은 하나밖에 조회 안되지만 이벤트 수정 가능(DB상 같은 userId로 캘린더가 다수 존재시 마비)
                         end: calendar.endDate,
                         start: calendar.startDate,
                         title: calendar.title,
@@ -62,8 +63,7 @@ function MyCalendar() {
                 eventBackgroundColor={'gray'}
                 eventBorderColor={'lightgray'}
                 headerToolbar={{
-                    right: 'today,prev,next',
-                    center: 'myCustomButton',
+                    right: 'myCustomButton,today,prev,next',
                 }}
                 customButtons={{
                     myCustomButton: {
