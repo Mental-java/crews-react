@@ -24,7 +24,7 @@ function CrewMain() {
                     <li><NavLink to="/main/activeStatus" className={CrewCSS.crewPage}>활동현황</NavLink></li>
                 </ul>
             </div>
-            <hr/>
+            <hr className={CrewCSS.crewLine}/>
             <FullCalendar
                 firstDay={1}
                 initialView="dayGridMonth"

@@ -15,7 +15,7 @@ function activeStatus () {
                     <li><NavLink to="/main/activeStatus" className={`${CrewCSS.crewPage} ${ActiveCSS.activeStatus}`}>활동현황</NavLink></li>
                 </ul>
             </div>
-            <hr/>
+            <hr className={CrewCSS.crewLine}/>
             활동현황
         </div>
     );

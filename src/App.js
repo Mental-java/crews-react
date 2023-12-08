@@ -16,6 +16,8 @@ import CrewSearchDetail from "./pages/crewSearch/CrewSearchDetail";
 import CrewSearchDetailForCaptian from "./pages/crewSearch/CrewSearchDetailForCaptian";
 import CrewCertification from "./pages/crew/CrewCertification";
 import ActiveStatus from "./pages/crew/ActiveStatus";
+import WritePost from "./pages/crew/WritePost";
+
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
             <Route path="crewMain" element={<CrewMain/>}/>
             <Route path="crewCertification" element={<CrewCertification/>}/>
             <Route path="activeStatus" element={<ActiveStatus/>}/>
+            <Route path="writePost" element={<WritePost/>}/>
         </Route>
         
       </Routes>

@@ -54,7 +54,7 @@ function NavBar(){
                                 <ul
                                     className={ NavBarCSS.crewBox}
                                  >
-                                    <NavLink to="/main/crewCalendar">
+                                    <NavLink to="/main/crewMain">
                                         {Array.isArray(crewList)&& crewList.map(
                                             (crewlist) => (
                                                 <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>

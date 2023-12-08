@@ -15,3 +15,7 @@ ul {
     color: darkblue;
 }
 
+.crewLine {
+    height: 4px;
+    background-color: #000928;
+}
