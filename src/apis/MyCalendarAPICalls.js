@@ -48,7 +48,7 @@ export const updateEventAPI = ({ userId, updatedTitle, updatedContent, updatedSt
     };
 };
 
-export const createEventAPI = ({ userId, title, content, startDate, endDate }) => {
+export const createEventAPI = ({ userId, newTitle, newContent, newStartDate, newEndDate }) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/regist/${userId}`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -59,10 +59,10 @@ export const createEventAPI = ({ userId, title, content, startDate, endDate }) =
                 "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
-                title: title,
-                calendarContent: content,
-                startDate: startDate,
-                endDate: endDate,
+                title: newTitle,
+                calendarContent: newContent,
+                startDate: newStartDate,
+                endDate: newEndDate,
             }),
         });
         console.log("result test==============================>" + result.status)

@@ -11,8 +11,6 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
     const [newStartDate, setNewStartDate] = useState('');
     const [newEndDate, setNewEndDate] = useState('');
 
-
-
     const handleTitleChange = (e) => {
         setNewTitle(e.target.value);
     };
@@ -54,10 +52,10 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
         });
     };
 
-    console.log("title"+newTitle);
-    console.log("content"+newContent);
-    console.log("startdate"+newStartDate);
-    console.log("endDate"+newEndDate);
+    console.log("title" + newTitle);
+    console.log("content" + newContent);
+    console.log("startdate" + newStartDate);
+    console.log("endDate" + newEndDate);
 
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
@@ -77,17 +75,19 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
                 },
             }}
         >
-            <div>
-                <h2>새 일정 추가</h2>
-                <input type="text" placeholder="제목을 입력하세요" value={newTitle} onChange={handleTitleChange} />
-                <textarea placeholder="일정 내용" value={newContent} onChange={handleContentChange} />
-                <input type="datetime-local" placeholder="시작일" value={newStartDate} onChange={handleStartDateChange} />
-                <input type="datetime-local" placeholder="종료일" value={newEndDate} onChange={handleEndDateChange} />
-                <button onClick={handleAddClick}>추가</button>
+            <div className={CreateModalCSS.modalContainer}>
+                <div className={`${CreateModalCSS.updateInfo} ${CreateModalCSS.originInfo}`}>
+                    <h2>새 일정 추가</h2>
+                    <input type="text" placeholder="제목을 입력하세요" value={newTitle} onChange={handleTitleChange} />
+                    <textarea placeholder="일정 내용" value={newContent} onChange={handleContentChange} />
+                    <input type="datetime-local" placeholder="시작일" value={newStartDate} onChange={handleStartDateChange} />
+                    <input type="datetime-local" placeholder="종료일" value={newEndDate} onChange={handleEndDateChange} />
+                    <button onClick={handleAddClick}>추가</button>
+                </div>
+                <button className={CreateModalCSS.closeButton} onClick={onRequestClose}>
+                    X
+                </button>
             </div>
-            <button onClick={onRequestClose}>
-                X
-            </button>
         </Modal>
     );
 }
