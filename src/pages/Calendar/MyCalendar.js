@@ -60,8 +60,8 @@ function MyCalendar() {
                 editable={true}
                 droppable={true}
                 eventClick={handleEventClick}
-                eventBackgroundColor={'gray'}
-                eventBorderColor={'lightgray'}
+                eventBackgroundColor={'#000928'}
+                eventBorderColor={'#000920'}
                 headerToolbar={{
                     right: 'myCustomButton,today,prev,next',
                 }}
