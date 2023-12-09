@@ -2,9 +2,9 @@
 
 .modalContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
     background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -12,8 +12,9 @@
 
 .originInfo,
 .updateInfo {
-    width: 45%;
-    padding: 1rem;
+    width: 40%;
+    padding-left: 2rem;
+    padding-right: 3rem;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
