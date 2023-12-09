@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateEventAPI } from '../../apis/MyCalendarAPICalls';
+import {deleteEventAPI, updateEventAPI} from '../../apis/MyCalendarAPICalls';
 import MyModalCSS from './MyModal.module.css';
 
-function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
+function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     const dispatch = useDispatch();
     const [isEditMode, setIsEditMode] = useState(false);
     const [updatedTitle, setUpdatedTitle] = useState(event?.title || '');
@@ -37,6 +37,22 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
 
     const handleEndDateChange = (e) => {
         setUpdatedEndDate(e.target.value);
+    };
+
+    const handleDeleteClick = () => {
+        const confirmDelete = window.confirm('이 일정을 삭제하시겠습니까?');
+        if (confirmDelete) {
+            // 삭제 확인 후 deleteEventAPI를 디스패치하여 삭제 요청
+            dispatch(
+                deleteEventAPI({
+                    userId: userData.data.userId,
+                    userCalendarId: event.id,
+                })
+            ).then(() => {
+                onRequestClose();
+                onDelete && onDelete(); // 삭제가 성공적으로 완료된 후에 onDelete 콜백을 호출
+            });
+        }
     };
 
     const handleUpdateClick = () => {
@@ -111,7 +127,10 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated }) {
                             <button onClick={() => setIsEditMode(false)}>취소</button>
                         </>
                     ) : (
-                        <button onClick={() => setIsEditMode(true)}>수정</button>
+                        <>
+                            <button onClick={() => setIsEditMode(true)}>✎수정</button>
+                            <button onClick={handleDeleteClick}>🗑️삭제</button>
+                        </>
                     )}
                 </div>
             </div>

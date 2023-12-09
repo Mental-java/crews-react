@@ -63,18 +63,13 @@ function MyCalendar() {
                 eventBackgroundColor={'gray'}
                 eventBorderColor={'lightgray'}
                 headerToolbar={{
-                    right: 'myDeleteButton,myCreateButton,today,prev,next',
+                    right: 'myCustomButton,today,prev,next',
                 }}
                 customButtons={{
-                    myCreateButton: {
+                    myCustomButton: {
                         text: '이벤트 생성',
                         click(ev, element) {
                             handleAddEventClick();
-                        },
-                    },
-                    myDeleteButton: {
-                        text: '이벤트 삭제',
-                        click(ev, element) {
                         },
                     },
                 }}
@@ -86,6 +81,9 @@ function MyCalendar() {
                     onRequestClose={() => setModalIsOpen(false)}
                     event={selectedEvent}
                     onUpdated={() => dispatch(callMyCalendarListAPI({
+                        userId: userData.data.userId
+                    }))}
+                    onDelete={() => dispatch(callMyCalendarListAPI({
                         userId: userData.data.userId
                     }))}
                 />
