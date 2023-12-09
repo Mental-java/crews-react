@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 import { useState } from "react";
 import MypageModal from "./MypageModal";
 import MyCrewHandler from "./MyCrewHandler";
+import profileImage from "../img/level-image.png";
 
 function MyPage(){
 
@@ -44,7 +45,7 @@ function MyPage(){
             <div>
                 <div className={MyPageCSS.upDiv}>
                         <div className={MyPageCSS.nicknameDiv}>
-                            <img src="../img/level-image.png" className={MyPageCSS.levelImage}/>                                                                
+                            <img src={ profileImage } className={MyPageCSS.levelImage}/>                                                                
                             <p className={MyPageCSS.nickname}>{ userData.data.nickname } 
                             <img 
                                 src="../img/editButton.png" 
