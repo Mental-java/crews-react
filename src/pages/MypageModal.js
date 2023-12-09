@@ -24,7 +24,7 @@ function MypageModal ({ setMypageModal }){
             nickname: newNickName
         }));
 
-        // setMypageModal(false);
+        setMypageModal(false);
 
         alert('닉네임 변경이 완료되었습니다.');
 
