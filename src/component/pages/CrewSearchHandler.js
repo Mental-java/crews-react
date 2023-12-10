@@ -30,7 +30,7 @@ function CrewSearchHandler({ crew: {crewId, crewName, captain, introduction, cre
                         onClick={ () => onClickCrewSearchHandler(crewId)}
                     >
                         <div className={HandlerCSS.div1}>
-                            <div className={HandlerCSS.recruitmentStatusOn}>
+                            <div className={recruitmentStatus === "1" ? HandlerCSS.recruitmentStatusOn : HandlerCSS.recruitmentStatusOff}>
                                 { recruitmentStatus === "1" ? '모집중' : '모집종료'}
                             </div>
                             <div className={HandlerCSS.crewNameDiv}>

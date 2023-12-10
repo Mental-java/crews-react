@@ -1,4 +1,7 @@
-import { GET_CREWLIST } from "../module/CrewListModule";
+import {
+    GET_CREWLIST,
+    P0ST_CREWList
+} from "../module/CrewListModule";
 
 export const callCrewListAPI = ({userId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/${userId}/crew`;
@@ -19,4 +22,31 @@ export const callCrewListAPI = ({userId}) => {
         
         dispatch({ type: GET_CREWLIST, payload: result.data});
     };
+}
+
+//크루 신청하기
+export const callCrewListApplyAPI = ({crewId, userId}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/apply/${crewId}`;
+
+    console.log('[CrewListAPICalls] callCrewListApplyAPI start');
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            },
+            body: JSON.stringify({
+                user: {userId: userId}
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[CrewListAPICalls] callCrewListApplyAPI RESULT : ', result);
+
+        dispatch({type: P0ST_CREWList, payload: result});
+    }
+
+
 }
