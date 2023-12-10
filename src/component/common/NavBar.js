@@ -6,18 +6,34 @@ import NavBarCSS from './NavBar.module.css';
 import CrewListHandler from './CrewListHandler';
 import levelImg from '../../img/level-image.png'
 import diamondImg from '../../img/diamond-image.png';
+import callLogoutAPI from '../../apis/LoginAPICalls';
+import { useNavigate } from "react-router-dom";
 
 function NavBar(){
 
     
   const navBar = useSelector(state => state.LoginReducer);
   const userData = navBar.userData;
+  const isLogin = window.localStorage.getItem('accesstoken');
+  const navigate = useNavigate();
+
+  console.log("로그인상태"+isLogin); 
 
 
 
   const dispatch = useDispatch();
   const crew = useSelector(state => state.crewListReducer);
   const crewList = crew.data;
+
+  const onClickLogoutHandler = () => {
+    window.localStorage.removeItem('accessToken');  
+    //로그아웃
+    dispatch(callLogoutAPI());
+    
+    alert('로그아웃이 되어 메인화면으로 이동합니다.');
+    navigate("/", { replace: true })
+    window.location.reload();
+}
 
 
   useEffect(
@@ -47,7 +63,7 @@ function NavBar(){
                                 <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>
                             </div>
                             <div className={ NavBarCSS.logoutButton }>
-                                <button>로그아웃</button>
+                                <button onClick={ onClickLogoutHandler }>로그아웃</button>
                             </div>
                             <div className={ NavBarCSS.crewList }>
                                 <h2>내 크루 목록</h2>
