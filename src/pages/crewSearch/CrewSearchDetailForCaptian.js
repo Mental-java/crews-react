@@ -6,7 +6,7 @@ import calenderIcon from '../../img/calendar.png';
 import userIcon from '../../img/userImg.png';
 
 import {
-    callCrewSearchDetailAPI
+    callCrewSearchDetailAPI, callCrewDeleteAPI
 } from "../../apis/CrewSearchAPICalls";
 
 function CrewSearchDetailForCaptain() {
@@ -16,7 +16,6 @@ function CrewSearchDetailForCaptain() {
     const crew = useSelector(state => state.crewSearchListReducer);
     const navigate = useNavigate();
 
-    console.log(crew);
     useEffect(
         () => {
             dispatch(callCrewSearchDetailAPI( {
@@ -25,6 +24,18 @@ function CrewSearchDetailForCaptain() {
         }
         , []
     );
+
+    const onClickDeleteCrewHandler = () =>{
+        console.log('[CrewSearchDetailForCaptain] CrewSearchDetailForCaptain start');
+
+        dispatch(callCrewDeleteAPI({
+            crewId: params.crewId
+        }));
+
+        alert('크루를 삭제했습니다.');
+        navigate(`/main/crewsearch`, {replace: true});
+        window.location.reload();
+    }
 
     return(
 
@@ -68,7 +79,7 @@ function CrewSearchDetailForCaptain() {
                     </div>
                     <div className={CrewSearchDetailCSS.actionDiv}>
                         <div className={CrewSearchDetailCSS}>
-                            <div className={CrewSearchDetailCSS.deleteBtn}>
+                            <div className={CrewSearchDetailCSS.deleteBtn} onClick={ onClickDeleteCrewHandler }>
                                 삭제하기
                             </div>
                             <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>

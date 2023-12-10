@@ -6,7 +6,8 @@ import {
     GET_CREWLIST_HABIT,
     GET_CREWLIST_ETC,
     GET_CREWSEARCH_DETAIL,
-    POST_CREW
+    POST_CREW,
+    DELETE_CREW
 } from "../module/CrewSearchModule";
 import {request} from "axios";
 
@@ -165,7 +166,6 @@ export const callCrewSearchDetailAPI = ({crewId}) => {
             dispatch({type: GET_CREWSEARCH_DETAIL, payload: result.data});
         }
     };
-
 }
 
 export const callCrewRegistAPI = ({form}) => {
@@ -185,7 +185,6 @@ export const callCrewRegistAPI = ({form}) => {
             body: JSON.stringify( {
                 crewName: form.crewName,
                 captain: {userId: form.captain.userId},
-                introduction: form.introduction,
                 crewCategoryCode: {categoryCode: form.crewCategoryCode.categoryCode},
                 startDate: form.startDate,
                 endDate: form.endDate,
@@ -199,5 +198,25 @@ export const callCrewRegistAPI = ({form}) => {
 
         dispatch({type: POST_CREW, payload: result});
     };
+}
 
+export const callCrewDeleteAPI = ({crewId}) => {
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/crewdelete/${crewId}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+            .then(response => response.json());
+
+        console.log('[CrewSearchAPICalls] callCrewDeleteAPI RESULT : ', result);
+
+        dispatch({type: DELETE_CREW, payload: result});
+    };
 }
