@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MyCalendarCSS from '../Calendar/MyCalendar.module.css';
+import MyCalendarCSS from './MyCalendar.module.css';
 import { callMyCalendarListAPI } from '../../apis/MyCalendarAPICalls';
 import { useDispatch, useSelector } from 'react-redux';
 import FullCalendar from '@fullcalendar/react';

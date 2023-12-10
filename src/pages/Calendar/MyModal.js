@@ -42,7 +42,7 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     const handleDeleteClick = () => {
         const confirmDelete = window.confirm('이 일정을 삭제하시겠습니까?');
         if (confirmDelete) {
-            // 삭제 확인 후 deleteEventAPI를 디스패치하여 삭제 요청
+
             dispatch(
                 deleteEventAPI({
                     userId: userData.data.userId,
@@ -50,7 +50,7 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
                 })
             ).then(() => {
                 onRequestClose();
-                onDelete && onDelete(); // 삭제가 성공적으로 완료된 후에 onDelete 콜백을 호출
+                onDelete && onDelete();
             });
         }
     };
@@ -77,7 +77,7 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
             })
         ).then(() => {
             onRequestClose();
-            onUpdated && onUpdated(); // 수정이 성공적으로 완료된 후에 onUpdated 콜백을 호출
+            onUpdated && onUpdated();
         });
     };
 
