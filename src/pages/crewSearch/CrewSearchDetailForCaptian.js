@@ -12,6 +12,7 @@ import {
 import {
     callCrewDeleteAPI
 } from "../../apis/CrewAPICalls";
+import CrewListModal from "./CrewListModal";
 
 function CrewSearchDetailForCaptain() {
 
@@ -19,6 +20,8 @@ function CrewSearchDetailForCaptain() {
     const params = useParams();
     const crew = useSelector(state => state.crewSearchListReducer);
     const navigate = useNavigate();
+
+    const [crewListModal, setCrewListModal] = useState(false);
 
     useEffect(
         () => {
@@ -41,60 +44,65 @@ function CrewSearchDetailForCaptain() {
         window.location.reload();
     }
 
+    const onClickCrewListModalHandler = () => {
+        setCrewListModal(true);
+    }
+
     return(
-
-        <div className={CrewSearchDetailCSS.main}>
-            <div className={CrewSearchDetailCSS.upDiv}>
-                <div className={CrewSearchDetailCSS.stateDiv}>
-                    <div className={crew.recruitmentStatus === "1" ? CrewSearchDetailCSS.recruitmentOn : CrewSearchDetailCSS.recruitmentOff}>
-                        {crew.recruitmentStatus === "1" ? '모집중' : '모집종료'}
+        <>
+            { crewListModal ? <CrewListModal setCrewListModal={setCrewListModal}/> : null}
+            <div className={CrewSearchDetailCSS.main}>
+                <div className={CrewSearchDetailCSS.upDiv}>
+                    <div className={CrewSearchDetailCSS.stateDiv}>
+                        <div className={crew.recruitmentStatus === "1" ? CrewSearchDetailCSS.recruitmentOn : CrewSearchDetailCSS.recruitmentOff}>
+                            {crew.recruitmentStatus === "1" ? '모집중' : '모집종료'}
+                        </div>
+                        <div className={CrewSearchDetailCSS.crewDiv}>
+                            <br/>
+                            <h2>{crew.crewName}</h2>
+                            <img src={calenderIcon} className={CrewSearchDetailCSS.calendarImage}/>
+                            <h5 className={CrewSearchDetailCSS.crewh4a1}>목표기간 : {crew.startDate} ~ {crew.endDate}</h5>
+                            <img src={userIcon} className={CrewSearchDetailCSS.userImage}/>
+                            <h5 className={CrewSearchDetailCSS.crewh4a2}>캡틴 : {crew.captain && crew.captain.nickname}</h5>
+                        </div>
                     </div>
-                    <div className={CrewSearchDetailCSS.crewDiv}>
-                        <br/>
-                        <h2>{crew.crewName}</h2>
-                        <img src={calenderIcon} className={CrewSearchDetailCSS.calendarImage}/>
-                        <h5 className={CrewSearchDetailCSS.crewh4a1}>목표기간 : {crew.startDate} ~ {crew.endDate}</h5>
-                        <img src={userIcon} className={CrewSearchDetailCSS.userImage}/>
-                        <h5 className={CrewSearchDetailCSS.crewh4a2}>캡틴 : {crew.captain && crew.captain.nickname}</h5>
+                    <div className={CrewSearchDetailCSS.joinDiv}>
+                        <div className={CrewSearchDetailCSS.category}>
+                            #{crew.crewCategoryCode && crew.crewCategoryCode.categoryName}
+                        </div>
+                        <div className={CrewSearchDetailCSS.updateBtn}>
+                            수정하기
+                        </div>
+                        <div className={CrewSearchDetailCSS.checkBtn} onClick={ onClickCrewListModalHandler }>
+                            신청현황
+                        </div>
                     </div>
                 </div>
-                <div className={CrewSearchDetailCSS.joinDiv}>
-                    <div className={CrewSearchDetailCSS.category}>
-                        #{crew.crewCategoryCode && crew.crewCategoryCode.categoryName}
-                    </div>
-                    <div className={CrewSearchDetailCSS.updateBtn}>
-                        수정하기
-                    </div>
-                    <div className={CrewSearchDetailCSS.checkBtn}>
-                        신청현황
+                <div className={CrewSearchDetailCSS.downDiv}>
+                    <div className={CrewSearchDetailCSS.contentDiv}>
+                        <div className={CrewSearchDetailCSS.empty}></div>
+                        <div className={CrewSearchDetailCSS.titleDiv}>
+                            <div className={CrewSearchDetailCSS.title}>
+                                <h1>{crew.crewRecruitmentPost}</h1>
+                            </div>
+                            <div className={CrewSearchDetailCSS.content}>
+                                <h5>{crew.crewRecruitmentContent}</h5>
+                            </div>
+                        </div>
+                        <div className={CrewSearchDetailCSS.actionDiv}>
+                            <div className={CrewSearchDetailCSS}>
+                                <div className={CrewSearchDetailCSS.deleteBtn} onClick={ onClickDeleteCrewHandler }>
+                                    삭제하기
+                                </div>
+                                <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
+                                    목록으로 돌아가기
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className={CrewSearchDetailCSS.downDiv}>
-                <div className={CrewSearchDetailCSS.contentDiv}>
-                    <div className={CrewSearchDetailCSS.empty}></div>
-                    <div className={CrewSearchDetailCSS.titleDiv}>
-                        <div className={CrewSearchDetailCSS.title}>
-                            <h1>{crew.crewRecruitmentPost}</h1>
-                        </div>
-                        <div className={CrewSearchDetailCSS.content}>
-                            <h5>{crew.crewRecruitmentContent}</h5>
-                        </div>
-                    </div>
-                    <div className={CrewSearchDetailCSS.actionDiv}>
-                        <div className={CrewSearchDetailCSS}>
-                            <div className={CrewSearchDetailCSS.deleteBtn} onClick={ onClickDeleteCrewHandler }>
-                                삭제하기
-                            </div>
-                            <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
-                                목록으로 돌아가기
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        </>
     );
 
 }
