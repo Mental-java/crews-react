@@ -1,0 +1,123 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modalContainer{
+    position: absolute;
+    width: 600px;
+    height: 700px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 1000;
+}
+
+.upDiv{
+    height: 35%;
+    position: relative;
+}
+
+.downDiv{
+    height: 65%;
+    position: relative;
+}
+
+.title{
+    position: absolute;
+    height: 100px;
+    width: 80%;
+    background-color: #000928;
+    margin-top: 10px;
+    margin-left: 52px;
+    border-radius: 6px;
+    color: white;
+    font-size: 24px;
+}
+
+.crewName{
+    position: absolute;
+    top: 160px;
+    left: 56px;
+}
+
+.reportCategory{
+    position: absolute;
+    top: 200px;
+    left: 56px;
+    display: flex;
+}
+
+select{
+    width: 200px;
+    height: 30px;
+    margin-top: 15px;
+    padding: 5px;
+    appearance: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #ccc;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #007bff;
+}
+
+.closeBtn{
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    padding-top: 4px;
+    border-radius: 3px;
+}
+
+.reportContent{
+    position: absolute;
+    top: 20px;
+    left: 56px;
+}
+
+.textArea{
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    left: 56px;
+    top: 70px;
+    appearance: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #ccc;
+}
+
+.textArea:focus{
+    outline: none;
+    box-shadow: 0 0 0 1px #007bff;
+}
+
+.submitBtn{
+    position: absolute;
+    bottom: 20px;
+    right: 56px;
+    border-radius: 5px;
+    background-color: #000928;
+    color: white;
+    width: 45px;
+    height: 22px;
+}

@@ -45,10 +45,6 @@ function CreateCrew() {
         }
     };
 
-    useEffect(() => {
-        console.log(form);
-    }, [form]);
-
     const onClickCrewRegistrationHandler = () => {
 
         console.log('[CrewRegistration] onClickCrewRegistrationHandler');

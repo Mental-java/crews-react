@@ -8,6 +8,7 @@ import userIcon from '../../img/userImg.png';
 import {
     callCrewSearchDetailAPI
 } from "../../apis/CrewSearchAPICalls";
+import CrewReportModal from "../report/CrewReportModal";
 
 function CrewSearchDetail() {
 
@@ -16,7 +17,12 @@ function CrewSearchDetail() {
     const crew = useSelector(state => state.crewSearchListReducer);
     const navigate = useNavigate();
 
-    console.log(crew);
+    const [reportModal, setReportModal] = useState(false);
+    const [reportCrewId, setReportCrewId] = useState(0);
+    const [reportCrewName, setReportCrewName] = useState('');
+
+    console.log('선택된 크루 정보 : ', crew);
+
     useEffect(
         () => {
             dispatch(callCrewSearchDetailAPI( {
@@ -26,8 +32,16 @@ function CrewSearchDetail() {
         , []
     );
 
-    return(
+    const onClickReportModalHandler = (crewId, crewName) => {
+        setReportModal(true);
+        setReportCrewId(crewId);
+        setReportCrewName(crewName);
+        console.log('눌렀음', crewId);
+    }
 
+    return(
+        <>
+            { reportModal ? <CrewReportModal setReportModal={ setReportModal } reportCrewId={ reportCrewId } reportCrewName={reportCrewName}/> : null}
             <div className={CrewSearchDetailCSS.main}>
                 <div className={CrewSearchDetailCSS.upDiv}>
                     <div className={CrewSearchDetailCSS.stateDiv}>
@@ -47,7 +61,9 @@ function CrewSearchDetail() {
                         <div className={CrewSearchDetailCSS.category}>
                             #{crew.crewCategoryCode && crew.crewCategoryCode.categoryName}
                         </div>
-                        <div className={CrewSearchDetailCSS.joinBtn}>
+                        <div
+                            className={CrewSearchDetailCSS.joinBtn}
+                        >
                             신청하기
                         </div>
                     </div>
@@ -65,7 +81,10 @@ function CrewSearchDetail() {
                         </div>
                         <div className={CrewSearchDetailCSS.actionDiv}>
                             <div className={CrewSearchDetailCSS}>
-                                <div className={CrewSearchDetailCSS.reportBtn}>
+                                <div
+                                    className={CrewSearchDetailCSS.reportBtn}
+                                    onClick={() => onClickReportModalHandler(crew.crewId, crew.crewName)}
+                                >
                                     신고하기
                                 </div>
                                 <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
@@ -76,7 +95,7 @@ function CrewSearchDetail() {
                     </div>
                 </div>
             </div>
-
+        </>
     );
 
 }
