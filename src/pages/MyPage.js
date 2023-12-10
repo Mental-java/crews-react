@@ -46,7 +46,7 @@ function MyPage(){
                 <div className={MyPageCSS.upDiv}>
                         <div className={MyPageCSS.nicknameDiv}>
                             <img src={ profileImage } className={MyPageCSS.levelImage}/>                                                                
-                            <p className={MyPageCSS.nickname}>{ userData.data.nickname } 
+                            <p className={MyPageCSS.nickname}>{ localStorage.getItem("nickname") } 
                             <img 
                                 src="../img/editButton.png" 
                                 className={MyPageCSS.editImage} 
