@@ -5,6 +5,7 @@ import {
     callNickNameChangeAPI
 } from '../apis/MyPageAPICalls'
 import MypageModalCSS from "./MypageModal.module.css";
+import updateNickname from '../module/MyPageModule'; 
 
 function MypageModal ({ setMypageModal }){
 
@@ -26,10 +27,14 @@ function MypageModal ({ setMypageModal }){
 
         setMypageModal(false);
 
+        localStorage.setItem("nickname",newNickName);
+
         alert('닉네임 변경이 완료되었습니다.');
 
         navigate(`/main/mypage`, { replace: true});
-        // window.location.reload();
+        window.location.reload();
+
+
 
     }
 

@@ -48,7 +48,7 @@ function NavBar(){
     [dispatch, userData.data.userId]
   );
 
-  console.log("크루리스트"+crewList);
+  console.log("크루리스트"+crew.data);
 
   
 
@@ -57,7 +57,7 @@ function NavBar(){
                 <div className={ NavBarCSS.sideBar}>
                     <div className={ NavBarCSS.userInfo }>
                             <img src={levelImg} alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
-                            <p className={NavBarCSS.userName}>{userData.data.nickname}</p>
+                            <p className={NavBarCSS.userName}>{localStorage.getItem("nickname")}</p>
                             <div className={ NavBarCSS.diamondInfo}>
                                 <img src={diamondImg} alt="보석"/>
                                 <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>

@@ -57,6 +57,7 @@ function CreateCrew() {
             form: form
         }));
 
+        window.location.reload();
         alert('크루 등록 성공');
         navigate(`/main/crewsearch`, {replace: true});
     }
