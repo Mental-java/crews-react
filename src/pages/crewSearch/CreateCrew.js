@@ -45,6 +45,10 @@ function CreateCrew() {
         }
     };
 
+    useEffect(() => {
+        console.log(form);
+    }, [form]);
+
     const onClickCrewRegistrationHandler = () => {
 
         console.log('[CrewRegistration] onClickCrewRegistrationHandler');
@@ -53,7 +57,7 @@ function CreateCrew() {
             form: form
         }));
 
-        window.location.reload();
+        
         alert('크루 등록 성공');
         navigate(`/main/crewsearch`, {replace: true});
     }
