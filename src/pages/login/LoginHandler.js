@@ -21,8 +21,13 @@ const LoginHandeler = (props) => {
         },
       }).then((res) => { //백에서 완료후 우리사이트 전용 토큰 넘겨주는게 성공했다면
         console.log(res);
+        if(res.status == 200){
+          window.localStorage.setItem("accesstoken",res.data.data.token);
+        }
         dispatch({ type: LOGIN_SUCCESS, payload: res.data});
-        window.localStorage.setItem("nickname",res.nickname);
+
+        console.log(LOGIN_SUCCESS);
+       
 
         //로그인이 성공하면 이동할 페이지
         navigate("/main");
