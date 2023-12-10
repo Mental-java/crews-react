@@ -6,8 +6,12 @@ import calenderIcon from '../../img/calendar.png';
 import userIcon from '../../img/userImg.png';
 
 import {
-    callCrewSearchDetailAPI, callCrewDeleteAPI
+    callCrewSearchDetailAPI
 } from "../../apis/CrewSearchAPICalls";
+
+import {
+    callCrewDeleteAPI
+} from "../../apis/CrewAPICalls";
 
 function CrewSearchDetailForCaptain() {
 
@@ -42,7 +46,7 @@ function CrewSearchDetailForCaptain() {
         <div className={CrewSearchDetailCSS.main}>
             <div className={CrewSearchDetailCSS.upDiv}>
                 <div className={CrewSearchDetailCSS.stateDiv}>
-                    <div className={CrewSearchDetailCSS.recruitment}>
+                    <div className={crew.recruitmentStatus === "1" ? CrewSearchDetailCSS.recruitmentOn : CrewSearchDetailCSS.recruitmentOff}>
                         {crew.recruitmentStatus === "1" ? '모집중' : '모집종료'}
                     </div>
                     <div className={CrewSearchDetailCSS.crewDiv}>

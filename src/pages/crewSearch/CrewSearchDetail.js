@@ -9,6 +9,7 @@ import {
     callCrewSearchDetailAPI
 } from "../../apis/CrewSearchAPICalls";
 import CrewReportModal from "../report/CrewReportModal";
+import {callCrewListApplyAPI} from "../../apis/CrewListAPICalls";
 
 function CrewSearchDetail() {
 
@@ -16,6 +17,9 @@ function CrewSearchDetail() {
     const params = useParams();
     const crew = useSelector(state => state.crewSearchListReducer);
     const navigate = useNavigate();
+
+    const user = useSelector(state => state.LoginReducer);
+    const loginUser = user.userData;
 
     const [reportModal, setReportModal] = useState(false);
     const [reportCrewId, setReportCrewId] = useState(0);
@@ -39,13 +43,24 @@ function CrewSearchDetail() {
         console.log('눌렀음', crewId);
     }
 
+    const onClickApplyCrewListHandler = () => {
+        console.log('[CrewSearchDetail] onClickApplyCrewListHandler start');
+
+        dispatch(callCrewListApplyAPI({
+            crewId: params.crewId,
+            userId: loginUser && loginUser.data ? loginUser.data.userId : null
+        }));
+
+        alert('크루 가입을 신청했습니다.');
+    }
+
     return(
         <>
             { reportModal ? <CrewReportModal setReportModal={ setReportModal } reportCrewId={ reportCrewId } reportCrewName={reportCrewName}/> : null}
             <div className={CrewSearchDetailCSS.main}>
                 <div className={CrewSearchDetailCSS.upDiv}>
                     <div className={CrewSearchDetailCSS.stateDiv}>
-                        <div className={CrewSearchDetailCSS.recruitment}>
+                        <div className={crew.recruitmentStatus === "1" ? CrewSearchDetailCSS.recruitmentOn : CrewSearchDetailCSS.recruitmentOff}>
                             {crew.recruitmentStatus === "1" ? '모집중' : '모집종료'}
                         </div>
                         <div className={CrewSearchDetailCSS.crewDiv}>
@@ -63,6 +78,13 @@ function CrewSearchDetail() {
                         </div>
                         <div
                             className={CrewSearchDetailCSS.joinBtn}
+                            onClick={() => {
+                                if (crew.recruitmentStatus === "1") {
+                                    onClickApplyCrewListHandler();
+                                } else {
+                                    alert("모집이 종료되었습니다.");
+                                }
+                                }}
                         >
                             신청하기
                         </div>

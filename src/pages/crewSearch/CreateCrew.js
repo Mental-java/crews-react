@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 
 import {
     callCrewRegistAPI
-} from "../../apis/CrewSearchAPICalls";
+} from "../../apis/CrewAPICalls";
 
 function CreateCrew() {
 
@@ -100,7 +100,7 @@ function CreateCrew() {
                                 <p>활동기간</p>
                                 <input type="date" name="startDate" min={today} onChange={onChangeHandler} />
                                 <span className="date-separator">&nbsp; ~ &nbsp;</span>
-                                <input type="date" name="endDate" min={today} onChange={onChangeHandler} />
+                                <input type="date" name="endDate" min={form.startDate} onChange={onChangeHandler} />
                             </div>
                         </div>
 
