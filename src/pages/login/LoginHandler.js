@@ -24,6 +24,7 @@ const LoginHandeler = (props) => {
         if(res.status == 200){
           window.localStorage.setItem("accesstoken",res.data.data.token);
           window.localStorage.setItem("nickname",res.data.data.nickname);
+          window.localStorage.setItem("userId",res.data.data.userId);
         }
         dispatch({ type: LOGIN_SUCCESS, payload: res.data});
 

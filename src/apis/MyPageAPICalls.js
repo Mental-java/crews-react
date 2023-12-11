@@ -1,5 +1,5 @@
 import { GET_MYPAGE, PUT_NICKNAME } from "../module/MyPageModule";
-import { GET_ENDCREW } from "../module/CrewListModule";
+import { GET_ENDCREW } from "../module/EndCrewModule";
 
 
 export const callMyPageListAPI = ({ captain }) => {
@@ -62,7 +62,7 @@ export const callEndCrewListAPI = ({userId}) => {
         })
         .then(response => response.json());
 
-        console.log("detailasdf ======="+ result.data);
+        console.log("detailasdf ======="+ result.data.data[0]);
         
         dispatch({ type: GET_ENDCREW, payload: result.data});
     };
