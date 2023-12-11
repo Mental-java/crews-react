@@ -2,6 +2,8 @@ import {Link, NavLink} from "react-router-dom";
 import React from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
+import NoticeHandler from "../../component/pages/NoticeHandler";
+import NoticeCSS from "../notice/Notice.module.css";
 
 function CrewCertification () {
 
@@ -32,7 +34,9 @@ function CrewCertification () {
             </div>
             <hr/>
 
+            <div>
 
+            </div>
 
         </div>
     );

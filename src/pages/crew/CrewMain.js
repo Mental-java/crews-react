@@ -30,11 +30,16 @@ function CrewMain() {
                 initialView="dayGridMonth"
                 plugins={[dayGridPlugin]}
 
-                height={'95vh'}
+                height={'75vh'}
                 eventBackgroundColor={'gray'}
                 eventBorderColor={'lightgray'}
                 // events={events}
             />
+            <div className={CrewMainCSS.introbox}>
+                소개글 제목
+                <br/><br/>
+                소개글
+            </div>
         </div>
     );
 }
