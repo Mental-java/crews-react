@@ -44,7 +44,7 @@ function App() {
             <Route path="crewsearchdetail/mycrew/:crewId" element={<CrewSearchDetailForCaptian/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
-            <Route path="crewMain" element={<CrewMain/>}/>
+            <Route path="crewMain/:crewId" element={<CrewMain/>}/>
             <Route path="crewCertification" element={<CrewCertification/>}/>
             <Route path="activeStatus" element={<ActiveStatus/>}/>
             <Route path="writePost" element={<WritePost/>}/>
