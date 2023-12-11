@@ -3,7 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import CrewListModalCSS from "./CrewListModal.module.css";
 
 import {
-    callCrewListWaitStatusAPI
+    callCrewListWaitStatusAPI,
+    callCrewJoinAgreeAPI,
+    callCrewJoinDisagreeAPI
 } from "../../apis/CrewListAPICalls";
 import {useParams} from "react-router-dom";
 
@@ -13,8 +15,6 @@ function CrewListModal({ setCrewListModal }) {
     const params = useParams();
     const crewList = useSelector(state => state.crewListReducer);
 
-
-    console.log(crewList);
     useEffect(
         () => {
             dispatch(callCrewListWaitStatusAPI({
@@ -23,6 +23,29 @@ function CrewListModal({ setCrewListModal }) {
         }
     , []
     );
+
+    const onClickCrewJoinAgreeHandler = (userId) => {
+        console.log('신청을 승인합니다.', userId, '크루' , params.crewId);
+
+        alert(`${userId}의 크루 가입을 승인합니다.`);
+
+        dispatch(callCrewJoinAgreeAPI({
+            crewId: params.crewId,
+            userId: userId
+        }));
+
+    }
+
+    const onClickCrewJoinDisagreeHandler = (userId) => {
+        console.log('신청을 거절합니다.', userId, '크루' , params.crewId);
+
+        alert(`${userId}의 크루 가입을 거절합니다.`);
+
+        dispatch(callCrewJoinDisagreeAPI({
+            crewId: params.crewId,
+            userId: userId
+        }))
+    }
 
     return (
         <div className={CrewListModalCSS.modal}>
@@ -46,9 +69,9 @@ function CrewListModal({ setCrewListModal }) {
                                         <td width={10}></td>
                                         <td className={CrewListModalCSS.tableTd}>가입 대기 중</td>
                                         &nbsp;&nbsp;
-                                        <td><p className={CrewListModalCSS.joinBtn}>승인</p></td>
+                                        <td><p className={CrewListModalCSS.agreeBtn} onClick={()=> onClickCrewJoinAgreeHandler(item.user.userId)}>승인</p></td>
                                         &nbsp;&nbsp;
-                                        <td><p className={CrewListModalCSS.refuseBtn}>거절</p></td>
+                                        <td><p className={CrewListModalCSS.disagreeBtn} onClick={() => onClickCrewJoinDisagreeHandler(item.user.userId)}>거절</p></td>
                                     </tr>
                                 ))}
                             </tbody>
