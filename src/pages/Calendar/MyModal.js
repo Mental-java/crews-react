@@ -17,10 +17,10 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
         setIsEditMode(false);
 
         // 모달이 열릴 때마다 이벤트의 정보로 상태 업데이트
-        setUpdatedTitle(event?.title || '');
-        setUpdatedContent(event?.extendedProps?.content || '');
-        setUpdatedStartDate(event?.start || '');
-        setUpdatedEndDate(event?.end || '');
+        setUpdatedTitle('');
+        setUpdatedContent('');
+        setUpdatedStartDate('');
+        setUpdatedEndDate('');
     }, [isOpen, event]);
 
     const handleTitleChange = (e) => {
