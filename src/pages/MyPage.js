@@ -1,7 +1,8 @@
 import MyPageCSS from "./MyPage.module.css";
 import {
-    callMyPageListAPI
-} from '../apis/MyPageAPICalls'
+    callMyPageListAPI,
+    callEndCrewListAPI
+} from '../apis/MyPageAPICalls';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {Link} from "react-router-dom";
@@ -9,12 +10,16 @@ import { useState } from "react";
 import MypageModal from "./MypageModal";
 import MyCrewHandler from "./MyCrewHandler";
 import profileImage from "../img/level-image.png";
+import EndCrewListHandler from "./EndCrewListHandler";
 
 function MyPage(){
 
     const dispatch = useDispatch();
     const mypage = useSelector(state => state.myPageReducer);
     const myPageList = mypage.data;
+
+    const endCrew = useSelector(state => state.crewListReducer);
+    const endCrewList = endCrew.data;
 
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
@@ -26,6 +31,9 @@ function MyPage(){
         () => {
             dispatch(callMyPageListAPI({
                 captain: userData.data.userId
+            }));
+            dispatch(callEndCrewListAPI({
+                userId: userData.data.userId
             }));
         }
         ,[]
@@ -61,17 +69,11 @@ function MyPage(){
                             <p className={MyPageCSS.recodeTitle}>&nbsp;&nbsp;나의 활동</p>
                         </div>
                         <table className={MyPageCSS.recodeTable}>
-                            <tr className={MyPageCSS.recodeTr}>
-                                <th className={MyPageCSS.recodeTh} width="120">몸짱크루</th>
-                                <th className={MyPageCSS.recodeTh} width="50"><p className={MyPageCSS.category}>운동</p></th>
-                                <th className={MyPageCSS.recodeTh} width="140">2023.9.12~2023.10.19</th>
-                                <th className={MyPageCSS.recodeTh}><p className={MyPageCSS.rate}>평가하기</p></th>
-                            </tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
+                            {Array.isArray(endCrewList) && endCrewList.map(
+                                (endcrew) => (
+                                    <EndCrewListHandler key={ endcrew.userId } crewInfo = { endcrew }/>
+                                )
+                            )}
                         </table>
                     </div>
                 </div>
