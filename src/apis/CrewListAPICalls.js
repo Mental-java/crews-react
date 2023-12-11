@@ -1,7 +1,7 @@
 import {
     GET_CREWLIST,
     P0ST_CREWLIST,
-    GET_CREWAPPLYLIST
+    GET_CREWAPPLYLIST,
 } from "../module/CrewListModule";
 
 export const callCrewListAPI = ({userId}) => {
