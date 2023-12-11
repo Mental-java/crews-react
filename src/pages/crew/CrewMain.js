@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate, useParams} from "react-router-dom";
+import { useSelector, useDispatch} from "react-redux";
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import {NavLink} from "react-router-dom";
 import CrewCSS from "./CrewCommon.module.css";
 import CrewMainCSS from "./CrewMain.module.css";
+
+import {
+    callCrewIntroListAPI
+} from "../../apis/CrewIntroAPICalls";
 
 function CrewMain() {
     // const crewcalendar = useSelector((state) => state.myCalendarReducer);
@@ -14,6 +20,22 @@ function CrewMain() {
     //     start: event.start,
     //     end: event.end
     // }));
+
+    const dispatch = useDispatch();
+    const params = useParams();
+
+    const crewIntro = useSelector(state => state.crewIntroListReducer);
+
+    useEffect(
+        () => {
+            dispatch(callCrewIntroListAPI({
+                crewId: params.crewId
+            }));
+        }
+        , []
+    );
+
+
 
     return (
         <div>
@@ -36,7 +58,7 @@ function CrewMain() {
                 // events={events}
             />
             <div className={CrewMainCSS.introbox}>
-                소개글 제목
+                소개글 제목 : {crewIntro}
                 <br/><br/>
                 소개글
             </div>
