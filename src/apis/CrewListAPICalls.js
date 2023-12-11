@@ -2,6 +2,8 @@ import {
     GET_CREWLIST,
     P0ST_CREWLIST,
     GET_CREWAPPLYLIST,
+    PUT_CREWJOIN,
+    PUT_CREWNOTJOIN
 } from "../module/CrewListModule";
 
 export const callCrewListAPI = ({userId}) => {
@@ -72,4 +74,63 @@ export const callCrewListWaitStatusAPI = ({crewId}) => {
         dispatch({type: GET_CREWAPPLYLIST, payload: result.data});
     }
 
+}
+
+export const callCrewJoinAgreeAPI = ({crewId, userId}) => {
+    const requsetURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/agreestatus`;
+
+    console.log('[CrewListAPICalls] callCrewJoinAgreeAPI start');
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requsetURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+                id:{
+                    userId: userId,
+                    crewId: crewId
+                },
+                crew:{
+                    crewId: crewId
+                }
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[CrewListAPICalls] callCrewJoinAgreeAPI success');
+
+        dispatch({type: PUT_CREWJOIN, payload: result});
+    }
+}
+
+export const callCrewJoinDisagreeAPI = ({crewId, userId}) => {
+    const requsetURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/disagreestatus`;
+
+    console.log('[CrewListAPICalls] callCrewJoinDisagreeAPI start');
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requsetURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+                id:{
+                    userId: userId,
+                    crewId: crewId
+                }
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[CrewListAPICalls] callCrewJoinDisagreeAPI success');
+
+        dispatch({type: PUT_CREWNOTJOIN, payload: result});
+    }
 }

@@ -6,7 +6,7 @@ function MyCrewHandler({ crewInfo: { captain,crewId,crewRecruitmentPost,creation
     const navigate = useNavigate();
 
     const onClickCaptainCrwHandler = (crewId) => {
-        navigate(`/main/crewsearchdetail/${crewId}`,{ replace:false });
+        navigate(`/main/crewsearchdetail/mycrew/${crewId}`,{ replace:false });
     }
 
     return(
