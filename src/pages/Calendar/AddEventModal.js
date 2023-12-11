@@ -52,11 +52,6 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
         });
     };
 
-    console.log("title" + newTitle);
-    console.log("content" + newContent);
-    console.log("startdate" + newStartDate);
-    console.log("endDate" + newEndDate);
-
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
 
