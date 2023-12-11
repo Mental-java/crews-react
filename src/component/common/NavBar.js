@@ -19,8 +19,6 @@ function NavBar(){
 
   console.log("로그인상태"+isLogin); 
 
-
-
   const dispatch = useDispatch();
   const crew = useSelector(state => state.crewListReducer);
   const crewList = crew.data;
@@ -43,14 +41,14 @@ function NavBar(){
         dispatch(callCrewListAPI({
             userId: userData.data.userId
         }));
-        
+
     },
     [dispatch, userData.data.userId]
   );
 
   console.log("크루리스트"+crew.data);
 
-  
+
 
     return(
             <aside className={ NavBarCSS.navAside }>
@@ -70,13 +68,19 @@ function NavBar(){
                                 <ul
                                     className={ NavBarCSS.crewBox}
                                  >
-                                    <NavLink to="/main/crewMain/:crewId">
-                                        {Array.isArray(crewList)&& crewList.map(
-                                            (crewlist) => (
-                                                <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>
-                                            )
-                                        )}
-                                    </NavLink>
+                                    {/*<NavLink to={`/main/crewMain/${crew.crewId}`}>*/}
+                                    {/*    {Array.isArray(crewList)&& crewList.map(*/}
+                                    {/*        (crewlist) => (*/}
+                                    {/*            <CrewListHandler key={crewlist.crew} crewlist = { crewlist }/>*/}
+                                    {/*        )*/}
+                                    {/*    )}*/}
+                                    {/*</NavLink>*/}
+                                    {Array.isArray(crewList) && crewList.map((crewlist) => (
+                                        <NavLink key={crewlist.crew} to={`/main/crewMain/${crewlist.crew.crewId}`}>
+                                            <CrewListHandler key={crewlist.crew} crewlist={crewlist} />
+                                        </NavLink>
+                                    ))}
+
 
                                 </ul>
                             </div>
