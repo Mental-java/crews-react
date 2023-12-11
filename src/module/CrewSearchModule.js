@@ -8,7 +8,6 @@ export const GET_CREWLIST_STUDY = 'crewSearch/GET_CREWLIST_STUDY';
 export const GET_CREWLIST_HABIT = 'crewSearch/GET_CREWLIST_HABIT';
 export const GET_CREWLIST_ETC = 'crewSearch/GET_CREWLIST_ETC';
 export const GET_CREWSEARCH_DETAIL = 'crewSearch/GET_CREWSEARCH_DETAIL';
-export const POST_CREW = 'crewSearch/POST_CREW';
 
 
 const actions = createActions({
@@ -17,8 +16,7 @@ const actions = createActions({
     [GET_CREWLIST_STUDY]: () => {},
     [GET_CREWLIST_HABIT]: () => {},
     [GET_CREWLIST_ETC]: () => {},
-    [GET_CREWSEARCH_DETAIL]: () => {},
-    [POST_CREW]: () => {}
+    [GET_CREWSEARCH_DETAIL]: () => {}
 });
 
 const crewSearchListReducer = handleActions(
@@ -44,10 +42,6 @@ const crewSearchListReducer = handleActions(
             return payload;
         },
         [GET_CREWSEARCH_DETAIL]: (state, {payload}) => {
-
-            return payload;
-        },
-        [POST_CREW]: (state, {payload}) => {
 
             return payload;
         }
