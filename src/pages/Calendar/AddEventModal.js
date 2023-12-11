@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEventAPI } from "../../apis/MyCalendarAPICalls";
@@ -26,6 +26,15 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
     const handleEndDateChange = (e) => {
         setNewEndDate(e.target.value);
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            setNewTitle('');
+            setNewContent('');
+            setNewStartDate('');
+            setNewEndDate('');
+        }
+    }, [isOpen]);
 
     const handleAddClick = () => {
         if (!newStartDate || !newEndDate) {
