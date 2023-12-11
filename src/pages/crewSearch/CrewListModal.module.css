@@ -22,3 +22,71 @@
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     z-index: 1000;
 }
+
+.main{
+    height: 100%;
+    position: relative;
+    border: 1px solid #000928;
+    border-radius: 3px;
+}
+
+.closeBtn{
+    position: absolute;
+    background-color: red;
+    color: white;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    padding-top: 4px;
+    border-radius: 3px;
+}
+
+.listTable{
+    position: absolute;
+    left: 120px;
+    border-collapse: collapse;
+}
+
+.theadTr{
+    text-decoration: underline;
+}
+
+.tableTd{
+    border-bottom: 1px solid #000928;
+}
+
+.joinBtn{
+    width: 30px;
+    height: 20px;
+    border: 1px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.refuseBtn{
+    width: 30px;
+    height: 20px;
+    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inTable{
+    margin-top: 20px;
+    overflow-y: auto;
+    height: 650px;
+}
+
+.tbodyTr{
+    height: 10px;
+}
