@@ -2,18 +2,25 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ScoreModalCSS from "./ScoreModal.module.css";
 import diamondImage from "../img/diamond-image.png"; 
+import {
+    callCrewUserAPI
+} from "../apis/CrewListAPICalls";
+import UserListHandler from "./UserListHandler";
 
 function ScoreModal({ setScoreModal,crewId }){
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.crewUserListReducer);
+    const usersList = users.data;
 
-    // useEffect(
-    //     () => {
-    //         dispatch(callCrewUserAPI({
-    //             crewId: crewId
-    //         }))
-    //     }
-    // )
+    useEffect(
+        () => {
+            dispatch(callCrewUserAPI({
+                crewId: crewId
+            }));
+        }
+        ,[]
+    );
 
     return(
             <div className={ScoreModalCSS.scoremodalcontainer}>
@@ -25,17 +32,27 @@ function ScoreModal({ setScoreModal,crewId }){
                 <div className={ScoreModalCSS.outline}>
                     <div className={ScoreModalCSS.maind}>
                         <div className={ScoreModalCSS.crewMember}>
-                            남궁주형         
+                            <table>
+                                {Array.isArray(usersList) && usersList.map(
+                                    (userlist) => (
+                                        <UserListHandler key={userlist.user} 
+                                        userInfo = {userlist}/> 
+                                    )
+                                )}    
+                            </table>    
                             <div className={ScoreModalCSS.diamond}>
                                 <img className={ScoreModalCSS.diaImg}src={diamondImage} alt="보석"/>
-                                <button className={ScoreModalCSS.plusButton}>+</button>
-                                <button className={ScoreModalCSS.minusButton}>-</button>
                             </div>
                             <hr/>
                         </div>
                     
+                        <div className={ScoreModalCSS.closecase}>
                         <div className={ScoreModalCSS.close} onClick={() => setScoreModal(false)}>
                             확인
+                        </div>
+                        <div className={ScoreModalCSS.close} onClick={() => setScoreModal(false)}>
+                            닫기
+                        </div>
                         </div>
                     </div>
                 </div>

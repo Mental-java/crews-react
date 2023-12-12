@@ -1,0 +1,7 @@
+/* UserListHandler.module.css */
+.selected {
+    background-color: #4caf50;
+    color: white;
+    /* 다른 스타일 추가 가능 */
+  }
+  
