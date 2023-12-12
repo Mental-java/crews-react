@@ -28,7 +28,7 @@ function CrewMain() {
     const params = useParams();
 
     const crewIntro = useSelector(state => state.crewIntroListReducer);
-
+    const Intro = crewIntro.data;
     useEffect(
         () => {
             dispatch(callCrewIntroListAPI({
@@ -45,7 +45,7 @@ function CrewMain() {
 
     return (
         <>
-            {updateIntroModal ? <UpdateIntroModal crewIntro={crewIntro}/> : null}
+            {updateIntroModal ? <UpdateIntroModal crewIntro={Intro}/> : null}
             <div>
                 <div>
                     <ul>
@@ -66,7 +66,7 @@ function CrewMain() {
                     // events={events}
                 />
                 <div className={CrewMainCSS.introbox}>
-                    소개글 제목 : {crewIntro}
+                    소개글 제목 : {Intro}
                     <button onClick={onClickUpdateModalHandler}>버튼이에요</button>
                     <br/><br/>
                     소개글

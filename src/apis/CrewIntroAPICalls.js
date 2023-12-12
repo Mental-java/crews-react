@@ -19,7 +19,7 @@ export const callCrewIntroListAPI = ({crewId}) => {
             .then(response => response.json());
 
         console.log('[CrewIntroAPICalls] callCrewIntroListAPI RESULT : ', result);
-        dispatch({type: GET_CREWINTROLIST, payload: result.data});
+        dispatch({type: GET_CREWINTROLIST, payload: result});
 
     };
 }
