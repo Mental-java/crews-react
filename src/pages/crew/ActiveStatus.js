@@ -1,18 +1,21 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import React from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import ActiveCSS from "./ActiveStatus.module.css";
 
 
-function activeStatus () {
+function ActiveStatus () {
+
+    const params = useParams();
+
     return(
 
         <div>
             <div>
                 <ul>
-                    <li><NavLink to="/main/crewMain" className={CrewCSS.crewPage}>크루 메인 페이지</NavLink></li>
-                    <li><NavLink to="/main/crewCertification" className={CrewCSS.crewPage}>인증게시판</NavLink></li>
-                    <li><NavLink to="/main/activeStatus" className={`${CrewCSS.crewPage} ${ActiveCSS.activeStatus}`}>활동현황</NavLink></li>
+                    <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>크루 메인 페이지</NavLink></li>
+                    <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={CrewCSS.crewPage}>인증게시판</NavLink></li>
+                    <li><NavLink to={`/main/activestatus/${params.crewId}`} className={`${CrewCSS.crewPage} ${ActiveCSS.activeStatus}`}>활동현황</NavLink></li>
                 </ul>
             </div>
             <hr className={CrewCSS.crewLine}/>
@@ -21,4 +24,4 @@ function activeStatus () {
     );
 }
 
-export default activeStatus;
+export default ActiveStatus;
