@@ -13,14 +13,14 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     const [updatedEndDate, setUpdatedEndDate] = useState(event?.end || '');
 
     useEffect(() => {
-        // 모달이 열릴 때마다 수정 모드를 초기화
+
         setIsEditMode(false);
 
-        // 모달이 열릴 때마다 이벤트의 정보로 상태 업데이트
-        setUpdatedTitle(event?.title || '');
-        setUpdatedContent(event?.extendedProps?.content || '');
-        setUpdatedStartDate(event?.start || '');
-        setUpdatedEndDate(event?.end || '');
+        //빈 칸으로 설정해서 버그수정
+        setUpdatedTitle('');
+        setUpdatedContent('');
+        setUpdatedStartDate('');
+        setUpdatedEndDate('');
     }, [isOpen, event]);
 
     const handleTitleChange = (e) => {

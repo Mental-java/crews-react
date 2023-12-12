@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { createEventAPI } from "../../apis/MyCalendarAPICalls";
@@ -27,6 +27,15 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
         setNewEndDate(e.target.value);
     };
 
+    useEffect(() => {
+        if (isOpen) {
+            setNewTitle('');
+            setNewContent('');
+            setNewStartDate('');
+            setNewEndDate('');
+        }
+    }, [isOpen]);
+
     const handleAddClick = () => {
         if (!newStartDate || !newEndDate) {
             alert('시작일과 종료일을 입력해주세요.');
@@ -51,11 +60,6 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
             onAdded && onAdded();
         });
     };
-
-    console.log("title" + newTitle);
-    console.log("content" + newContent);
-    console.log("startdate" + newStartDate);
-    console.log("endDate" + newEndDate);
 
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;

@@ -135,6 +135,7 @@ export const callCrewJoinDisagreeAPI = ({crewId, userId}) => {
     }
 }
 
+
 //크루 유저 출력
 export const callCrewUserAPI = ({crewId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/${crewId}/users`;
@@ -157,3 +158,4 @@ export const callCrewUserAPI = ({crewId}) => {
 
 
 }
+

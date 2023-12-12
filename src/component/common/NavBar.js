@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 import { callCrewListAPI } from '../../apis/CrewListAPICalls';
-import NavBarCSS from './NavBar.module.css';
 import CrewListHandler from './CrewListHandler';
+import callLogoutAPI from '../../apis/LoginAPICalls';
+
+import NavBarCSS from './NavBar.module.css';
 import levelImg from '../../img/level-image.png'
 import diamondImg from '../../img/diamond-image.png';
-import callLogoutAPI from '../../apis/LoginAPICalls';
-import { useNavigate } from "react-router-dom";
 
 function NavBar(){
 
-    
   const navBar = useSelector(state => state.LoginReducer);
   const userData = navBar.userData;
   const isLogin = window.localStorage.getItem('accesstoken');
@@ -31,8 +32,7 @@ function NavBar(){
     alert('로그아웃이 되어 메인화면으로 이동합니다.');
     navigate("/", { replace: true })
     window.location.reload();
-}
-
+  }
 
   useEffect(
     
@@ -46,7 +46,8 @@ function NavBar(){
     [dispatch, userData.data.userId]
   );
 
-  console.log("크루리스트"+crew.data);
+  console.log("크루리스트" , crewList);
+  console.log("사용자" , userData.data.userId);
 
 
 
@@ -75,6 +76,7 @@ function NavBar(){
                                     {/*        )*/}
                                     {/*    )}*/}
                                     {/*</NavLink>*/}
+
                                     {Array.isArray(crewList) && crewList.map((crewlist) => (
                                         <NavLink key={crewlist.crew} to={`/main/crewMain/${crewlist.crew.crewId}`}>
                                             <CrewListHandler key={crewlist.crew} crewlist={crewlist} />
@@ -84,12 +86,12 @@ function NavBar(){
 
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div className={ NavBarCSS.introduceBox}></div>
             </aside>
-        
+
     );
 }
 
