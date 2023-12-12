@@ -26,7 +26,12 @@ function CrewSearchPage() {
             setSelectedCategory('검색');
             setSearch('');
         }
+    }
 
+    const onClickSearchHandler = () => {
+        setQuerySearch(`?s=${search}`);
+        setSelectedCategory('검색');
+        setSearch('');
     }
 
 
@@ -88,7 +93,7 @@ function CrewSearchPage() {
                                 onKeyUp={onEnterKeyHandler}
                                 onChange={onSearchChangeHandler}
                             />
-                            <button>검색</button>
+                            <button onClick={onClickSearchHandler}>검색</button>
                         </div>
                     </div>
 

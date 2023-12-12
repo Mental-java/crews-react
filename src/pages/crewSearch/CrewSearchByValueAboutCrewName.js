@@ -30,22 +30,31 @@ function CrewSearchByValueAboutCrewName({querySearch}) {
     const {s} = queryString.parse(querySearch);
 
     // s가 변경될 때마다 currentPage를 1로 설정
+    // s가 변경될 때마다 currentPage를 1로 설정하고, API를 호출
     useEffect(
         () => {
             setCurrentPage(1);
+            setStart(0);
+            dispatch(callCrewSearchByValueAboutCrewNameAPI({
+                search: s,
+                currentPage: 1
+            }));
         },
         [s]
     );
 
+// currentPage가 변경될 때마다 API를 호출 (단, s가 변경될 때는 제외)
     useEffect(
         () => {
-            setStart((currentPage - 1) * 5);
-            dispatch(callCrewSearchByValueAboutCrewNameAPI({
-                search: s,
-                currentPage: currentPage
-            }));
-        }
-        , [currentPage, s]
+            if (currentPage !== 1) { // s가 변경될 때는 currentPage가 1로 설정되므로, 이 경우는 제외
+                setStart((currentPage - 1) * 5);
+                dispatch(callCrewSearchByValueAboutCrewNameAPI({
+                    search: s,
+                    currentPage: currentPage
+                }));
+            }
+        },
+        [currentPage]
     );
 
     return (
