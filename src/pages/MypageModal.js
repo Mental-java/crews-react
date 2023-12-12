@@ -5,7 +5,6 @@ import {
     callNickNameChangeAPI
 } from '../apis/MyPageAPICalls'
 import MypageModalCSS from "./MypageModal.module.css";
-import updateNickname from '../module/MyPageModule'; 
 
 function MypageModal ({ setMypageModal }){
 
