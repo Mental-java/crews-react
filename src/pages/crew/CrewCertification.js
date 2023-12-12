@@ -1,11 +1,11 @@
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useParams} from "react-router-dom";
 import React from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
-import NoticeHandler from "../../component/pages/NoticeHandler";
-import NoticeCSS from "../notice/Notice.module.css";
 
 function CrewCertification () {
+
+    const params = useParams();
 
     const today = new Date();
     const year = today.getFullYear();
@@ -19,9 +19,9 @@ function CrewCertification () {
         <div>
             <div>
                 <ul>
-                    <li><NavLink to="/main/crewMain" className={CrewCSS.crewPage}>크루 메인 페이지</NavLink></li>
-                    <li><NavLink to="/main/crewCertification" className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
-                    <li><NavLink to="/main/activeStatus" className={CrewCSS.crewPage}>활동현황</NavLink></li>
+                    <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>크루 메인 페이지</NavLink></li>
+                    <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
+                    <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
                 </ul>
             </div>
             <hr className={CrewCSS.crewLine}/>

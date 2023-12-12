@@ -5,8 +5,8 @@ import {useParams} from "react-router-dom";
 import UpdateIntroModalCSS from "./UpdateIntroModal.module.css";
 
 import {
-    callCrewUpdateAPI
-} from "../../apis/CrewAPICalls";
+    callCrewIntroUpdateAPI
+} from "../../apis/CrewIntroAPICalls";
 
 function UpdateIntroModal({crewIntro}) {
 
@@ -28,7 +28,7 @@ function UpdateIntroModal({crewIntro}) {
 
     const onCilckUpdateIntroHandler = () => {
 
-        dispatch(callCrewUpdateAPI({
+        dispatch(callCrewIntroUpdateAPI({
             form: form
         }));
 
