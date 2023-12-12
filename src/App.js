@@ -18,7 +18,6 @@ import CrewCertification from "./pages/crew/CrewCertification";
 import ActiveStatus from "./pages/crew/ActiveStatus";
 import WritePost from "./pages/crew/WritePost";
 
-
 function App() {
   return (
    <BrowserRouter>
@@ -44,10 +43,10 @@ function App() {
             <Route path="crewsearchdetail/mycrew/:crewId" element={<CrewSearchDetailForCaptian/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
             <Route path="myCalendar" element={<MyCalendar/>}/>
-            <Route path="crewMain/:crewId" element={<CrewMain/>}/>
-            <Route path="crewCertification" element={<CrewCertification/>}/>
-            <Route path="activeStatus" element={<ActiveStatus/>}/>
-            <Route path="writePost" element={<WritePost/>}/>
+            <Route path="crewmain/:crewId" element={<CrewMain/>}/>
+            <Route path="crewcertification/:crewId" element={<CrewCertification/>}/>
+            <Route path="activestatus/:crewId" element={<ActiveStatus/>}/>
+            <Route path="writepost" element={<WritePost/>}/>
         </Route>
         
       </Routes>

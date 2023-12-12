@@ -26,25 +26,16 @@ function CrewMain() {
 
     const crewIntro = useSelector(state => state.crewIntroListReducer);
 
-    const [introModal, setIntroModal] = useState(false);
-    const [introCrewId, setIntroCrewId] = useState(0);
-    const [intro, setIntro] = useState('');
-
     useEffect(
         () => {
             dispatch(callCrewIntroListAPI({
-                crewId: params.crewId,
-                crewIntro: params.crewIntro
+                crewId: params.crewId
             }));
         }
         , []
     );
 
-    const onClickIntroEditModalHandler = (crewId, crewIntro) => {
-        setIntroModal(true);
-        setIntroCrewId(crewId);
-        setIntro(crewIntro);
-    }
+
 
     return (
         <div>
@@ -67,8 +58,9 @@ function CrewMain() {
                 // events={events}
             />
             <div className={CrewMainCSS.introbox}>
-                <p>소개글 : {crewIntro}</p>
-
+                소개글 제목 : {crewIntro}
+                <br/><br/>
+                소개글
             </div>
         </div>
     );

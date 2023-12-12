@@ -1,47 +1,70 @@
 import CrewSearchHandler from "../../component/pages/CrewSearchHandler";
 import styles from "./CrewSearch.module.css";
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
+import queryString from 'query-string';
 
 import {
-    callCrewListAboutEtcAPI
+    callCrewSearchByValueAboutCrewNameAPI
 } from "../../apis/CrewSearchAPICalls";
 
-function CrewSearchEtc() {
-    const dispatch = useDispatch();
-    const etc = useSelector(state => state.crewSearchListReducer);
-    const etcList = etc.data;
+function CrewSearchByValueAboutCrewName({querySearch}) {
 
-    const pageInfo = etc.pageInfo;
+    const dispatch = useDispatch();
+    const searchResult = useSelector(state => state.crewSearchListReducer);
+    const resultList = searchResult.data;
+
+    const pageInfo = searchResult.pageInfo;
 
     const [start, setStart] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageEnd, setPageEnd] = useState(1);
 
     const pageNumber = [];
-    if(pageInfo){
-        for(let i =1; i <= pageInfo.pageEnd; i++){
+    if (pageInfo) {
+        for (let i = 1; i <= pageInfo.pageEnd; i++) {
             pageNumber.push(i);
         }
     }
 
+    const {s} = queryString.parse(querySearch);
+
+    // s가 변경될 때마다 currentPage를 1로 설정
+    // s가 변경될 때마다 currentPage를 1로 설정하고, API를 호출
     useEffect(
         () => {
-            setStart((currentPage - 1) * 5);
-            dispatch(callCrewListAboutEtcAPI({
-                currentPage: currentPage
+            setCurrentPage(1);
+            setStart(0);
+            dispatch(callCrewSearchByValueAboutCrewNameAPI({
+                search: s,
+                currentPage: 1
             }));
-        }
-        ,[currentPage]
+        },
+        [s]
+    );
+
+// currentPage가 변경될 때마다 API를 호출 (단, s가 변경될 때는 제외)
+    useEffect(
+        () => {
+            if (currentPage !== 1) { // s가 변경될 때는 currentPage가 1로 설정되므로, 이 경우는 제외
+                setStart((currentPage - 1) * 5);
+                dispatch(callCrewSearchByValueAboutCrewNameAPI({
+                    search: s,
+                    currentPage: currentPage
+                }));
+            }
+        },
+        [currentPage]
     );
 
     return (
+
         <>
             <div>
                 <div className={styles.crewListMain}>
                     <table>
                         {
-                            Array.isArray(etcList) && etcList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
+                            Array.isArray(resultList) && resultList.map((crew) => (<CrewSearchHandler key={ crew.crewId } crew={ crew }/>))
                         }
                     </table>
                 </div>
@@ -49,7 +72,7 @@ function CrewSearchEtc() {
 
             <div className={styles.btnMain}>
                 <div className={styles.btnDiv}>
-                    {Array.isArray(etcList) &&
+                    {Array.isArray(resultList) &&
                         <button
                             onClick={() => setCurrentPage(currentPage - 1)}
                             disabled={currentPage === 1}
@@ -68,7 +91,7 @@ function CrewSearchEtc() {
                             </button>
                         </li>
                     ))}
-                    { Array.isArray(etcList) &&
+                    { Array.isArray(resultList) &&
                         <button
                             onClick={() => setCurrentPage(currentPage + 1)}
                             disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
@@ -81,6 +104,6 @@ function CrewSearchEtc() {
             </div>
         </>
     );
-}
 
-export default CrewSearchEtc;
+}
+export default CrewSearchByValueAboutCrewName;

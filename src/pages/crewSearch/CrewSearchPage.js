@@ -1,13 +1,38 @@
 import { useState, useEffect } from 'react';
 import styles from './CrewSearch.module.css';
-import {NavLink, Link, Outlet} from 'react-router-dom';
+import {NavLink, Link, Outlet, useNavigate} from 'react-router-dom';
 import CrewSearchAll from "./CrewSearchAll";
 import CrewSearchExercise from "./CrewSearchExercise";
 import CrewSearchStudy from "./CrewSearchStudy";
 import CrewSearchHabit from "./CrewSearchHabit";
 import CrewSearchEtc from "./CrewSearchEtc";
+import CrewSearchByValueAboutCrewName from "./CrewSearchByValueAboutCrewName";
 
 function CrewSearchPage() {
+
+    const [search, setSearch] = useState('');
+    const [querySearch, setQuerySearch] = useState('');
+    const navigate = useNavigate();
+
+    const onSearchChangeHandler = (e) => {
+        setSearch(e.target.value);
+    }
+
+    const onEnterKeyHandler = (e) => {
+        if(e.key == 'Enter') {
+            console.log('Enter Key', search);
+
+            setQuerySearch(`?s=${search}`);
+            setSelectedCategory('검색');
+            setSearch('');
+        }
+    }
+
+    const onClickSearchHandler = () => {
+        setQuerySearch(`?s=${search}`);
+        setSelectedCategory('검색');
+        setSearch('');
+    }
 
 
     const [selectedCategory, setSelectedCategory] = useState('전체');
@@ -36,8 +61,12 @@ function CrewSearchPage() {
         case '습관':
             component = <CrewSearchHabit />;
             break;
-        default:
+        case '기타':
             component = <CrewSearchEtc />;
+            break;
+        case '검색':
+            component = <CrewSearchByValueAboutCrewName querySearch={querySearch}/>;
+            break;
     }
 
     return (
@@ -57,8 +86,14 @@ function CrewSearchPage() {
                             ))}
                         </ul>
                         <div className={styles['search-bar']}>
-                            <input type="text" placeholder="검색어를 입력하세요" />
-                            <button>검색</button>
+                            <input
+                                type="text"
+                                placeholder="검색어를 입력하세요"
+                                value={search}
+                                onKeyUp={onEnterKeyHandler}
+                                onChange={onSearchChangeHandler}
+                            />
+                            <button onClick={onClickSearchHandler}>검색</button>
                         </div>
                     </div>
 
