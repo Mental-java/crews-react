@@ -7,7 +7,6 @@ import queryString from 'query-string';
 import {
     callCrewSearchByValueAboutCrewNameAPI
 } from "../../apis/CrewSearchAPICalls";
-import {useLocation} from "react-router-dom";
 
 function CrewSearchByValueAboutCrewName({querySearch}) {
 
@@ -29,6 +28,14 @@ function CrewSearchByValueAboutCrewName({querySearch}) {
     }
 
     const {s} = queryString.parse(querySearch);
+
+    // s가 변경될 때마다 currentPage를 1로 설정
+    useEffect(
+        () => {
+            setCurrentPage(1);
+        },
+        [s]
+    );
 
     useEffect(
         () => {
