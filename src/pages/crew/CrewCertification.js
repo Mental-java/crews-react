@@ -1,9 +1,8 @@
 import {Link, NavLink} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
-import NoticeHandler from "../../component/pages/NoticeHandler";
-import NoticeCSS from "../notice/Notice.module.css";
+import {useDispatch, useSelector} from "react-redux";
 
 function CrewCertification () {
 
@@ -13,6 +12,28 @@ function CrewCertification () {
     const date = today.getDate();
 
     const formattedDate = `${year}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
+
+    const dispatch = useDispatch();
+    const crewCertification = useSelector(state => state.crewCertificationListReducer);
+    const crewCertificationList = crewCertification.data;
+
+    // const pageInfo = crewSearchs.pageInfo;
+    // const pageNumber = [];
+    // if(pageInfo){
+    //     for(let i =1; i <= pageInfo.pageEnd; i++){
+    //         pageNumber.push(i);
+    //     }
+    // }
+
+    // useEffect(
+    //     () => {
+    //         setStart((currentPage - 1) * 5);
+    //         dispatch(callCrewSearchListAPI({
+    //             currentPage: currentPage
+    //         }));
+    //     }
+    //     ,[currentPage]
+    // );
 
     return(
 
@@ -35,7 +56,11 @@ function CrewCertification () {
             <hr/>
 
             <div>
-
+                <table>
+                    {
+                        Array.isArray(crewCertificationList) && crewCertificationList.map((crew) => (<CrewCertification key={ crew.crewId } crew={ crew }/>))
+                    }
+                </table>
             </div>
 
         </div>
