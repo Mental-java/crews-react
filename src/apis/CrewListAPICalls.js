@@ -8,6 +8,9 @@ import {
 import {
     GET_CREWUSER
 } from "../module/CrewUserModule";
+import {
+    PUT_DIAMOND
+} from "../module/EndCrewModule"
 
 export const callCrewListAPI = ({userId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/${userId}/crew`;
@@ -162,3 +165,26 @@ export const callCrewUserAPI = ({crewId}) => {
 
 }
 
+//평가하기
+export const callSubmitDiamondAPI = ({userId,diamond}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/diamond`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+                userId: userId,
+                diamond: diamond
+            })
+        })
+        .then(response => response.json());
+        dispatch({type: PUT_DIAMOND, payload: result.data});
+    }
+
+
+}

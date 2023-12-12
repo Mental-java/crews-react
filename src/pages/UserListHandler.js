@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './UserListHandler.module.css'; // 모듈형 CSS 파일을 import
+import { callSubmitDiamondAPI } from '../apis/CrewListAPICalls';
 
 function UserListHandler({ userInfo: { user } }) {
   const [selectedValue, setSelectedValue] = useState(0);
+  const dispatch = useDispatch();
 
   const handleButtonClick = (value) => {
     setSelectedValue(value);
   };
+
+  const submitDiamondHandler = () => {
+        dispatch(callSubmitDiamondAPI({
+            userId: user.userId,
+            diamond: selectedValue
+        }));
+
+        window.location.reload();
+
+  }
 
   return (
     <>
@@ -33,7 +46,7 @@ function UserListHandler({ userInfo: { user } }) {
           </button>
         </td>
         <td>
-          <button>제출</button>
+          <button onClick={ () => submitDiamondHandler()}>제출</button>
         </td>
       </tr>
     </>
