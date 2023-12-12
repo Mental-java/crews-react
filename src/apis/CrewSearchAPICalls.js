@@ -6,6 +6,7 @@ import {
     GET_CREWLIST_HABIT,
     GET_CREWLIST_ETC,
     GET_CREWSEARCH_DETAIL,
+    GET_CREWSEARCHBYVALUE_CREWNAME
 } from "../module/CrewSearchModule";
 import {request} from "axios";
 
@@ -19,7 +20,7 @@ export const callCrewSearchListAPI = ({currentPage}) => {
         requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/five`;
     }
 
-    console.log('[CrewSearchAPICalls] requestURL : ', requestURL);
+    console.log('[CrewSearchAPICalls] callCrewSearchListAPI requestURL : ', requestURL);
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -163,5 +164,33 @@ export const callCrewSearchDetailAPI = ({crewId}) => {
             console.log('[CrewSearchAPICalls] callCrewSearchDetailAPI SUCCESS');
             dispatch({type: GET_CREWSEARCH_DETAIL, payload: result.data});
         }
+    };
+}
+
+export const callCrewSearchByValueAboutCrewNameAPI = ({search, currentPage}) =>{
+    let requestURL;
+
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/search?s=${search}&offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/search?s=${search}`;
+    }
+
+    console.log('[CrewSearchAPICalls] callCrewSearchByValueAboutCrewNameAPI requestURL : ', requestURL);
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "*/*"
+            }
+        })
+            .then(response => response.json());
+
+        console.log('[CrewSearchAPICalls] callCrewSearchByValueAboutCrewNameAPI RESULT : ', result);
+
+        dispatch({type: GET_CREWSEARCHBYVALUE_CREWNAME, payload: result.data});
     };
 }
