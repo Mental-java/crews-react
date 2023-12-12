@@ -18,11 +18,11 @@ function MyPage(){
     const mypage = useSelector(state => state.myPageReducer);
     const myPageList = mypage.data;
 
-    const endCrew = useSelector(state => state.crewListReducer);
+    const endCrew = useSelector(state => state.endCrewListReducer);
     const endCrewList = endCrew.data;
 
     const navBar = useSelector(state => state.LoginReducer);
-    const userData = navBar.userData;
+    // const userData = navBar.userData;
 
     const [mypageModal, setMypageModal ] = useState(false);
 
@@ -30,10 +30,10 @@ function MyPage(){
     useEffect(
         () => {
             dispatch(callMyPageListAPI({
-                captain: userData.data.userId
+                captain: localStorage.getItem("userId")
             }));
             dispatch(callEndCrewListAPI({
-                userId: userData.data.userId
+                userId: localStorage.getItem("userId")
             }));
         }
         ,[]

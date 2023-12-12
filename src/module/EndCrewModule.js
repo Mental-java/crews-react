@@ -2,7 +2,7 @@ import { createActions, handleActions } from "redux-actions";
 
 const initialState = [];
 
-export const GET_ENDCREW = 'crewlist/GET_ENDCREW';
+export const GET_ENDCREW = 'crewlists/GET_ENDCREW';
 
 const actions = createActions({
     [GET_ENDCREW]: () => {}
