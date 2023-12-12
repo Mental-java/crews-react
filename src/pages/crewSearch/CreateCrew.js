@@ -19,7 +19,7 @@ function CreateCrew() {
 
     const today = new Date().toLocaleDateString('en-CA');
 
-    const [form, setFrom] = useState( {
+    const [form, setForm] = useState( {
         crewName: '',
         captain: {userId: loginUser && loginUser.data ? loginUser.data.userId : null},
         crewCategoryCode: {categoryCode: ''},
@@ -32,12 +32,12 @@ function CreateCrew() {
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
         if (name === 'categoryCode') {
-            setFrom({
+            setForm({
                 ...form,
                 crewCategoryCode: { categoryCode: parseInt(value) }
             });
         } else {
-            setFrom({
+            setForm({
                 ...form,
                 [name]: value
             });
@@ -77,63 +77,69 @@ function CreateCrew() {
     }
 
     return (
-        <div>
-            <main>
-                <section>
-                    <h1>크루 만들기</h1>
+        <div className={CreateCrewCSS.main}>
+            <form className={CreateCrewCSS.formDiv}>
+                <div className={CreateCrewCSS.categoryDiv}>
+                    <h4 className={CreateCrewCSS.radioH}>크루 카테고리 선택</h4>
+                    <div className={CreateCrewCSS.radioDiv}>
+                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="1" defaultChecked/>운동</label>
+                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="2" />공부</label>
+                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="3" />습관</label>
+                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="4" />기타</label>
+                    </div>
+                </div>
+                <div className={CreateCrewCSS.nameDiv}>
+                    <h4 className={CreateCrewCSS.nameH}>크루 이름</h4>
+                    <input
+                        className={CreateCrewCSS.nameInput}
+                        type="text"
+                        name="crewName"
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <div className={CreateCrewCSS.dateDiV}>
+                    <h4 className={CreateCrewCSS.startH}>시작 날짜</h4>
+                    <input
+                        className={CreateCrewCSS.startDate}
+                        type="date"
+                        name="startDate"
+                        min={today}
+                        onChange={onChangeHandler}
+                    />
+                    <h4 className={CreateCrewCSS.endH}>종료 날짜</h4>
+                    <input
+                        className={CreateCrewCSS.endDate}
+                        type="date"
+                        name="endDate"
+                        min={form.startDate}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <div className={CreateCrewCSS.postDiv}>
+                    <h4 className={CreateCrewCSS.postH}>모집글 제목</h4>
+                    <input
+                        className={CreateCrewCSS.postInput}
+                        type="text"
+                        name="crewRecruitmentPost"
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <div className={CreateCrewCSS.contentDiv}>
+                    <h4 className={CreateCrewCSS.contentH}>모집글 내용</h4>
+                    <textarea
+                        className={CreateCrewCSS.contentArea}
+                        name="crewRecruitmentContent"
+                        onChange={onChangeHandler}
+                        value={form.crewRecruitmentContent}
+                    />
+                </div>
+                <div className={CreateCrewCSS.btnDiv}>
+                    <button className={CreateCrewCSS.registBtn} onClick={ onClickCrewRegistrationHandler }>생성하기</button>
+                    &nbsp;&nbsp;
+                    <button className={CreateCrewCSS.backBtn} onClick={() => navigate(`/main/crewsearch`)}>뒤로가기</button>
+                </div>
+            </form>
 
-                    <form>
-                        <p>크루 카테고리 선택</p>
-                        <label><input className="radio-input" onChange={onChangeHandler} type="radio" name="categoryCode" value="1" defaultChecked/>운동</label>
-                        <label><input className="radio-input" onChange={onChangeHandler} type="radio" name="categoryCode" value="2"/>공부</label>
-                        <label><input className="radio-input" onChange={onChangeHandler} type="radio" name="categoryCode" value="3"/>습관</label>
-                        <label><input className="radio-input" onChange={onChangeHandler} type="radio" name="categoryCode" value="4"/>기타</label>
-
-
-                        <div className="team-and-date">
-                            <div className="team-name">
-                                <p>크루 이름</p>
-                                <input type="text" name="crewName" onChange={onChangeHandler} />
-                            </div>
-
-                            <div className="date-input">
-                                <p>활동기간</p>
-                                <input type="date" name="startDate" min={today} onChange={onChangeHandler} />
-                                <span className="date-separator">&nbsp; ~ &nbsp;</span>
-                                <input type="date" name="endDate" min={form.startDate} onChange={onChangeHandler} />
-                            </div>
-                        </div>
-
-                        <div className="title-and-status">
-                            <div className="title-input">
-                                <p>모집글 제목</p>
-                                <input
-                                    type="text"
-                                    name="crewRecruitmentPost"
-                                    onChange={onChangeHandler}
-                                />
-                            </div>
-
-                        </div>
-
-                        <div className="recruitment-content">
-                            <div className="left-content">
-                                <p>모집 내용</p>
-                                <textarea
-                                    name="crewRecruitmentContent"
-                                    onChange={onChangeHandler}
-                                    rows="6"
-                                    cols="30"
-                                ></textarea>
-                            </div>
-                        </div>
-                        <div className="submit-button">
-                            <button onClick={ onClickCrewRegistrationHandler }>등록</button>
-                            <button onClick={() => navigate(`/main/crewsearch`)}>뒤로가기</button>
-                        </div>
-                    </form>
-                </section>
-            </main>
         </div>
     );
 }

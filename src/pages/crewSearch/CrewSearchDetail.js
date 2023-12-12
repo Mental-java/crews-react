@@ -109,7 +109,7 @@ function CrewSearchDetail() {
                                 >
                                     신고하기
                                 </div>
-                                <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
+                                <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate('/main/crewsearch')}>
                                     목록으로 돌아가기
                                 </div>
                             </div>

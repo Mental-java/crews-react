@@ -13,6 +13,7 @@ import {
     callCrewDeleteAPI
 } from "../../apis/CrewAPICalls";
 import CrewListModal from "./CrewListModal";
+import CrewUpdateModal from "./CrewUpdateModal";
 
 function CrewSearchDetailForCaptain() {
 
@@ -22,6 +23,7 @@ function CrewSearchDetailForCaptain() {
     const navigate = useNavigate();
 
     const [crewListModal, setCrewListModal] = useState(false);
+    const [crewUpdateModal, setCrewUpdateModal] = useState(false);
 
     useEffect(
         () => {
@@ -48,9 +50,14 @@ function CrewSearchDetailForCaptain() {
         setCrewListModal(true);
     }
 
+    const onClickCrewUpdateModalHandler = () => {
+        setCrewUpdateModal(true);
+    }
+
     return(
         <>
             { crewListModal ? <CrewListModal setCrewListModal={setCrewListModal}/> : null}
+            { crewUpdateModal ? <CrewUpdateModal crew={crew} setCrewUpdateModal={setCrewUpdateModal}/> : null }
             <div className={CrewSearchDetailCSS.main}>
                 <div className={CrewSearchDetailCSS.upDiv}>
                     <div className={CrewSearchDetailCSS.stateDiv}>
@@ -70,7 +77,7 @@ function CrewSearchDetailForCaptain() {
                         <div className={CrewSearchDetailCSS.category}>
                             #{crew.crewCategoryCode && crew.crewCategoryCode.categoryName}
                         </div>
-                        <div className={CrewSearchDetailCSS.updateBtn}>
+                        <div className={CrewSearchDetailCSS.updateBtn} onClick={onClickCrewUpdateModalHandler}>
                             수정하기
                         </div>
                         <div className={CrewSearchDetailCSS.checkBtn} onClick={ onClickCrewListModalHandler }>
@@ -94,7 +101,7 @@ function CrewSearchDetailForCaptain() {
                                 <div className={CrewSearchDetailCSS.deleteBtn} onClick={ onClickDeleteCrewHandler }>
                                     삭제하기
                                 </div>
-                                <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(-1)}>
+                                <div className={CrewSearchDetailCSS.backpageBtn} onClick={() => navigate(`/main/crewsearch`)}>
                                     목록으로 돌아가기
                                 </div>
                             </div>
