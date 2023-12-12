@@ -5,6 +5,9 @@ import {
     PUT_CREWJOIN,
     PUT_CREWNOTJOIN
 } from "../module/CrewListModule";
+import {
+    GET_CREWUSER
+} from "../module/CrewUserModule";
 
 export const callCrewListAPI = ({userId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/${userId}/crew`;
