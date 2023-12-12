@@ -12,7 +12,7 @@ const endCrewListReducer = handleActions(
     {
         [GET_ENDCREW]: (state, {payload}) => {
             return payload;
-        }
+        },
     },
     initialState
 );

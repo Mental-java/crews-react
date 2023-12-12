@@ -21,9 +21,6 @@ function MyPage(){
     const endCrew = useSelector(state => state.endCrewListReducer);
     const endCrewList = endCrew.data;
 
-    const navBar = useSelector(state => state.LoginReducer);
-    // const userData = navBar.userData;
-
     const [mypageModal, setMypageModal ] = useState(false);
 
 
