@@ -18,7 +18,6 @@ import CrewCertification from "./pages/crew/CrewCertification";
 import ActiveStatus from "./pages/crew/ActiveStatus";
 import WritePost from "./pages/crew/WritePost";
 
-
 function App() {
   return (
    <BrowserRouter>
