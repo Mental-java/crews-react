@@ -10,6 +10,7 @@ import CrewMainCSS from "./CrewMain.module.css";
 import {
     callCrewIntroListAPI
 } from "../../apis/CrewIntroAPICalls";
+import UpdateIntroModal from "./UpdateIntroModal";
 
 function CrewMain() {
     // const crewcalendar = useSelector((state) => state.myCalendarReducer);
@@ -20,6 +21,8 @@ function CrewMain() {
     //     start: event.start,
     //     end: event.end
     // }));
+
+    const [updateIntroModal, setUpdateIntroModal] = useState(false);
 
     const dispatch = useDispatch();
     const params = useParams();
@@ -35,34 +38,41 @@ function CrewMain() {
         , []
     );
 
+    const onClickUpdateModalHandler = () => {
+        setUpdateIntroModal(true);
+    }
 
 
     return (
-        <div>
+        <>
+            {updateIntroModal ? <UpdateIntroModal crewIntro={crewIntro}/> : null}
             <div>
-                <ul>
-                    <li><NavLink to="/main/crewMain" className={`${CrewCSS.crewPage} ${CrewMainCSS.main}`}>크루 메인 페이지</NavLink></li>
-                    <li><NavLink to="/main/crewCertification" className={CrewCSS.crewPage}>인증게시판</NavLink></li>
-                    <li><NavLink to="/main/activeStatus" className={CrewCSS.crewPage}>활동현황</NavLink></li>
-                </ul>
-            </div>
-            <hr className={CrewCSS.crewLine}/>
-            <FullCalendar
-                firstDay={1}
-                initialView="dayGridMonth"
-                plugins={[dayGridPlugin]}
+                <div>
+                    <ul>
+                        <li><NavLink to={`/main/crewmain/${params.crewId}`} className={`${CrewCSS.crewPage} ${CrewMainCSS.main}`}>크루 메인 페이지</NavLink></li>
+                        <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={CrewCSS.crewPage}>인증게시판</NavLink></li>
+                        <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
+                    </ul>
+                </div>
+                <hr className={CrewCSS.crewLine}/>
+                <FullCalendar
+                    firstDay={1}
+                    initialView="dayGridMonth"
+                    plugins={[dayGridPlugin]}
 
-                height={'75vh'}
-                eventBackgroundColor={'gray'}
-                eventBorderColor={'lightgray'}
-                // events={events}
-            />
-            <div className={CrewMainCSS.introbox}>
-                소개글 제목 : {crewIntro}
-                <br/><br/>
-                소개글
+                    height={'75vh'}
+                    eventBackgroundColor={'gray'}
+                    eventBorderColor={'lightgray'}
+                    // events={events}
+                />
+                <div className={CrewMainCSS.introbox}>
+                    소개글 제목 : {crewIntro}
+                    <button onClick={onClickUpdateModalHandler}>버튼이에요</button>
+                    <br/><br/>
+                    소개글
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
