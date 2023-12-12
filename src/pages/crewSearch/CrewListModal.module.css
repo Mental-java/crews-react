@@ -43,16 +43,38 @@
 
 .listTable{
     position: absolute;
-    left: 120px;
+    left: 55px;
     border-collapse: collapse;
 }
 
-.theadTr{
+.theadTr1{
     text-decoration: underline;
+    width: 200px;
 }
 
-.tableTd{
-    border-bottom: 1px solid #000928;
+.theadTr2{
+    text-decoration: underline;
+    width: 60px;
+}
+
+.theadTr3{
+    text-decoration: underline;
+    width: 120px;
+}
+
+.tableTd1{
+    width: 200px;
+    font-size: 12px;
+}
+
+.tableTd2{
+    width: 60px;
+    font-size: 12px;
+}
+
+.tableTd3{
+    width: 120px;
+    font-size: 12px;
 }
 
 .agreeBtn{
@@ -88,5 +110,20 @@
 }
 
 .tbodyTr{
-    height: 10px;
+    border-bottom: 1px solid #000928;
+}
+
+.btnHandle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.howMany{
+    font-size: 12px;
+}
+
+.diamond{
+    width: 20px;
+    height: 15px;
 }

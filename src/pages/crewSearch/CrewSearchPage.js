@@ -64,17 +64,17 @@ function CrewSearchPage() {
 
                     <div className={styles.recruitmentMain}>
                         <div className={styles.recruitmentStatusDiv}>
-                            <ul className={styles.recruitmentStatus}>
-                                {['모집중', '모집종료'].map((status) => (
-                                    <li
-                                        key={status}
-                                        className={selectedStatus === status ? styles.selected : ''}
-                                        onClick={() => handleStatusClick(status)}
-                                    >
-                                        {status}
-                                    </li>
-                                ))}
-                            </ul>
+                            {/*<ul className={styles.recruitmentStatus}>*/}
+                            {/*    {['모집중', '모집종료'].map((status) => (*/}
+                            {/*        <li*/}
+                            {/*            key={status}*/}
+                            {/*            className={selectedStatus === status ? styles.selected : ''}*/}
+                            {/*            onClick={() => handleStatusClick(status)}*/}
+                            {/*        >*/}
+                            {/*            {status}*/}
+                            {/*        </li>*/}
+                            {/*    ))}*/}
+                            {/*</ul>*/}
                         </div>
                         <div className={styles.createCrewDiv}>
                             <Link to="/main/createcrew" className={styles.createCrewButton}>

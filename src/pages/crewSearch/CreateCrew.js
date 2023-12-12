@@ -129,6 +129,7 @@ function CreateCrew() {
                         </div>
                         <div className="submit-button">
                             <button onClick={ onClickCrewRegistrationHandler }>등록</button>
+                            <button onClick={() => navigate(`/main/crewsearch`)}>뒤로가기</button>
                         </div>
                     </form>
                 </section>
