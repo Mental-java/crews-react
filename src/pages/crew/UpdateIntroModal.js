@@ -4,9 +4,7 @@ import {useParams} from "react-router-dom";
 
 import UpdateIntroModalCSS from "./UpdateIntroModal.module.css";
 
-import {
-    callCrewIntroUpdateAPI
-} from "../../apis/CrewIntroAPICalls";
+import {callCrewIntroUpdateAPI} from "../../apis/CrewIntroAPICalls";
 
 function UpdateIntroModal({crewIntro}) {
 

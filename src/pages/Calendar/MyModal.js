@@ -16,9 +16,8 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
 
         setIsEditMode(false);
 
-        //빈 칸으로 설정해서 버그수정
-        setUpdatedTitle('');
-        setUpdatedContent('');
+        setUpdatedTitle(event.title);
+        setUpdatedContent(event.extendedProps.content);
         setUpdatedStartDate('');
         setUpdatedEndDate('');
     }, [isOpen, event]);
