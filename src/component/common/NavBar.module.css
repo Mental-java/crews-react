@@ -1,17 +1,12 @@
 .navAside{
     background-color: #eee;
     padding: 0;
-    height: 100vh;
+    height: 105vh;
     width: 220px;
     margin: 0;
     border-right: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-}
-
-.crewBox {
-    max-height: 250px; /* 스크롤바가 나타날 최대 높이를 설정해주세요 */
-    overflow-y: auto; /* 세로 스크롤바가 나타나도록 설정합니다 */
 }
 
 .navLink{
@@ -31,14 +26,16 @@
 
 .introduceBox {
     background-color: #000928;
-    height: 200px;
+
     margin-top: auto;
+    height: 20%;
 }
 
 .sideBar {
     display: flex;
     justify-content: center;
     margin: 1em auto;
+    height: 55%;
   }
 
 .userLogo {
@@ -106,11 +103,22 @@
     color: #333;
 }
 
+/*.crewBox {*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 300px;*/
+/*    overflow-y: auto;*/
+/*}*/
+
 .crewBox {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-direction: column; 
+    display: block;
+    height: 320px;
+    overflow-y: auto;
+    box-sizing: content-box;
 }
 
 .myCrewList{
@@ -128,6 +136,5 @@
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
-    font-size: 18px;
-
+    font-size: 12px;
 }

@@ -1,6 +1,7 @@
 .main {
     color: darkblue;
     text-decoration: underline;
+    width: 150px;
 }
 
 .introbox {
@@ -8,6 +9,8 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    height: 100px;
+    overflow-y: auto;
 }
 
 .introEditBtn {

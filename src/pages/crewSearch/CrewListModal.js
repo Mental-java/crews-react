@@ -17,13 +17,22 @@ function CrewListModal({ setCrewListModal }) {
     const params = useParams();
     const crewList = useSelector(state => state.crewListReducer);
 
+    let people = 0;
+    const howManyPeople = (crewList) =>{
+
+        if (crewList.length > 0) {
+            people = crewList.length;
+        }
+        return people;
+    }
+
     useEffect(
         () => {
             dispatch(callCrewListWaitStatusAPI({
                 crewId: params.crewId
             }));
         }
-    , []
+    , [crewList.length]
     );
 
     const onClickCrewJoinAgreeHandler = (userId) => {
@@ -47,15 +56,6 @@ function CrewListModal({ setCrewListModal }) {
             crewId: params.crewId,
             userId: userId
         }))
-    }
-
-    let people = 0;
-    const howManyPeople = (crewList) =>{
-
-        if (crewList.length > 0) {
-            people = crewList.length;
-        }
-        return people;
     }
 
     return (
