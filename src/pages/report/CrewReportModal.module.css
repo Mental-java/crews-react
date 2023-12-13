@@ -121,3 +121,11 @@ select:focus {
     width: 45px;
     height: 22px;
 }
+
+.closeBtn:hover {
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    cursor: pointer;
+}

@@ -215,3 +215,15 @@
     top: 20px;
     right: 190px;
 }
+
+.joinBtn:hover {
+    cursor: pointer;
+}
+
+.reportBtn:hover {
+    cursor: pointer;
+}
+
+.backpageBtn:hover {
+    cursor: pointer;
+}
