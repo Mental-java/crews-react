@@ -6,7 +6,7 @@ import UpdateIntroModalCSS from "./UpdateIntroModal.module.css";
 
 import {callCrewIntroUpdateAPI} from "../../apis/CrewIntroAPICalls";
 
-function UpdateIntroModal({crewIntro}) {
+function UpdateIntroModal({crewIntro, setUpdateIntroModal}) {
 
     const dispatch = useDispatch();
     const params = useParams();
@@ -21,10 +21,11 @@ function UpdateIntroModal({crewIntro}) {
             ...form,
             [e.target.name]: e.target.value
         })
-        console.log("바뀐값", form.introduction);
     };
 
     const onCilckUpdateIntroHandler = () => {
+
+        alert('크루 소개글이 수정되었습니다.');
 
         dispatch(callCrewIntroUpdateAPI({
             form: form
@@ -37,7 +38,9 @@ function UpdateIntroModal({crewIntro}) {
     return(
         <div className={UpdateIntroModalCSS.modal}>
             <div className={UpdateIntroModalCSS.modalContainer}>
-                <div className={UpdateIntroModalCSS.closeBtn}>X</div>
+                <div className={UpdateIntroModalCSS.closeBtn} onClick={() => setUpdateIntroModal(false)}>
+                    X
+                </div>
                 <div className={UpdateIntroModalCSS.title}>
                     소개글 수정
                 </div>

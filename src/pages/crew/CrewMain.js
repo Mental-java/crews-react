@@ -7,10 +7,11 @@ import {NavLink} from "react-router-dom";
 import CrewCSS from "./CrewCommon.module.css";
 import CrewMainCSS from "./CrewMain.module.css";
 
-import {
-    callCrewIntroListAPI
-} from "../../apis/CrewIntroAPICalls";
 import UpdateIntroModal from "./UpdateIntroModal";
+
+import {
+    callCrewSearchDetailAPI
+} from "../../apis/CrewSearchAPICalls";
 
 function CrewMain() {
     // const crewcalendar = useSelector((state) => state.myCalendarReducer);
@@ -27,29 +28,43 @@ function CrewMain() {
     const dispatch = useDispatch();
     const params = useParams();
 
-    const crewIntro = useSelector(state => state.crewIntroListReducer);
-    const Intro = crewIntro.data;
+    const crew = useSelector(state => state.crewSearchListReducer);
+    const intro = crew.introduction;
+    const captain = crew.captain && crew.captain.userId;
+
+    const login = useSelector(state => state.LoginReducer);
+    const loginUser = login.userData;
+    const userEmail = loginUser && loginUser.data ? loginUser.data.userId : null;
+
+    console.log(crew.crewId ,'로그인 유저 : ', loginUser.data.userId);
+    console.log(crew.crewId ,'캡틴 : ', captain);
+
+
     useEffect(
         () => {
-            dispatch(callCrewIntroListAPI({
+            dispatch(callCrewSearchDetailAPI({
                 crewId: params.crewId
             }));
         }
-        , []
+        , [crew]
     );
 
     const onClickUpdateModalHandler = () => {
-        setUpdateIntroModal(true);
+        if(captain === userEmail) {
+            setUpdateIntroModal(true);
+        } else{
+            alert('#경고# 캡틴만 수정할 수 있습니다.');
+        }
     }
 
 
     return (
         <>
-            {updateIntroModal ? <UpdateIntroModal crewIntro={Intro}/> : null}
+            {updateIntroModal ? <UpdateIntroModal crewIntro={intro} setUpdateIntroModal={setUpdateIntroModal}/> : null}
             <div>
                 <div>
                     <ul>
-                        <li><NavLink to={`/main/crewmain/${params.crewId}`} className={`${CrewCSS.crewPage} ${CrewMainCSS.main}`}>크루 메인 페이지</NavLink></li>
+                        <li><NavLink to={`/main/crewmain/${params.crewId}`} className={`${CrewCSS.crewPage} ${CrewMainCSS.main}`}>{crew.crewName}</NavLink></li>
                         <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={CrewCSS.crewPage}>인증게시판</NavLink></li>
                         <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
                     </ul>
@@ -66,7 +81,7 @@ function CrewMain() {
                     // events={events}
                 />
                 <div className={CrewMainCSS.introbox}>
-                    <div className={CrewMainCSS.introdiv}>크루 소개글 : {Intro}</div>
+                    <div className={CrewMainCSS.introdiv}>{intro}</div>
                     <div className={CrewMainCSS.buttondiv}>
                         <div onClick={onClickUpdateModalHandler} className={CrewMainCSS.introEditBtn}>수정하기</div>
                     </div>

@@ -31,7 +31,10 @@ function CreateCrew() {
 
     const onChangeHandler = (e) => {
         const { name, value } = e.target;
-        if (name === 'categoryCode') {
+        if (name === 'crewName' && value.length > 12) {
+            alert('크루 이름은 최대 12글자까지 입력 가능합니다.');
+            e.target.value = '';
+        } else if (name === 'categoryCode') {
             setForm({
                 ...form,
                 crewCategoryCode: { categoryCode: parseInt(value) }
@@ -96,6 +99,7 @@ function CreateCrew() {
                         name="crewName"
                         onChange={onChangeHandler}
                     />
+                    <h6 className={CreateCrewCSS.help}>(최대 12글자)</h6>
                 </div>
                 <div className={CreateCrewCSS.dateDiV}>
                     <h4 className={CreateCrewCSS.startH}>시작 날짜</h4>
