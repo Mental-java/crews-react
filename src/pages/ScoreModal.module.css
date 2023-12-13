@@ -82,4 +82,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
   }
-  
+
+.close:hover {
+    cursor: pointer;
+}

@@ -134,4 +134,7 @@
   .myCrewList td:last-child {
     border-left: none; 
   }
-  
+
+.rate:hover {
+    cursor: pointer;
+}

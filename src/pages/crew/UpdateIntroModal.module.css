@@ -13,12 +13,26 @@
 
 .modalContainer{
     position: absolute;
-    width: 600px;
-    height: 700px;
+    width: 500px;
+    height: 600px;
     padding: 10px;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     z-index: 1000;
+}
+
+.title {
+    width: 300px;
+    height: 20px;
+    background-color: #007bff;
+}
+
+.textbox {
+
+}
+
+.btn {
+
 }

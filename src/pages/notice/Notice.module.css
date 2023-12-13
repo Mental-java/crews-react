@@ -79,3 +79,7 @@ th{
 .listBody{
     width: 100%;
 }
+
+.listBody:hover {
+    cursor: pointer;
+}
