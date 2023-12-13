@@ -66,7 +66,7 @@ function CrewMain() {
                     // events={events}
                 />
                 <div className={CrewMainCSS.introbox}>
-                    <div className={CrewMainCSS.introdiv}>소개글 : {Intro}</div>
+                    <div className={CrewMainCSS.introdiv}>크루 소개글 : {Intro}</div>
                     <div className={CrewMainCSS.buttondiv}>
                         <div onClick={onClickUpdateModalHandler} className={CrewMainCSS.introEditBtn}>수정하기</div>
                     </div>

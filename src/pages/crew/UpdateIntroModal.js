@@ -37,15 +37,18 @@ function UpdateIntroModal({crewIntro}) {
     return(
         <div className={UpdateIntroModalCSS.modal}>
             <div className={UpdateIntroModalCSS.modalContainer}>
+                <div className={UpdateIntroModalCSS.closeBtn}>X</div>
                 <div className={UpdateIntroModalCSS.title}>
                     소개글 수정
                 </div>
-                <div className={UpdateIntroModalCSS.textbox}>
-                    <input type="text" name="introduction" value={form.introduction} onChange={onChangeHandler}/>
+                <br/><br/>
+                <div>
+                    소개글을 입력하세요
                 </div>
-                <div className={UpdateIntroModalCSS.btn}>
-                    <button onClick={onCilckUpdateIntroHandler}>업데이트</button>
+                <div >
+                    <textarea className={UpdateIntroModalCSS.textbox} type="text" name="introduction" value={form.introduction} onChange={onChangeHandler}/>
                 </div>
+                <div onClick={onCilckUpdateIntroHandler} className={UpdateIntroModalCSS.btn}>업데이트</div>
             </div>
         </div>
 
