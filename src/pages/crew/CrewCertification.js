@@ -2,10 +2,13 @@ import {Link, NavLink, useParams} from "react-router-dom";
 import React from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
+import {useSelector} from "react-redux";
 
 function CrewCertification () {
 
     const params = useParams();
+    const crewCertifications = useSelector(state => state.crewSearchListReducer);
+    const crewCertificationList = crewCertifications;
 
     const today = new Date();
     const year = today.getFullYear();
@@ -35,8 +38,26 @@ function CrewCertification () {
             <hr/>
 
             <div>
-
+                <table>
+                    <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>내용</th>
+                        <th>작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Array.isArray(crewCertificationList) && crewCertificationList.map((certification, index) => (
+                        <tr key={index}>
+                            <td>{certification.title}</td>
+                            <td>{certification.content}</td>
+                            <td>{certification.date}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
+
 
         </div>
     );
