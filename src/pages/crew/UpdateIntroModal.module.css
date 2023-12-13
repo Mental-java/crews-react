@@ -13,8 +13,8 @@
 
 .modalContainer{
     position: absolute;
-    width: 500px;
-    height: 600px;
+    width: 600px;
+    height: 450px;
     padding: 10px;
     text-align: center;
     background-color: rgb(255, 255, 255);
@@ -23,16 +23,68 @@
     z-index: 1000;
 }
 
-.title {
-    width: 300px;
+.closeBtn {
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
     height: 20px;
-    background-color: #007bff;
+    padding-top: 4px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.closeBtn:hover {
+    cursor: pointer;
+}
+
+.title {
+    height: 80px;
+    width: 80%;
+    background-color: #000928;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .textbox {
-
+    width: 70%;
+    height: 150px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    appearance: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #ccc;
+    resize: none;
 }
 
 .btn {
+    width: 100px;
+    height: 40px;
+    background-color: #000928;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px; /* 수정 */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.btn:hover {
+    cursor: pointer;
+    background-color: gray;
 }
