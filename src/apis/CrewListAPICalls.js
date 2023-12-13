@@ -9,7 +9,8 @@ import {
     GET_CREWUSER
 } from "../module/CrewUserModule";
 import {
-    PUT_DIAMOND
+    PUT_DIAMOND,
+    PUT_STATUS
 } from "../module/EndCrewModule"
 
 export const callCrewListAPI = ({userId}) => {
@@ -184,6 +185,34 @@ export const callSubmitDiamondAPI = ({userId,diamond}) => {
         })
         .then(response => response.json());
         dispatch({type: PUT_DIAMOND, payload: result.data});
+    }
+
+
+}
+
+//평가하면 버튼 status 변경
+
+export const callChangeScoreStatusAPI = ({userId,crew,scoreStatus}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crewlist/change/status`;
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+                id:{
+                    userId: userId,
+                    crewId: crew
+                },
+                scoreStatus: scoreStatus
+            })
+        })
+        .then(response => response.json());
+        dispatch({type: PUT_STATUS, payload: result.data});
     }
 
 
