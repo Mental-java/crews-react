@@ -6,7 +6,7 @@ import UpdateIntroModalCSS from "./UpdateIntroModal.module.css";
 
 import {callCrewIntroUpdateAPI} from "../../apis/CrewIntroAPICalls";
 
-function UpdateIntroModal({crewIntro}) {
+function UpdateIntroModal({ setIntroModal, crewIntro }) {
 
     const dispatch = useDispatch();
     const params = useParams();
@@ -37,7 +37,7 @@ function UpdateIntroModal({crewIntro}) {
     return(
         <div className={UpdateIntroModalCSS.modal}>
             <div className={UpdateIntroModalCSS.modalContainer}>
-                <div className={UpdateIntroModalCSS.closeBtn}>X</div>
+                <div className={UpdateIntroModalCSS.closeBtn} onClick={() => setIntroModal(false)}>X</div>
                 <div className={UpdateIntroModalCSS.title}>
                     소개글 수정
                 </div>

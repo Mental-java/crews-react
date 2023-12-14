@@ -45,7 +45,7 @@ function CrewMain() {
 
     return (
         <>
-            {updateIntroModal ? <UpdateIntroModal crewIntro={Intro}/> : null}
+            {updateIntroModal ? <UpdateIntroModal setIntroModal={ setIntroModal }/> : null}
             <div>
                 <div>
                     <ul>
