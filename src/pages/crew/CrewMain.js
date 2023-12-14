@@ -46,7 +46,7 @@ function CrewMain() {
                 crewId: params.crewId
             }));
         }
-        , [crew]
+        , [params.crewId]
     );
 
     const onClickUpdateModalHandler = () => {
