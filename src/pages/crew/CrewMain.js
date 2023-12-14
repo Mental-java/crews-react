@@ -37,7 +37,11 @@ function CrewMain() {
     const userEmail = loginUser && loginUser.data ? loginUser.data.userId : null;
 
     console.log(crew.crewId ,'로그인 유저 : ', loginUser.data.userId);
-    console.log(crew.crewId ,'캡틴 : ', captain);
+    console.log(crew.crewId ,'크루아이디 : ');
+    console.log(crew.endDate ,'종료일 : ');
+    console.log(crew.startDate ,'시작일 : ');
+    console.log(crew.crewRecruitmentPost ,'제목 : ');
+
 
     useEffect(
         () => {
@@ -73,11 +77,15 @@ function CrewMain() {
                     firstDay={1}
                     initialView="dayGridMonth"
                     plugins={[dayGridPlugin]}
-
+                    events={[{
+                        id: crew.crewId,
+                        end : crew.endDate,
+                        start : crew.startDate,
+                        title : crew.crewRecruitmentPost,
+                    }]}
                     height={'75vh'}
-                    eventBackgroundColor={'gray'}
-                    eventBorderColor={'lightgray'}
-                    // events={events}
+                    eventBackgroundColor={'#000928'}
+                    eventBorderColor={'#000920'}
                 />
                 <div className={CrewMainCSS.introbox}>
                     <div className={CrewMainCSS.introdiv}>{intro}</div>
