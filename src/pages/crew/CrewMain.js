@@ -39,7 +39,6 @@ function CrewMain() {
     console.log(crew.crewId ,'로그인 유저 : ', loginUser.data.userId);
     console.log(crew.crewId ,'캡틴 : ', captain);
 
-
     useEffect(
         () => {
             dispatch(callCrewSearchDetailAPI({
