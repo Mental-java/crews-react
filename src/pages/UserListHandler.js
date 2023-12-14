@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './UserListHandler.module.css'; // 모듈형 CSS 파일을 import
 import { callSubmitDiamondAPI } from '../apis/CrewListAPICalls';
+import { callChangeScoreStatusAPI } from '../apis/CrewListAPICalls';
 
-function UserListHandler({ userInfo: { user } }) {
+function UserListHandler({ userInfo: { user, scoreStatus,crew } }) {
   const [selectedValue, setSelectedValue] = useState(0);
   const dispatch = useDispatch();
 
@@ -12,9 +13,16 @@ function UserListHandler({ userInfo: { user } }) {
   };
 
   const submitDiamondHandler = () => {
+    
         dispatch(callSubmitDiamondAPI({
             userId: user.userId,
             diamond: selectedValue
+        }));
+
+        dispatch(callChangeScoreStatusAPI({
+            userId: user.userId,
+            crew: crew.crewId,
+            scoreStatus: "yes"
         }));
 
         window.location.reload();
@@ -46,7 +54,9 @@ function UserListHandler({ userInfo: { user } }) {
           </button>
         </td>
         <td>
-          <button onClick={ () => submitDiamondHandler()}>제출</button>
+        {scoreStatus === 'no' && (
+            <button onClick={() => submitDiamondHandler()}>제출</button>
+          )}
         </td>
       </tr>
     </>

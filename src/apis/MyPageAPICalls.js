@@ -2,9 +2,14 @@ import { GET_MYPAGE, PUT_NICKNAME } from "../module/MyPageModule";
 import { GET_ENDCREW } from "../module/EndCrewModule";
 
 
-export const callMyPageListAPI = ({ captain }) => {
-
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/${captain}/mypost`
+export const callMyPageListAPI = ({ currentPage,captain }) => {
+    let requestURL;
+    
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/${captain}/mypost?offset=${currentPage}`;
+    }else {
+        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/list/${captain}/mypost`;
+    }
 
     return async (dispatch, getState) => {
 

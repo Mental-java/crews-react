@@ -78,7 +78,7 @@ function NavBar(){
                                     {/*</NavLink>*/}
 
                                     {Array.isArray(crewList) && crewList.map((crewlist) => (
-                                        <NavLink key={crewlist.crew} to={`/main/crewMain/${crewlist.crew.crewId}`}>
+                                        <NavLink key={crewlist.crew} exact to={`/main/crewMain/${crewlist.crew.crewId}`}>
                                             <CrewListHandler key={crewlist.crew} crewlist={crewlist} />
                                         </NavLink>
                                     ))}

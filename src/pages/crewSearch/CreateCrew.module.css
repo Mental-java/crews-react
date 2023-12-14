@@ -32,7 +32,7 @@
 
 .nameDiv{
     width: 250px;
-    height: 80px;
+    height: 120px;
     position: absolute;
     top: 160px;
     left: 100px;
@@ -49,10 +49,16 @@
     align-items: center;
 }
 
+.help{
+    color: grey;
+    position: absolute;
+    bottom: 0;
+}
+
 .nameInput{
     position: absolute;
     width: 230px;
-    bottom: 5px;
+    bottom: 45px;
     left: 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
