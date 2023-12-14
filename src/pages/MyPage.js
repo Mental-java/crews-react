@@ -97,9 +97,9 @@ function MyPage(){
                         <table>
                             <thead>
                                 <tr>
-                                    <th className={MyPageCSS.barContent} width="200">작성자</th>
-                                    <th className={MyPageCSS.barContent} width="700">제목</th>
-                                    <th className={MyPageCSS.barContent} width="300">작성일</th>
+                                    <th className={MyPageCSS.barContent} width="300px">작성자</th>
+                                    <th className={MyPageCSS.barContent} width="70%">제목</th>
+                                    <th className={MyPageCSS.barContent} width="15%">작성일</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -111,6 +111,7 @@ function MyPage(){
 
                             </tbody>
                         </table>
+                        <br/>
                         <div className={styles.btnMain}>
             <div className={styles.btnDiv}>
                 {Array.isArray(myPageList) &&
