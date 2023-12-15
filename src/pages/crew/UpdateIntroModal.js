@@ -21,6 +21,7 @@ function UpdateIntroModal({crewIntro, setUpdateIntroModal}) {
             ...form,
             [e.target.name]: e.target.value
         })
+        console.log("바뀐값", form.introduction);
     };
 
     const onCilckUpdateIntroHandler = () => {

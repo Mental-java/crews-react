@@ -7,6 +7,9 @@ import {NavLink} from "react-router-dom";
 import CrewCSS from "./CrewCommon.module.css";
 import CrewMainCSS from "./CrewMain.module.css";
 
+import {
+    callCrewIntroListAPI
+} from "../../apis/CrewIntroAPICalls";
 import UpdateIntroModal from "./UpdateIntroModal";
 
 import {

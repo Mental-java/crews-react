@@ -12,9 +12,9 @@ function AdminNavBar(){
                 <div className={AdminNavBarCSS.menuList}>
                     <ul>
                         <li><NavLink to="/admin/notice">공지사항 관리</NavLink></li>
-                        <li><NavLink to="/admin/crewoncontrol">크루원 관리</NavLink></li>
-                        <li><NavLink to="/admin/crewcontrol">크루 관리</NavLink></li>
-                        <li><NavLink to="/admin/crewonreport">크루원 신고 관리</NavLink></li>
+                        <li><NavLink to="/admin/user">크루원 관리</NavLink></li>
+                        <li><NavLink to="/admin/crew">크루 관리</NavLink></li>
+                        <li><NavLink to="/admin/userreport">크루원 신고 관리</NavLink></li>
                         <li><NavLink to="/admin/crewreport">크루 신고 관리</NavLink></li>
                     </ul>
 
