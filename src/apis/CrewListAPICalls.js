@@ -103,6 +103,9 @@ export const callCrewJoinAgreeAPI = ({crewId, userId}) => {
                 },
                 crew:{
                     crewId: crewId
+                },
+                user:{
+                    userId: userId
                 }
             })
         })
