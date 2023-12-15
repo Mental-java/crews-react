@@ -1,28 +1,17 @@
-.crewListBox {
+
+.ListBox {
     margin-left: 20px;
 }
 
-.crewTableHead {
+.tableHead {
     border: 1px solid #000;
     padding: 8px;
     font-weight: bold;
 }
 
-.crewTableBody td{
+.tableBody td{
     border: 1px solid #000;
     padding: 8px;
-}
-
-.crewList td:nth-child(1) {
-    width: 300px;
-}
-
-.crewList td:nth-child(2) {
-    width: 100px;
-}
-
-.crewList td:nth-child(3) {
-    width: 300px;
 }
 
 .btn {
@@ -39,6 +28,28 @@
     margin-top: 20px;
 }
 
-.crewDeleteBtn {
-    border-collapse: revert;
+.logoutBtn {
+    width: 100px;
+    margin-left: 100px;
 }
+
+/* 크루 관리 */
+
+.crewList td:nth-child(1) {
+    width: 300px;
+}
+
+.crewList td:nth-child(2) {
+    width: 100px;
+}
+
+.crewList td:nth-child(3) {
+    width: 300px;
+}
+
+.crewList td:nth-child(4) {
+    width: 60px;
+}
+
+/* 크루원 관리 */
+
