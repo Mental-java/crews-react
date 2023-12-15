@@ -4,9 +4,9 @@ export const callCrewPostAPI = ({ currentPage, crewId }) => {
     let requestURL;
     
     if(currentPage !== undefined || currentPage !== null){
-        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/certificationPost/${crewId}/list?offset=${currentPage}`;
+        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/certificationpost/${crewId}/list?offset=${currentPage}`;
     }else {
-        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/certificationPost/${crewId}/list`;
+        requestURL =  `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/certificationpost/${crewId}/list`;
     }
 
     return async (dispatch, getState) => {
