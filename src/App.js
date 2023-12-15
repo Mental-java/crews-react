@@ -17,6 +17,10 @@ import CrewSearchDetailForCaptian from "./pages/crewSearch/CrewSearchDetailForCa
 import CrewCertification from "./pages/crew/CrewCertification";
 import ActiveStatus from "./pages/crew/ActiveStatus";
 import WritePost from "./pages/crew/WritePost";
+import AdminCrew from "./pages/admin/AdminCrew";
+import AdminUser from "./pages/admin/AdminUser";
+import AdminCrewReport from "./pages/admin/AdminCrewReport";
+import AdminUserReport from "./pages/admin/AdminUserReport";
 
 function App() {
   return (
@@ -54,6 +58,10 @@ function App() {
       <Routes>
           <Route path="admin" element={ <AdminLayout/> }>
             <Route path="notice" element={<AdminNotice/>}/>
+              <Route path="crew" element={<AdminCrew/>}/>
+              <Route path="user" element={<AdminUser/>}/>
+              <Route path="crewreport" element={<AdminCrewReport/>}/>
+              <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
       </Routes>
 
