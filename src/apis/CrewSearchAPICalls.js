@@ -1,4 +1,3 @@
-
 import {
     GET_CREWSEARCHLIST,
     GET_CREWLIST_EXERCISE,
@@ -161,7 +160,7 @@ export const callCrewSearchDetailAPI = ({crewId}) => {
         })
             .then(response => response.json());
         if(result.status === 200){
-            console.log('[CrewSearchAPICalls] callCrewSearchDetailAPI SUCCESS');
+            console.log('[CrewSearchAPICalls] callCrewSearchDetailAPI SUCCESS'+result.data);
             dispatch({type: GET_CREWSEARCH_DETAIL, payload: result.data});
         }
     };

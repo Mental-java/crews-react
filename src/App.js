@@ -23,6 +23,7 @@ import AdminCrewReport from "./pages/admin/AdminCrewReport";
 import AdminUserReport from "./pages/admin/AdminUserReport";
 import AdminLogin from './pages/admin/AdminLogin';
 
+
 function App() {
   return (
    <BrowserRouter>
@@ -60,13 +61,14 @@ function App() {
       <Routes>
           <Route path="admin" element={ <AdminLayout/> }>
            
-            <Route path="notice" element={<AdminNotice/>}/>
+              <Route path="notice" element={<AdminNotice/>}/>
               <Route path="crew" element={<AdminCrew/>}/>
               <Route path="user" element={<AdminUser/>}/>
               <Route path="crewreport" element={<AdminCrewReport/>}/>
               <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
           <Route path="adminlogin" element={<AdminLogin/>}/>
+          
       </Routes>
 
       

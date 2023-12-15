@@ -34,7 +34,7 @@ function CrewMain() {
     const crew = useSelector(state => state.crewSearchListReducer);
     const intro = crew.introduction;
     const captain = crew.captain && crew.captain.userId;
-
+    
     const login = useSelector(state => state.LoginReducer);
     const loginUser = login.userData;
     const userEmail = loginUser && loginUser.data ? loginUser.data.userId : null;
