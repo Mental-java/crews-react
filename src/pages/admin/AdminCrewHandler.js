@@ -26,19 +26,11 @@ function AdminCrewHandler({ crew: {crewId, crewName, captain, introduction, crew
                 <td>
                     <div onClick={ () => onClickCrewHandler(crewId)} >
                         <div>
-
                             <div>
                                 {crewName}
-                            </div>
-
-                            <div>
                                 {crewId}
-                            </div>
-
-                            <div>
                                 {captain}
                             </div>
-
                         </div>
                     </div>
                 </td>
