@@ -44,20 +44,21 @@ th{
 
 .pagingBtn{
     margin: 5px;
-    border-radius: 25px;
-    background-color: white;
-    font-weight: bold;
+    /*border-radius: 25px;*/
+    /*background-color: white;*/
+    /*font-weight: bold;*/
 }
 
-.pagingBtn:hover{
-    cursor: pointer;
-    background-color: burlywood;
-}
+/*.pagingBtn:hover{*/
+/*    cursor: pointer;*/
+/*    background-color: burlywood;*/
+/*}*/
 
 .btnStyle{
     width: 180%;
     align-items: center;
     justify-content: center;
+    margin-left:-20%;
 }
 
 .noticeLists{
