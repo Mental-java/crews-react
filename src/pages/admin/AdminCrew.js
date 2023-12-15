@@ -8,11 +8,44 @@ import {
 
 function AdminCrew() {
 
+    const dispatch = useDispatch();
+    const admin = useSelector(state => state.adminReducer);
+    const crewList = admin.data;
+    const pageInfo = admin.pageInfo();
+
+    const [start, setStart] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageEnd, setPageEnd] = useState(1);
+
+    const pageNumber = [];
+    if(pageInfo){
+        for(let i =1; i <= pageInfo.pageEnd; i++){
+            pageNumber.push(i);
+        }
+    }
+
+    useEffect(
+        () => {
+            setStart((currentPage - 1) * 5);
+            dispatch(callAdminCrewListAPI({
+                currentPage: currentPage
+            }));
+        }
+        ,[currentPage]
+    );
 
 
     return (
         <>
-            테스트
+            <div>
+                <div>
+                    <table>
+                        {
+
+                        }
+                    </table>
+                </div>
+            </div>
         </>
     )
 }
