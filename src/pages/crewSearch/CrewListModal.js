@@ -17,6 +17,8 @@ function CrewListModal({ setCrewListModal }) {
     const params = useParams();
     const crewList = useSelector(state => state.crewListReducer);
 
+    console.log('test ============ ', crewList);
+
     let people = 0;
     const howManyPeople = (crewList) =>{
 

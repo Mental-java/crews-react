@@ -19,3 +19,9 @@ ul {
     height: 4px;
     background-color: #000928;
 }
+
+.crewListTable{
+    margin-left: 10%;
+    width: 80%;
+    height: 90vh;
+}
