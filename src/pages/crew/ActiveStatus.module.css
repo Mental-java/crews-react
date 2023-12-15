@@ -3,3 +3,75 @@
     text-decoration: underline;
 }
 
+.tdDiv{
+    width: 68vw;
+    height: 70px;
+    display: flex;
+    border-bottom: 1px solid #000928;
+}
+
+.nicknameDiv{
+
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.isCaptainDiv{
+    width: 5%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.captainImg{
+    height: 40%;
+}
+
+.diamondDiv{
+
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.diamondImg{
+    height: 20%;
+}
+
+.checkCountDiv{
+
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkBtnDiv{
+
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.checkDiv{
+    width: 80px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
