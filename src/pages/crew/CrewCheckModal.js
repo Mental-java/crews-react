@@ -47,9 +47,11 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
                 <div className={CrewCheckModalCSS.modalContainer}>
                     <div className={CrewCheckModalCSS.main}>
                         <table>
-                            <tr>
-                                <td>{crewCheckList.data[0].user.nickname}</td>
-                            </tr>
+                            {crewCheckList.data && crewCheckList.data.length > 0 &&
+                                <tr>
+                                    <td>{crewCheckList.data[0].user.userId}</td>
+                                </tr>
+                            }
                             {Array.isArray(crewCheckList.data) &&
                                 crewCheckList.data.map((item, index) => (
                                     <tr>

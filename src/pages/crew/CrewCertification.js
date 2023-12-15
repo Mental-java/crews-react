@@ -17,17 +17,18 @@ function CrewCertification () {
     const dispatch = useDispatch();
     const params = useParams();
 
-
     const crewCertifications = useSelector(state => state.crewPageReducer);
-    const crewCertificationList = crewCertifications.data;
+    const crewCertificationList = crewCertifications ? crewCertifications.data : null;
 
     const crew = useSelector(state => state.crewSearchListReducer);
 
-    const pageInfo = crewCertifications.pageInfo;
+    const pageInfo = crewCertifications ? crewCertifications.pageInfo : null;
     const [start, setStart] = useState(0);
     const [currentPage,setCurrentPage] = useState(1);
     const [pageEnd, setPageEnd] = useState(1);
     const pageNumber = [];
+
+    console.log('crewCertificationList ==== ', crewCertificationList);
 
     if(pageInfo){
         for(let i =1; i <= pageInfo.pageEnd; i++){
@@ -88,7 +89,7 @@ function CrewCertification () {
                     <tbody>
                     {Array.isArray(crewCertificationList) && crewCertificationList.map(
                                 (crewCertifications) => (
-                                    <CertificationPostHandler key={ crewCertifications.postId } postInfo= {crewCertifications}/>                            
+                                    <CertificationPostHandler key={ crewCertifications.postId } postInfo= {crewCertifications}/>
                                 )
                             )}
                     </tbody>
