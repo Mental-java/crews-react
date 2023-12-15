@@ -19,6 +19,8 @@ function CreateCrew() {
 
     const today = new Date().toLocaleDateString('en-CA');
 
+    console.log('today + 1 : ', today + 1);
+
     const [form, setForm] = useState( {
         crewName: '',
         captain: {userId: loginUser && loginUser.data ? loginUser.data.userId : null},
@@ -51,10 +53,13 @@ function CreateCrew() {
 
         console.log('[CrewRegistration] onClickCrewRegistrationHandler');
 
-        if(form.crewName === ''){
+        if(form.crewCategoryCode.categoryCode === ''){
+            alert('크루 카테고리를 입력해주세요.');
+            return;
+        } else if(form.crewName === ''){
             alert('크루 이름을 입력해주세요.');
             return;
-        }  else if(form.startDate === '') {
+        } else if(form.startDate === '') {
             alert('시작 날짜를 입력해주세요.');
             return;
         } else if(form.endDate === ''){
@@ -85,7 +90,7 @@ function CreateCrew() {
                 <div className={CreateCrewCSS.categoryDiv}>
                     <h4 className={CreateCrewCSS.radioH}>크루 카테고리 선택</h4>
                     <div className={CreateCrewCSS.radioDiv}>
-                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="1" defaultChecked/>운동</label>
+                        <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="1" />운동</label>
                         <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="2" />공부</label>
                         <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="3" />습관</label>
                         <label><input onChange={onChangeHandler} type="radio" name="categoryCode" value="4" />기타</label>

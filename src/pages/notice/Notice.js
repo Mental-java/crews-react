@@ -43,9 +43,9 @@ function Notice() {
                 <table className={ NoticeCSS.listTable}>
                     <thead>
                     <tr>
-                        <th className={NoticeCSS.barContent} width="700">제목</th>
-                        <th className={NoticeCSS.barContent} width="230">작성자</th>
-                        <th className={NoticeCSS.barContent} width="230">작성일</th>
+                        <th className={NoticeCSS.barContent} width="70%">제목</th>
+                        <th className={NoticeCSS.barContent} width="300px">작성자</th>
+                        <th className={NoticeCSS.barContent} width="15%">작성일</th>
                     </tr>
                     </thead>
                     <tbody className={ NoticeCSS.listBody}>
@@ -67,7 +67,7 @@ function Notice() {
                         {pageNumber.map((num)=> (
                            <li key={num} onClick={() => setCurrentPage(num)}>
                            <button
-                               style={ currentPage === num ? {backgroundColor : 'orange' } : null}
+                               style={ currentPage === num ? {backgroundColor : '#000928' } : null}
                                className={ NoticeCSS.pagingBtn }
                            >
                                {num}
