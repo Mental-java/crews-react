@@ -1,7 +1,26 @@
 import AdminNavBarCSS from './AdminNavBar.module.css';
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
+import {
+    callLogoutAPI
+} from '../../apis/AdminAPICalls';
+import { useDispatch } from 'react-redux';
+
 
 function AdminNavBar(){
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
+
+    const onClickLogoutHandler = () => {
+        window.localStorage.removeItem('accessToken');  
+        //로그아웃
+        dispatch(callLogoutAPI());
+        
+        alert('로그아웃이 되어 메인화면으로 이동합니다.');
+        navigate("/adminlogin", { replace: true })
+        window.location.reload();
+    }
 
     return(
         <aside className={AdminNavBarCSS.sidebar}>
@@ -19,6 +38,10 @@ function AdminNavBar(){
                     </ul>
 
                 </div>
+            <button
+                onClick={ onClickLogoutHandler }>
+                로그아웃
+            </button>
         </aside>
     );
 }

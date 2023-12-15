@@ -5,17 +5,17 @@ const initialState = [];
 export const ADMIN_NOTICE = 'admin/ADMIN_NOTICE';
 export const ADMIN_USERLIST = 'admin/ADMIN_USERLIST';
 export const ADMIN_CREWLIST = 'admin/ADMIN_CREWLIST';
-
 export const ADMIN_USERREPORTLIST = 'admin/ADMIN_USERREPORTLIST';
-
 export const ADMIN_CREWREPORTLIST = 'admin/ADMIN_CREWREPORTLIST';
+export const POST_ADMINLOGIN = 'admin/POST_ADMINLOGIN';
 
 const actions = createActions({
     [ADMIN_NOTICE]: () => {},
     [ADMIN_USERLIST]: () => {},
     [ADMIN_CREWLIST]: () => {},
     [ADMIN_USERREPORTLIST]: () => {},
-    [ADMIN_CREWREPORTLIST]: () => {}
+    [ADMIN_CREWREPORTLIST]: () => {},
+    [POST_ADMINLOGIN]: () => {}
 });
 
 const adminReducer = handleActions(
@@ -38,6 +38,9 @@ const adminReducer = handleActions(
         },
         [ADMIN_CREWREPORTLIST]: (state, {payload}) => {
 
+            return payload;
+        },
+        [POST_ADMINLOGIN]: (state, {payload}) => {
             return payload;
         }
     },
