@@ -21,6 +21,7 @@ import AdminCrew from "./pages/admin/AdminCrew";
 import AdminUser from "./pages/admin/AdminUser";
 import AdminCrewReport from "./pages/admin/AdminCrewReport";
 import AdminUserReport from "./pages/admin/AdminUserReport";
+import AdminLogin from './pages/admin/AdminLogin';
 
 function App() {
   return (
@@ -54,15 +55,18 @@ function App() {
         </Route>
         
       </Routes>
+      
 
       <Routes>
           <Route path="admin" element={ <AdminLayout/> }>
+           
             <Route path="notice" element={<AdminNotice/>}/>
               <Route path="crew" element={<AdminCrew/>}/>
               <Route path="user" element={<AdminUser/>}/>
               <Route path="crewreport" element={<AdminCrewReport/>}/>
               <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
+          <Route path="adminlogin" element={<AdminLogin/>}/>
       </Routes>
 
       
