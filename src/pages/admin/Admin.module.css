@@ -1,0 +1,44 @@
+.crewListBox {
+    margin-left: 20px;
+}
+
+.crewTableHead {
+    border: 1px solid #000;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.crewTableBody td{
+    border: 1px solid #000;
+    padding: 8px;
+}
+
+.crewList td:nth-child(1) {
+    width: 300px;
+}
+
+.crewList td:nth-child(2) {
+    width: 100px;
+}
+
+.crewList td:nth-child(3) {
+    width: 300px;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.btnMain {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+.btnDiv{
+    display: flex;
+    margin-top: 20px;
+}
+
+.crewDeleteBtn {
+    border-collapse: revert;
+}

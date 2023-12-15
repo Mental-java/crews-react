@@ -1,64 +1,26 @@
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import styles from "./Admin.module.css";
 
-function AdminCrewHandler({ crew: {crewId, crewName, captain, introduction, crewCategoryCode, startDate,
-    endDate, crewRecruitmentPost, crewRecruitmentContent, recruitmentStatus, creationDate}}) {
+function AdminCrewHandler( { crew: {crewId, crewName, captain} } ) {
 
     const navigate = useNavigate();
     const login = useSelector(state => state.LoginReducer);
     const loginUser = login.userData;
 
-    const onClickCrewHandler = (crewId) => {
-        console.log("login ==> " + loginUser.data.userId);
-        console.log("pageinfo ==> " + captain.userId);
-
-        if (loginUser.data.userId === captain.userId){
-            navigate(`/main/admin/adminCrew/${crewId}`, {replace: false})
-        } else {
-            navigate(`/main/admin/${crewId}`, {replace: false});
-        }
-    }
-
     return (
 
         <>
-            <tr>
+            <tr className={styles.crewList}>
+                <td>{crewName}</td>
+                <td>{crewId}</td>
+                <td>{captain.userId}</td>
                 <td>
-                    <div onClick={ () => onClickCrewHandler(crewId)} >
-                        <div>
-                            <div>
-                                {crewName}
-                                {crewId}
-                                {captain}
-                            </div>
-                        </div>
-                    </div>
+                    <button className={styles.btn}>삭제</button>
                 </td>
             </tr>
         </>
-
-
     )
-
-    // return(
-    //     <>
-    //         <tr>
-    //             <td>
-    //                 <div>
-    //                     <div>
-    //                         {crewId}
-    //                     </div>
-    //                     <div>
-    //                         {crewName}
-    //                     </div>
-    //                     <div>
-    //                         {captain}
-    //                     </div>
-    //                 </div>
-    //             </td>
-    //         </tr>
-    //     </>
-    // )
 }
 
 export default AdminCrewHandler;
