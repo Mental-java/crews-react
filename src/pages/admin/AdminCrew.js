@@ -5,6 +5,7 @@ import AdminCrewHandler from "./AdminCrewHandler";
 import {
     callAdminCrewListAPI
 } from "../../apis/AdminAPICalls";
+import styles from "./Admin.module.css";
 
 function AdminCrew() {
 
@@ -38,13 +39,63 @@ function AdminCrew() {
 
     return (
         <>
-            <div>
+            <div className={styles.crewListBox}>
+                <h1>크루 관리</h1>
                 <div>
-                    <table>
+                    <input type="text" placeholder="크루 검색..."/>
+                    <button className={styles.btn}>검색</button>
+                </div>
+
+                <br/>
+
+                <div>
+                    <table className={styles.crewTable}>
+                        <thead className={styles.crewTableHead}>
+                            <tr>
+                                <td>크루 이름</td>
+                                <td>크루 아이디</td>
+                                <td>캡틴</td>
+                            </tr>
+                        </thead>
+                        <tbody className={styles.crewTableBody}>
                         {
                             Array.isArray(crewList) && crewList.map((crew) => (<AdminCrewHandler key={ crew.crewId } crew={ crew }/>))
                         }
+                        </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div className={styles.btnMain}>
+                <div className={styles.btnDiv}>
+                    {Array.isArray(crewList) &&
+                        <button
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className={styles.pagingBtn}
+                        >
+                            &lt;
+                        </button>
+                    }
+                    {pageNumber.map((num) => (
+                        <li key={num} onClick={() => setCurrentPage(num)}>
+                            <button
+                                style={ currentPage === num ? {background : '#000928'} : null}
+                                className={styles.pagingBtn}
+                            >
+                                {num}
+                            </button>
+                        </li>
+                    ))}
+                    { Array.isArray(crewList) &&
+                        <button
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                            className={styles.pagingBtn}
+                        >
+                            &gt;
+                        </button>
+                    }
                 </div>
             </div>
         </>

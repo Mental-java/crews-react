@@ -1,4 +1,4 @@
-import AdminNoticeCSS from './AdminNotice.module.css';
+import AdminNoticeCSS from './Admin.module.css';
 
 function AdminNotice(){
 
