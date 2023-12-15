@@ -1,6 +1,6 @@
-
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import AdminCrewHandler from "./AdminCrewHandler";
 
 import {
     callAdminCrewListAPI
@@ -11,7 +11,8 @@ function AdminCrew() {
     const dispatch = useDispatch();
     const admin = useSelector(state => state.adminReducer);
     const crewList = admin.data;
-    const pageInfo = admin.pageInfo();
+
+    const pageInfo = admin.pageInfo;
 
     const [start, setStart] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,7 +42,7 @@ function AdminCrew() {
                 <div>
                     <table>
                         {
-
+                            Array.isArray(crewList) && crewList.map((crew) => (<AdminCrewHandler key={ crew.crewId } crew={ crew }/>))
                         }
                     </table>
                 </div>
