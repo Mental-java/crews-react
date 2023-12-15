@@ -4,7 +4,7 @@ import {
 
 export const callCrewCertificationListAPI = ({crewId}) => {
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/{crewId}/list`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/crew/${crewId}/list`;
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {

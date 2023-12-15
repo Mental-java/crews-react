@@ -33,7 +33,7 @@ export const callAdminCrewListAPI = ({currentPage}) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept" : "*/*",
-                "Access-Control-Allow-Origin": "*"
+                "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
             }
         })
             .then(response => response.json());
