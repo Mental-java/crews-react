@@ -7,13 +7,39 @@ import {
     POST_ADMINLOGIN
 } from "../module/AdminModule"
 
-// export const callNoticeListAPI = ({noticeId}) => {
+// export const callNoticeListAPI = ({currentPage}) => {
 //
 // }
-//
-// export const callUserListAPI = ({userId}) => {
-//
-// }
+
+export const callUserListAPI = ({currentPage}) => {
+
+    let requestURL;
+
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/list?offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/list`;
+    }
+
+    console.log('[AdminAPICalls] AdminCrewListAPI requestURL : ', requestURL);
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "*/*",
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+            .then(response => response.json());
+
+        console.log('[AdminAPICalls] AdminCrewListAPI RESULT : ', result);
+        dispatch({type: ADMIN_USERLIST, payload: result.data});
+
+    };
+
+}
 
 export const callAdminCrewListAPI = ({currentPage}) => {
 
@@ -44,11 +70,11 @@ export const callAdminCrewListAPI = ({currentPage}) => {
     };
 }
 
-// export const callUserReportListAPI = ({userReportId}) => {
+// export const callUserReportListAPI = ({currentPage}) => {
 //
 // }
 //
-// export const callCrewReportListAPI = ({crewReportId}) => {
+// export const callCrewReportListAPI = ({currentPage}) => {
 //
 // }
 

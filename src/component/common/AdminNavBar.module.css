@@ -11,15 +11,26 @@ body {
 ul{
     list-style: none;
 }
-.menuList li{
-    margin-top: 50px;
-    margin-left: 35px;
+.menuList {
+    display: flex;
+    flex-direction: column;
 }
-.menuList a{
+.menuList ul {
+    margin-left: 100px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.menuList li {
+    margin-top: 10px;
+}
+.menuList a {
     font-size: 20px;
     text-decoration: none;
     font-weight: bold;
     color: black;
+    margin-right: 20px;
 }
 .menuList a:hover{
     text-decoration: none;

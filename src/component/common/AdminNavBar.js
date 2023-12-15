@@ -4,7 +4,7 @@ import {
     callLogoutAPI
 } from '../../apis/AdminAPICalls';
 import { useDispatch } from 'react-redux';
-
+import styles from '../../pages/admin/Admin.module.css'
 
 function AdminNavBar(){
 
@@ -39,7 +39,8 @@ function AdminNavBar(){
 
                 </div>
             <button
-                onClick={ onClickLogoutHandler }>
+                onClick={ onClickLogoutHandler }
+                className={styles.logoutBtn}>
                 로그아웃
             </button>
         </aside>

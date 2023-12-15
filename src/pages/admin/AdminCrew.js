@@ -1,11 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import AdminCrewHandler from "./AdminCrewHandler";
+import styles from "./Admin.module.css";
 
 import {
     callAdminCrewListAPI
 } from "../../apis/AdminAPICalls";
-import styles from "./Admin.module.css";
+
 
 function AdminCrew() {
 
@@ -39,7 +40,7 @@ function AdminCrew() {
 
     return (
         <>
-            <div className={styles.crewListBox}>
+            <div className={styles.ListBox}>
                 <h1>크루 관리</h1>
                 <div>
                     <input type="text" placeholder="크루 검색..."/>
@@ -49,15 +50,15 @@ function AdminCrew() {
                 <br/>
 
                 <div>
-                    <table className={styles.crewTable}>
-                        <thead className={styles.crewTableHead}>
+                    <table>
+                        <thead className={styles.tableHead}>
                             <tr>
                                 <td>크루 이름</td>
                                 <td>크루 아이디</td>
                                 <td>캡틴</td>
                             </tr>
                         </thead>
-                        <tbody className={styles.crewTableBody}>
+                        <tbody className={styles.tableBody}>
                         {
                             Array.isArray(crewList) && crewList.map((crew) => (<AdminCrewHandler key={ crew.crewId } crew={ crew }/>))
                         }
