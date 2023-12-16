@@ -70,7 +70,7 @@ function App() {
               <Route path="crewreport" element={<AdminCrewReport/>}/>
               <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
-          <Route path="adminlogin" element={<AdminLogin/>}/>
+          <Route path="admin/login" element={<AdminLogin/>}/>
           <Route path="error" element={<Error/>}/>
           
       </Routes>
