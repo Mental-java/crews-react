@@ -22,7 +22,7 @@ export const callMyCalendarListAPI = ({userId}) => {
     };
 }
 
-export const updateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedContent, updatedStartDate, updatedEndDate }) => {
+export const updateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedContent, updatedStartDate, updatedEndDate, updatedColor }) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/update/${userId}/${userCalendarId}`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -37,6 +37,7 @@ export const updateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedC
                 calendarContent: updatedContent,
                 startDate: updatedStartDate,
                 endDate: updatedEndDate,
+                color: updatedColor
             }),
         });
         console.log("result test==============================>" + result.status)
@@ -48,7 +49,7 @@ export const updateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedC
     };
 };
 
-export const createEventAPI = ({ userId, newTitle, newContent, newStartDate, newEndDate }) => {
+export const createEventAPI = ({ userId, newTitle, newContent, newStartDate, newEndDate, newColor }) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/regist/${userId}`;
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -63,6 +64,7 @@ export const createEventAPI = ({ userId, newTitle, newContent, newStartDate, new
                 calendarContent: newContent,
                 startDate: newStartDate,
                 endDate: newEndDate,
+                color: newColor
             }),
         });
         console.log("result test==============================>" + result.status)
