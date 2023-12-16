@@ -63,8 +63,11 @@ function MyCalendar() {
                         end: calendar.endDate,
                         start: calendar.startDate,
                         title: calendar.title,
+                        backgroundColor : calendar.color,
+                        borderColor : calendar.color,
                         extendedProps: {
-                            content: calendar.calendarContent
+                            content: calendar.calendarContent,
+                            color: calendar.color
                         }
                     }))
                     : []
@@ -74,8 +77,6 @@ function MyCalendar() {
                 editable={true}
                 droppable={true}
                 eventClick={handleEventClick}
-                eventBackgroundColor={'#000928'}
-                eventBorderColor={'#000920'}
                 headerToolbar={{
                     right: 'myCustomButton,today,prev,next',
                 }}
