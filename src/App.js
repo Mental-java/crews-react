@@ -22,6 +22,8 @@ import AdminUser from "./pages/admin/AdminUser";
 import AdminCrewReport from "./pages/admin/AdminCrewReport";
 import AdminUserReport from "./pages/admin/AdminUserReport";
 import AdminLogin from './pages/admin/AdminLogin';
+import Error from './pages/admin/Error';
+import CertificationDetail from './pages/crew/CertificationDetail';
 
 
 function App() {
@@ -51,6 +53,7 @@ function App() {
             <Route path="myCalendar" element={<MyCalendar/>}/>
             <Route path="crewmain/:crewId" element={<CrewMain/>}/>
             <Route path="crewcertification/:crewId" element={<CrewCertification/>}/>
+            <Route path="crewcertification/:postId/detail" element={<CertificationDetail/>}/>
             <Route path="activestatus/:crewId" element={<ActiveStatus/>}/>
             <Route path="writepost" element={<WritePost/>}/>
         </Route>
@@ -67,7 +70,8 @@ function App() {
               <Route path="crewreport" element={<AdminCrewReport/>}/>
               <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
-          <Route path="adminlogin" element={<AdminLogin/>}/>
+          <Route path="admin/login" element={<AdminLogin/>}/>
+          <Route path="error" element={<Error/>}/>
           
       </Routes>
 

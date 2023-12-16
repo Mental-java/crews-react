@@ -24,6 +24,83 @@
 }
 
 .main{
-    background-color: lightgrey;
+    height: 95%;
+}
+
+.userTd{
+    background-color: #007bff;
+    color: white;
+    font-size: 15px;
+    width: 100vw;
+    height: 40px;
+}
+
+.tdDiv{
+    border-bottom: 1px solid lightgrey;
+    height: 55px;
+    display: flex;
+}
+
+.todayDiv{
     height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.checkDiv{
+    width: 50%;
+    height: 100%;
+    margin-left: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.checkBtn{
+    width: 20px;
+    height: 20px;
+}
+
+.closeBtn{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    color: white;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.submitBtn{
+    width: 70px;
+    height: 30px;
+    background-color: #000928;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.submitState{
+    width: 70px;
+    height: 30px;
+    background-color: grey;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    border-radius: 3px;
 }

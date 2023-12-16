@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 
 import {
-    callUserListAPI
+    callAdminCrewListAPI
 } from "../../apis/AdminAPICalls";
 
 import AdminUserHandler from "./AdminUserHandler";
@@ -38,8 +38,9 @@ function AdminUser() {
                 currentPage: currentPage
             }));
         }
-        ,[]
+        ,[currentPage]
     );
+
 
     return (
         <>
@@ -64,7 +65,9 @@ function AdminUser() {
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
-                            Array.isArray(userList) && userList.map((user) => (<AdminUserHandler key={user} user={user}/>))
+                            Array.isArray(userList) && userList.map((user) => (
+                                user && <AdminUserHandler key={ user.userId } user={ user }/>
+                            ))
                         }
                         </tbody>
                     </table>

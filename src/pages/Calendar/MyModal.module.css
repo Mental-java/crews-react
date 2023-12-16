@@ -83,3 +83,9 @@
     background-color: #fa5252;
 }
 
+input[type="color"] {
+    width: 50px;
+    height: 40px;
+    margin-right: 60px;
+}
+

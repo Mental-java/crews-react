@@ -86,50 +86,50 @@
     background-color: #e8f0fe;
 }
 
-.dateDiV{
-    width: 250px;
-    height: 200px;
-    position: absolute;
-    bottom: 230px;
-    left: 100px;
-}
+/*.dateDiV{*/
+/*    width: 250px;*/
+/*    height: 200px;*/
+/*    position: absolute;*/
+/*    bottom: 230px;*/
+/*    left: 100px;*/
+/*}*/
 
-.startH{
-    background-color: #000928;
-    color: white;
-    position: absolute;
-    width: 230px;
-    height: 25px;
-}
+/*.startH{*/
+/*    background-color: #000928;*/
+/*    color: white;*/
+/*    position: absolute;*/
+/*    width: 230px;*/
+/*    height: 25px;*/
+/*}*/
 
-.startDate{
-    position: absolute;
-    width: 225px;
-    left: 0px;
-    top: 50px;
-}
+/*.startDate{*/
+/*    position: absolute;*/
+/*    width: 225px;*/
+/*    left: 0px;*/
+/*    top: 50px;*/
+/*}*/
 
-.endH{
-    background-color: #000928;
-    color: white;
-    position: absolute;
-    width: 230px;
-    height: 25px;
-    top: 80px;
-}
+/*.endH{*/
+/*    background-color: #000928;*/
+/*    color: white;*/
+/*    position: absolute;*/
+/*    width: 230px;*/
+/*    height: 25px;*/
+/*    top: 80px;*/
+/*}*/
 
-.endDate{
-    position: absolute;
-    width: 225px;
-    left: 0px;
-    top: 130px;
-}
+/*.endDate{*/
+/*    position: absolute;*/
+/*    width: 225px;*/
+/*    left: 0px;*/
+/*    top: 130px;*/
+/*}*/
 
 .statusDiv{
     width: 250px;
     height: 100px;
     position: absolute;
-    bottom: 100px;
+    bottom: 300px;
     left: 100px;
 }
 

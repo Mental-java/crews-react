@@ -11,6 +11,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     const [updatedContent, setUpdatedContent] = useState(event?.extendedProps?.content || '');
     const [updatedStartDate, setUpdatedStartDate] = useState(event?.start || '');
     const [updatedEndDate, setUpdatedEndDate] = useState(event?.end || '');
+    const [updatedColor, setUpdatedColor] = useState(event?.color || '');
+    const [updatedBorderColor, setUpdatedBorderColor] = useState(event?.borderColor || '');
+    const [updatedTextColor, setUpdatedTextColor] = useState(event?.textColor || '');
 
     useEffect(() => {
 
@@ -20,6 +23,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
         setUpdatedContent(event.extendedProps.content);
         setUpdatedStartDate('');
         setUpdatedEndDate('');
+        setUpdatedColor(event.extendedProps.color);
+        setUpdatedBorderColor(event.extendedProps.borderColor);
+        setUpdatedTextColor(event.extendedProps.textColor);
     }, [isOpen, event]);
 
     const handleTitleChange = (e) => {
@@ -36,6 +42,18 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
 
     const handleEndDateChange = (e) => {
         setUpdatedEndDate(e.target.value);
+    };
+
+    const handleColorChange = (e) => {
+        setUpdatedColor(e.target.value);
+    };
+
+    const handleBorderColorChange = (e) => {
+        setUpdatedBorderColor(e.target.value);
+    };
+
+    const handleTextColorChange = (e) => {
+        setUpdatedTextColor(e.target.value);
     };
 
     const handleDeleteClick = () => {
@@ -55,6 +73,7 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     };
 
     const handleUpdateClick = () => {
+        console.log("색깔 잘 바꼈나 맛좀보자 ~ ========================>" + updatedColor)
         if (!updatedStartDate || !updatedEndDate) {
             alert('시작일과 종료일을 입력해주세요.');
             return;
@@ -73,6 +92,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
                 updatedContent,
                 updatedStartDate,
                 updatedEndDate,
+                updatedColor,
+                updatedBorderColor,
+                updatedTextColor
             })
         ).then(() => {
             onRequestClose();
@@ -122,6 +144,21 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
                             <input type="datetime-local" value={updatedStartDate} onChange={handleStartDateChange} />
                             <h2>수정할 종료일</h2>
                             <input type="datetime-local" value={updatedEndDate} onChange={handleEndDateChange} />
+                            <div className="colorContainer" style={{ display: "flex", flexDirection: "row" }}>
+                                <div>
+                                    <h3>배경 색상</h3>
+                                    <input type="color" value={updatedColor} onChange={handleColorChange}/>
+                                </div>
+                                <div>
+                                    <h3>테두리 색상</h3>
+                                    <input type="color" value={updatedBorderColor} onChange={handleBorderColorChange}/>
+                                </div>
+                                <div>
+                                    <h3>텍스트 색상</h3>
+                                    <input type="color" value={updatedTextColor} onChange={handleTextColorChange}/>
+                                </div>
+                            </div>
+
                             <button onClick={handleUpdateClick}>적용</button>
                             <button onClick={() => setIsEditMode(false)}>취소</button>
                         </>
