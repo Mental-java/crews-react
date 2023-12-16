@@ -22,6 +22,7 @@ import AdminUser from "./pages/admin/AdminUser";
 import AdminCrewReport from "./pages/admin/AdminCrewReport";
 import AdminUserReport from "./pages/admin/AdminUserReport";
 import AdminLogin from './pages/admin/AdminLogin';
+import Error from './pages/admin/Error';
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
               <Route path="userreport" element={<AdminUserReport/>}/>
           </Route>
           <Route path="adminlogin" element={<AdminLogin/>}/>
+          <Route path="error" element={<Error/>}/>
           
       </Routes>
 

@@ -13,7 +13,7 @@ function AdminNavBar(){
     
 
     const onClickLogoutHandler = () => {
-        window.localStorage.removeItem('accessToken');  
+        window.localStorage.removeItem('adminAccessToken');  
         //로그아웃
         dispatch(callLogoutAPI());
         
