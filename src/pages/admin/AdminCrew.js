@@ -44,7 +44,7 @@ function AdminCrew() {
                 })
             );
         }
-    }, [currentPage, dispatch, navigate, token]);
+    }, [currentPage]);
 
 
     return (
@@ -69,7 +69,9 @@ function AdminCrew() {
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
-                            Array.isArray(crewList) && crewList.map((crew) => (<AdminCrewHandler key={ crew.crewId } crew={ crew }/>))
+                            Array.isArray(crewList) && crewList.map((crew) => (
+                                crew && <AdminCrewHandler key={ crew.crewId } crew={ crew }/>
+                            ))
                         }
                         </tbody>
                     </table>

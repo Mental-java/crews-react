@@ -16,6 +16,10 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
     const params = useParams();
     const crewCheckList = useSelector(state => state.crewCheckReducer);
 
+    const login = useSelector(state => state.LoginReducer);
+    const loginUser = login.userData;
+    const captain = crewCheckList[0] && crewCheckList[0].crew ? crewCheckList[0].crew.captain.userId : null;
+
     console.log('test ===========', crewCheckList);
 
     const pageInfo = crewCheckList.pageInfo;
@@ -63,12 +67,17 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
     const onClickUpdateCrewCheckHandler = () =>{
         console.log('[CrewCheckModal] onClickUpdateCrewCheckHandler form : ', form );
 
-        dispatch(callCrewCheckUpdateAPI({
-            form: form
-        }));
-        setTest(!test);
+        if(captain === loginUser.data.userId) {
+            dispatch(callCrewCheckUpdateAPI({
+                form: form
+            }));
+            setTest(!test);
 
-        alert('인증 처리 하였습니다.');
+            alert('인증 처리 하였습니다.');
+        } else {
+            alert('캡틴만 변경할 수 있습니다.');
+            return;
+        }
     }
 
     const onCLickSetCrewCheckModalHandler= () => {
