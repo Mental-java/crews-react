@@ -6,11 +6,13 @@ import {
 import styles from '../pages/crewSearch/CrewSearch.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {Link} from "react-router-dom";
+
 import { useState } from "react";
 import MypageModal from "./MypageModal";
 import MyCrewHandler from "./MyCrewHandler";
-import profileImage from "../img/level-image.png";
+import levelImg1 from '../img/level-image1.png'
+import levelImg2 from '../img/level-image2.png';
+import levelImg3 from '../img/level-image3.png';
 import EndCrewListHandler from "./EndCrewListHandler";
 
 function MyPage(){
@@ -18,6 +20,9 @@ function MyPage(){
     const dispatch = useDispatch();
     const mypage = useSelector(state => state.myPageReducer);
     const myPageList = mypage.data;
+
+    const login = useSelector(state => state.LoginReducer);
+    const userData = login.userData;
 
     const endCrew = useSelector(state => state.endCrewListReducer);
     const endCrewList = endCrew.data;
@@ -57,6 +62,14 @@ function MyPage(){
         
     }
 
+    let myImage;
+    if (userData.data.diamondCount < 100) {
+        myImage = levelImg1;
+    } else if (userData.data.diamondCount < 200) {
+        myImage = levelImg2;
+    } else {
+        myImage = levelImg3;
+    }
 
     return(
         <>
@@ -65,7 +78,7 @@ function MyPage(){
             <div>
                 <div className={MyPageCSS.upDiv}>
                         <div className={MyPageCSS.nicknameDiv}>
-                            <img src={ profileImage } className={MyPageCSS.levelImage}/>                                                                
+                            <img src={ myImage } className={MyPageCSS.levelImage}/>
                             <p className={MyPageCSS.nickname}>{ localStorage.getItem("nickname") } 
                             <img 
                                 src="../img/editButton.png" 

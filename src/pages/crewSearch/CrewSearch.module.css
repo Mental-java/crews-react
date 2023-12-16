@@ -159,6 +159,11 @@ section .crew-search {
     margin-left: 48%;
 }
 
+.btnDiv2{
+    display: flex;
+    margin-left: 44%;
+}
+
 .crewListMain:hover {
     cursor: pointer;
 }
