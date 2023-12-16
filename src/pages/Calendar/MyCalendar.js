@@ -64,14 +64,18 @@ function MyCalendar() {
                         start: calendar.startDate,
                         title: calendar.title,
                         backgroundColor : calendar.color,
-                        borderColor : calendar.color,
+                        borderColor : calendar.borderColor,
+                        textColor:  calendar.textColor,
                         extendedProps: {
                             content: calendar.calendarContent,
-                            color: calendar.color
+                            color: calendar.color,
+                            borderColor : calendar.borderColor,
+                            textColor : calendar.textColor
                         }
                     }))
                     : []
                 }
+
                 eventDrop={handleEventDrop}
                 height={'95vh'}
                 editable={true}
