@@ -1,8 +1,9 @@
-function CommentHandler({ commentInfo: { userId, commentContent, writeDate}}){
 
-   
+function CommentHandler({ commentInfo: { userId, commentContent, writeDate}}){
     return(
         <>
+       
+           
             <tr>
                     <td>{userId.nickname}</td>
                     <td>{commentContent}</td>

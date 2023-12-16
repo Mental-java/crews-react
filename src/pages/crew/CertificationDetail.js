@@ -13,6 +13,7 @@ import {
     callCommentAPI
 } from "../../apis/CertificationCommentAPICalls";
 import CommentHandler from "../../component/pages/CommentHandler";
+import CommentModal from "../crew/CommentModal";
 
 function CertificationDetail(){
 
@@ -23,6 +24,8 @@ function CertificationDetail(){
 
     const comment = useSelector(state => state.commentReducer);
     const commentList = comment.data;
+    const [commentModal,setCommentModal] = useState(false);
+
 
     const pageInfo = comment.pageInfo;
     const [start, setStart] = useState(0);
@@ -55,6 +58,9 @@ function CertificationDetail(){
         <>
             <div>
             <div>
+            { commentModal ? <CommentModal 
+                     setCommentModal = { setCommentModal }
+                     postId = {params}/> : null }
                 <ul>
                     <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
                     <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
@@ -110,6 +116,11 @@ function CertificationDetail(){
                     </button>
                 }
             </div>
+
+                <button
+                    onClick={() => setCommentModal(true)}>
+                        댓글쓰기
+                    </button>
         </div>
             </div>
         </>
