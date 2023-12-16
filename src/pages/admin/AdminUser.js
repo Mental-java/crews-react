@@ -6,6 +6,7 @@ import styles from "./Admin.module.css";
 import {
     callUserListAPI
 } from "../../apis/AdminAPICalls";
+
 import AdminUserHandler from "./AdminUserHandler";
 
 function AdminUser() {
@@ -13,6 +14,8 @@ function AdminUser() {
     const dispatch = useDispatch();
     const admin = useSelector(state => state.adminReducer);
     const userList = admin.data;
+
+    console.log("test : ", userList);
 
     const pageInfo = admin.pageInfo;
 
@@ -25,6 +28,7 @@ function AdminUser() {
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
         }
+        setPageEnd(pageInfo.pageEnd);
     }
 
     useEffect(
@@ -34,9 +38,8 @@ function AdminUser() {
                 currentPage: currentPage
             }));
         }
-        ,[currentPage]
+        ,[]
     );
-
 
     return (
         <>

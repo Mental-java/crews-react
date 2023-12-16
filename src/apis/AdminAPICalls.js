@@ -6,10 +6,34 @@ import {
     ADMIN_CREWREPORTLIST,
     POST_ADMINLOGIN
 } from "../module/AdminModule"
+import {GET_NOTICE} from "../module/NoticeModule";
 
-// export const callNoticeListAPI = ({currentPage}) => {
-//
-// }
+export const callNoticeListAPI = ({currentPage}) => {
+    let requestURL;
+
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list?offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list`;
+    }
+
+
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+            .then(response => response.json());
+        console.log('[callNoticeList test] Result =======> ', result);
+        dispatch({ type: ADMIN_NOTICE, payload: result.data });
+    };
+}
 
 export const callUserListAPI = ({currentPage}) => {
 
@@ -21,7 +45,7 @@ export const callUserListAPI = ({currentPage}) => {
         requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/userlist`;
     }
 
-    console.log('[AdminAPICalls] AdminCrewListAPI requestURL : ', requestURL);
+    console.log('[AdminAPICalls] AdminUserListAPI requestURL : ', requestURL);
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -34,14 +58,14 @@ export const callUserListAPI = ({currentPage}) => {
         })
             .then(response => response.json());
 
-        console.log('[AdminAPICalls] AdminCrewListAPI RESULT : ', result);
-        dispatch({type: ADMIN_USERLIST, payload: result.data});
+        console.log('[AdminAPICalls] AdminUserListAPI RESULT : ', result);
+        dispatch({type: ADMIN_USERLIST, payload: result});
 
     };
 
 }
 
-export const callAdminCrewListAPI = ({currentPage}) => {
+export const callCrewListAPI = ({currentPage}) => {
 
     let requestURL;
 

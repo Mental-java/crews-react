@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import AdminCrewHandler from "./AdminCrewHandler";
 import styles from "./Admin.module.css";
 import {
-    callAdminCrewListAPI
+    callCrewListAPI
 } from "../../apis/AdminAPICalls";
 import { decodeJwt } from "../utils/tokenUtils";
 import { useNavigate } from "react-router-dom";
