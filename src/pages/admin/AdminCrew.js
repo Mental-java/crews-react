@@ -25,7 +25,6 @@ function AdminCrew() {
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
         }
-        setPageEnd(pageInfo.pageEnd);
     }
 
     useEffect(

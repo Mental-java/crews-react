@@ -15,6 +15,8 @@ function AdminUser() {
     const admin = useSelector(state => state.adminReducer);
     const userList = admin.data;
 
+    console.log("test : ", userList);
+
     const pageInfo = admin.pageInfo;
 
     const [start, setStart] = useState(0);
@@ -32,11 +34,11 @@ function AdminUser() {
     useEffect(
         () => {
             setStart((currentPage - 1) * 5);
-            dispatch(callCrewListAPI({
+            dispatch(callUserListAPI({
                 currentPage: currentPage
             }));
         }
-        ,[currentPage]
+        ,[]
     );
 
     return (
@@ -62,7 +64,7 @@ function AdminUser() {
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
-                            Array.isArray(userList) && userList.map((user) => (<AdminUserHandler key={ user.userId } user={ user }/>))
+                            Array.isArray(userList) && userList.map((user) => (<AdminUserHandler key={user} user={user}/>))
                         }
                         </tbody>
                     </table>
