@@ -4,7 +4,7 @@ import AdminCrewHandler from "./AdminCrewHandler";
 import styles from "./Admin.module.css";
 
 import {
-    callAdminCrewListAPI
+    callCrewListAPI
 } from "../../apis/AdminAPICalls";
 
 
@@ -25,12 +25,13 @@ function AdminCrew() {
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
         }
+        setPageEnd(pageInfo.pageEnd);
     }
 
     useEffect(
         () => {
             setStart((currentPage - 1) * 5);
-            dispatch(callAdminCrewListAPI({
+            dispatch(callCrewListAPI({
                 currentPage: currentPage
             }));
         }

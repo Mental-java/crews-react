@@ -21,7 +21,7 @@ export const callUserListAPI = ({currentPage}) => {
         requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/list`;
     }
 
-    console.log('[AdminAPICalls] AdminCrewListAPI requestURL : ', requestURL);
+    console.log('[AdminAPICalls] AdminUserListAPI requestURL : ', requestURL);
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
@@ -34,14 +34,14 @@ export const callUserListAPI = ({currentPage}) => {
         })
             .then(response => response.json());
 
-        console.log('[AdminAPICalls] AdminCrewListAPI RESULT : ', result);
-        dispatch({type: ADMIN_USERLIST, payload: result.data});
+        console.log('[AdminAPICalls] AdminUserListAPI RESULT : ', result);
+        dispatch({type: ADMIN_USERLIST, payload: result});
 
     };
 
 }
 
-export const callAdminCrewListAPI = ({currentPage}) => {
+export const callCrewListAPI = ({currentPage}) => {
 
     let requestURL;
 

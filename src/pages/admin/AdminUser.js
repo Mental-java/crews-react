@@ -4,8 +4,9 @@ import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 
 import {
-    callAdminCrewListAPI
+    callUserListAPI
 } from "../../apis/AdminAPICalls";
+
 import AdminUserHandler from "./AdminUserHandler";
 
 function AdminUser() {
@@ -25,18 +26,18 @@ function AdminUser() {
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
         }
+        setPageEnd(pageInfo.pageEnd);
     }
 
     useEffect(
         () => {
             setStart((currentPage - 1) * 5);
-            dispatch(callAdminCrewListAPI({
+            dispatch(callCrewListAPI({
                 currentPage: currentPage
             }));
         }
         ,[currentPage]
     );
-
 
     return (
         <>
