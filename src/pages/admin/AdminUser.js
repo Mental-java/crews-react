@@ -64,7 +64,9 @@ function AdminUser() {
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
-                            Array.isArray(userList) && userList.map((user) => (<AdminUserHandler key={user} user={user}/>))
+                            Array.isArray(userList) && userList.map((user) => (
+                                user && <AdminUserHandler key={ user.userId } user={ user }/>
+                            ))
                         }
                         </tbody>
                     </table>

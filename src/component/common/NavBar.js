@@ -8,7 +8,9 @@ import CrewListHandler from './CrewListHandler';
 import callLogoutAPI from '../../apis/LoginAPICalls';
 
 import NavBarCSS from './NavBar.module.css';
-import levelImg from '../../img/level-image.png'
+import levelImg1 from '../../img/level-image1.png';
+import levelImg2 from '../../img/level-image2.png';
+import levelImg3 from '../../img/level-image3.png';
 import diamondImg from '../../img/diamond-image.png';
 
 function NavBar(){
@@ -48,27 +50,35 @@ function NavBar(){
 
   console.log("크루리스트" , crewList);
   console.log("사용자" , userData.data.userId);
+  console.log("다이아몬드갯수" , userData.data.diamondCount);
 
+  let myImage;
+  if (userData.data.diamondCount < 100) {
+      myImage = levelImg1;
+  } else if (userData.data.diamondCount < 200) {
+      myImage = levelImg2;
+  } else {
+      myImage = levelImg3;
+  }
 
-
-    return(
-            <aside className={ NavBarCSS.navAside }>
-                <div className={ NavBarCSS.sideBar}>
-                    <div className={ NavBarCSS.userInfo }>
-                            <img src={levelImg} alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
-                            <p className={NavBarCSS.userName}>{localStorage.getItem("nickname")}</p>
-                            <div className={ NavBarCSS.diamondInfo}>
-                                <img src={diamondImg} alt="보석"/>
-                                <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>
-                            </div>
-                            <div className={ NavBarCSS.logoutButton }>
-                                <button onClick={ onClickLogoutHandler }>로그아웃</button>
-                            </div>
-                            <div className={ NavBarCSS.crewList }>
-                                <h2>내 크루 목록</h2>
-                                <ul
-                                    className={ NavBarCSS.crewBox}
-                                 >
+  return(
+      <aside className={ NavBarCSS.navAside }>
+          <div className={ NavBarCSS.sideBar}>
+              <div className={ NavBarCSS.userInfo }>
+                  <img src={myImage} alt="1레벨 이미지" className={ NavBarCSS.userLogo }/>
+                  <p className={NavBarCSS.userName}>{localStorage.getItem("nickname")}</p>
+                  <div className={ NavBarCSS.diamondInfo}>
+                      <img src={diamondImg} alt="보석"/>
+                      <p className={ NavBarCSS.imageNumber }><p>{userData.data.diamondCount}</p></p>
+                  </div>
+                  <div className={ NavBarCSS.logoutButton }>
+                      <button onClick={ onClickLogoutHandler }>로그아웃</button>
+                  </div>
+                  <div className={ NavBarCSS.crewList }>
+                      <h2>내 크루 목록</h2>
+                      <ul
+                          className={ NavBarCSS.crewBox}
+                      >
                                     {/*<NavLink to={`/main/crewMain/${crew.crewId}`}>*/}
                                     {/*    {Array.isArray(crewList)&& crewList.map(*/}
                                     {/*        (crewlist) => (*/}
@@ -77,22 +87,18 @@ function NavBar(){
                                     {/*    )}*/}
                                     {/*</NavLink>*/}
 
-                                    {Array.isArray(crewList) && crewList.map((crewlist) => (
-                                        <NavLink key={crewlist.crew} exact to={`/main/crewMain/${crewlist.crew.crewId}`}>
-                                            <CrewListHandler key={crewlist.crew} crewlist={crewlist} />
-                                        </NavLink>
-                                    ))}
-
-
-                                </ul>
+                          {Array.isArray(crewList) && crewList.map((crewlist) => (
+                              <NavLink key={crewlist.crew} exact to={`/main/crewMain/${crewlist.crew.crewId}`}>
+                                  <CrewListHandler key={crewlist.crew} crewlist={crewlist} />
+                              </NavLink>
+                          ))}
+                      </ul>
                             </div>
-
-                        </div>
-                    </div>
-                    <div className={ NavBarCSS.introduceBox}></div>
-            </aside>
-
-    );
+              </div>
+          </div>
+          <div className={ NavBarCSS.introduceBox}></div>
+      </aside>
+  );
 }
 
 export default NavBar;

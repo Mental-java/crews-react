@@ -80,26 +80,26 @@ function CrewUpdateModal({crew, setCrewUpdateModal}) {
                                 onChange={onChangeHandler}
                             />
                         </div>
-                        <div className={CrewUpdateModalCSS.dateDiV}>
-                            <h4 className={CrewUpdateModalCSS.startH}>시작 날짜</h4>
-                            <input
-                                className={CrewUpdateModalCSS.startDate}
-                                type="date"
-                                name="startDate"
-                                value={form.startDate}
-                                min={crew.startDate}
-                                onChange={onChangeHandler}
-                            />
-                            <h4 className={CrewUpdateModalCSS.endH}>종료 날짜</h4>
-                            <input
-                                className={CrewUpdateModalCSS.endDate}
-                                type="date"
-                                name="endDate"
-                                min={form.startDate}
-                                value={form.endDate}
-                                onChange={onChangeHandler}
-                            />
-                        </div>
+                        {/*<div className={CrewUpdateModalCSS.dateDiV}>*/}
+                        {/*    <h4 className={CrewUpdateModalCSS.startH}>시작 날짜</h4>*/}
+                        {/*    <input*/}
+                        {/*        className={CrewUpdateModalCSS.startDate}*/}
+                        {/*        type="date"*/}
+                        {/*        name="startDate"*/}
+                        {/*        value={form.startDate}*/}
+                        {/*        min={crew.startDate}*/}
+                        {/*        onChange={onChangeHandler}*/}
+                        {/*    />*/}
+                        {/*    <h4 className={CrewUpdateModalCSS.endH}>종료 날짜</h4>*/}
+                        {/*    <input*/}
+                        {/*        className={CrewUpdateModalCSS.endDate}*/}
+                        {/*        type="date"*/}
+                        {/*        name="endDate"*/}
+                        {/*        min={form.startDate}*/}
+                        {/*        value={form.endDate}*/}
+                        {/*        onChange={onChangeHandler}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                         <div className={CrewUpdateModalCSS.statusDiv}>
                             <h4 className={CrewUpdateModalCSS.statusH}>모집 상태</h4>
                             <div className={CrewUpdateModalCSS.statusRadio}>

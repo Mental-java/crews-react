@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import styles from "./Admin.module.css";
 
-function AdminCrewHandler( { crew: {crewId, crewName, captain} } ) {
+function AdminCrewHandler( { crew: {crewId, crewName, captain = {}} } ) {
 
     const navigate = useNavigate();
     const login = useSelector(state => state.LoginReducer);
