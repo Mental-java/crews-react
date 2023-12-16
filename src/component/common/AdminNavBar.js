@@ -18,7 +18,7 @@ function AdminNavBar(){
         dispatch(callLogoutAPI());
         
         alert('로그아웃이 되어 메인화면으로 이동합니다.');
-        navigate("/adminlogin", { replace: true })
+        navigate("/admin/login", { replace: true })
         window.location.reload();
     }
 

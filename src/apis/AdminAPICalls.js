@@ -16,9 +16,9 @@ export const callUserListAPI = ({currentPage}) => {
     let requestURL;
 
     if(currentPage !== undefined || currentPage !== null){
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/list?offset=${currentPage}`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/userlist?offset=${currentPage}`;
     }else {
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/list`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/user/userlist`;
     }
 
     console.log('[AdminAPICalls] AdminCrewListAPI requestURL : ', requestURL);

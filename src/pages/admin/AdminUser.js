@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 
 import {
-    callAdminCrewListAPI
+    callUserListAPI
 } from "../../apis/AdminAPICalls";
 import AdminUserHandler from "./AdminUserHandler";
 
@@ -30,7 +30,7 @@ function AdminUser() {
     useEffect(
         () => {
             setStart((currentPage - 1) * 5);
-            dispatch(callAdminCrewListAPI({
+            dispatch(callUserListAPI({
                 currentPage: currentPage
             }));
         }
@@ -61,7 +61,9 @@ function AdminUser() {
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
-                            Array.isArray(userList) && userList.map((user) => (<AdminUserHandler key={ user.userId } user={ user }/>))
+                            Array.isArray(userList) && userList.map((user) => (
+                                user && <AdminUserHandler key={ user.userId } user={ user }/>
+                            ))
                         }
                         </tbody>
                     </table>
