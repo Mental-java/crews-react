@@ -3,17 +3,12 @@ import { createActions, handleActions } from "redux-actions";
 const initialState = [];
 
 export const GET_CREWPOST = 'crewPage/GET_CREWPOST';
+export const GET_POSTDETAIL = 'crewPage/GET_POSTDETAIL';
 
-// export const getCrewPost = () => ({
-//     type: GET_CREWPOST,
-//   });
-//
-//   const actions = createActions({
-//       [GET_CREWPOST]: getCrewPost, // 액션 생성자 함수 사용
-//   });
 
 const actions = createActions({
-    [GET_CREWPOST]: () => {}
+    [GET_CREWPOST]: () => {},
+    [GET_POSTDETAIL]: () => {}
 });
   
 
@@ -21,6 +16,9 @@ const actions = createActions({
 const crewPageReducer = handleActions(
     {
         [GET_CREWPOST]: (state, { payload }) => {
+            return payload;
+        },
+        [GET_POSTDETAIL]: (state, { payload = {} })=> {
             return payload;
         }
     },
