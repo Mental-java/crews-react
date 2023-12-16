@@ -2,17 +2,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import AdminCrewHandler from "./AdminCrewHandler";
 import styles from "./Admin.module.css";
-
 import {
     callAdminCrewListAPI
 } from "../../apis/AdminAPICalls";
-
+import { decodeJwt } from "../utils/tokenUtils";
+import { useNavigate } from "react-router-dom";
 
 function AdminCrew() {
 
     const dispatch = useDispatch();
     const admin = useSelector(state => state.adminReducer);
     const crewList = admin.data;
+    const token = decodeJwt(window.localStorage.getItem("adminAccessToken"));
 
     const pageInfo = admin.pageInfo;
 
@@ -27,15 +28,23 @@ function AdminCrew() {
         }
     }
 
-    useEffect(
-        () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // adminAccessToken이 있는지 확인합니다.
+        if (!token) {
+            // Error.js 페이지로 리디렉션합니다.
+            navigate("/error")
+        } else {
+            // adminAccessToken이 있으면 컴포넌트를 계속 진행합니다.
             setStart((currentPage - 1) * 5);
-            dispatch(callAdminCrewListAPI({
-                currentPage: currentPage
-            }));
+            dispatch(
+                callAdminCrewListAPI({
+                    currentPage: currentPage,
+                })
+            );
         }
-        ,[currentPage]
-    );
+    }, [currentPage, dispatch, navigate, token]);
 
 
     return (
