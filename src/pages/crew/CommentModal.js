@@ -1,22 +1,41 @@
 import { useEffect, useState,useRef } from "react";
 import { useDispatch,useSelector } from "react-redux";
 
+import {
+    callCommentRegistAPI
+} from "../../apis/CertificationCommentAPICalls";
+
 function CommentModal({setCommentModal,postId}){
+
+    const dispatch = useDispatch();
 
     const user = useSelector(state => state.LoginReducer);
     const loginUser = user.userData;
+
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState();
     const imageInput = useRef();
 
-    const dispatch = useDispatch();
+
     const [form,setForm] = useState({
-        commentTitle: '',
         commentContent: '',
-        userId: loginUser,
-        postId: postId,
-        
+        userId: {userId:loginUser.data.userId},
+        postId: {postId:postId}
     });
+
+    useEffect(() => {
+            if(image){
+                const fileReader = new FileReader();
+                fileReader.onload = (e) => {
+                    const { result } = e.target;
+                    if( result ){
+                        setImageUrl(result);
+                    }
+                }
+                fileReader.readAsDataURL(image);
+            }
+        },
+        [image]);
 
     const onChangeImageUpload = (e) => {
 
@@ -36,22 +55,19 @@ function CommentModal({setCommentModal,postId}){
         });
     };
 
-    useEffect(() => {
-        if(image){
-            const fileReader = new FileReader();
-            fileReader.onload = (e) => {
-                const { result } = e.target;
-                if( result ){
-                    setImageUrl(result);
-                }
-            }
-            fileReader.readAsDataURL(image);
-        }
-    },
-    [image]);
+    console.log('form: ========= ', form);
 
     const onClickCommentRegistHandler = () => {
-        const formData = new FormData();
+        console.log('onClickCommentRegistHandler start');
+
+        // form 객체에 이미지 데이터 추가
+        if(image){
+            form.commentImage = image;
+        }
+
+        dispatch(callCommentRegistAPI({form}));
+
+        alert('등록되었습니다.');
     }
 
     return (
@@ -94,15 +110,15 @@ function CommentModal({setCommentModal,postId}){
                     <table>
                         <tbody>
                             <tr>
-                                <td><label>댓글제목</label></td>
-                                <td>
-                                    <input 
-                                        name='commentTitle'
-                                        placeholder='댓글제목을 입력하시오'
-                                        type='text'
-                                        onChange={ onChangeHandler }
-                                    />
-                                </td>
+                                {/*<td><label>댓글제목</label></td>*/}
+                                {/*<td>*/}
+                                {/*    <input */}
+                                {/*        name='commentTitle'*/}
+                                {/*        placeholder='댓글제목을 입력하시오'*/}
+                                {/*        type='text'*/}
+                                {/*        onChange={ onChangeHandler }*/}
+                                {/*    />*/}
+                                {/*</td>*/}
                             </tr>    
                             <tr>
                                 <td><label>댓글 내용</label></td>

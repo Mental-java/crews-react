@@ -26,6 +26,8 @@ function CertificationDetail(){
     const commentList = comment.data;
     const [commentModal,setCommentModal] = useState(false);
 
+    console.log('comment =====', commentList);
+    console.log('crew ======', crew);
 
     const pageInfo = comment.pageInfo;
     const [start, setStart] = useState(0);
@@ -60,7 +62,7 @@ function CertificationDetail(){
             <div>
             { commentModal ? <CommentModal 
                      setCommentModal = { setCommentModal }
-                     postId = {params}/> : null }
+                     postId = {params.postId}/> : null }
                 <ul>
                     <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
                     <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
