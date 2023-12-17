@@ -4,7 +4,7 @@ import {
     ADMIN_CREWLIST,
     ADMIN_USERREPORTLIST,
     ADMIN_CREWREPORTLIST,
-    POST_ADMINLOGIN, DELETE_NOTICE, ADMIN_DELETE_NOTICE, ADMIN_CREATE_NOTICE
+    POST_ADMINLOGIN, DELETE_NOTICE, ADMIN_DELETE_NOTICE, ADMIN_CREATE_NOTICE, ADMIN_UPDATE_NOTICE
 } from "../module/AdminModule"
 import {GET_NOTICE, GET_NOTICES} from "../module/NoticeModule";
 import {DELETE_CREW, POST_CREW} from "../module/CrewModule";
@@ -289,4 +289,26 @@ export const callAdminNoticeDeleteAPI = ({noticeId}) => {
         dispatch({type: ADMIN_DELETE_NOTICE, payload: result});
     };
 }
+export const callAdminNoticeUpdateAPI = ({form,noticeId}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list/${noticeId}/update`;
 
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            },
+            body: JSON.stringify( {
+                noticeTitle : form.noticeTitle,
+                noticeContent : form.noticeContent
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[CrewSearchAPICalls] callCrewUpdateAPI RESULT : ', result);
+
+        dispatch({type: ADMIN_UPDATE_NOTICE, payload: result});
+    };
+}
