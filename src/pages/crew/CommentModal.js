@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-modal"; // react-modal 라이브러리 import
 import { callCommentRegistAPI } from "../../apis/CertificationCommentAPICalls";
+import CommentModalCSS from './CommentModal.module.css';
 
 Modal.setAppElement("#root"); // 모달을 사용할 컴포넌트의 루트 엘리먼트 지정
 
@@ -60,64 +61,50 @@ function CommentModal({ setCommentModal, postId }) {
         <Modal
             isOpen={true}
             onRequestClose={() => setCommentModal(false)}
-            style={{
-                content: {
-                    width: '50%', // 원하는 크기로 조절
-                    height: '50%', // 원하는 크기로 조절
-                    margin: 'auto', // 화면 중앙에 위치
-                },
-            }}
+            className={CommentModalCSS.modalStyle}
         >
-            <div>
-                <div>
-                    <button onClick={onClickCommentRegistHandler}>댓글등록</button>
-                    <button onClick={() => setCommentModal(false)}>돌아가기</button>
+            <div className={CommentModalCSS.modalContainer}>
+                <div className={CommentModalCSS.buttonContainer}>
+                    <button className={CommentModalCSS.registerButton} onClick={onClickCommentRegistHandler}>
+                        댓글등록
+                    </button>
+                    <button className={CommentModalCSS.returnButton} onClick={() => setCommentModal(false)}>
+                        돌아가기
+                    </button>
                 </div>
-                <div>
+                <div className={CommentModalCSS.imageContainer}>
                     <div>
-                        <div>
-                            {imageUrl && <img src={imageUrl} alt="image" />}
-                            <input
-                                style={{ display: "none" }}
-                                type="file"
-                                name="commentImage"
-                                accept="image/jpg,image/png,image/jpeg,image/gif"
-                                onChange={onChangeImageUpload}
-                                ref={imageInput}
-                            />
-                            <button onClick={onClickImageUpload}>이미지 업로드</button>
-                        </div>
+                        {imageUrl && <img src={imageUrl} alt="image" className={CommentModalCSS.imagePreview} />}
+                        <input
+                            style={{ display: "none" }}
+                            type="file"
+                            name="commentImage"
+                            accept="image/jpg,image/png,image/jpeg,image/gif"
+                            onChange={onChangeImageUpload}
+                            ref={imageInput}
+                        />
+                        <button className={CommentModalCSS.uploadButton} onClick={onClickImageUpload}>이미지 업로드</button>
                     </div>
-                    <div>
-                        <table>
-                            <tbody>
-                            <tr>
-                                {/*<td><label>댓글제목</label></td>*/}
-                                {/*<td>*/}
-                                {/*    <input */}
-                                {/*        name='commentTitle'*/}
-                                {/*        placeholder='댓글제목을 입력하시오'*/}
-                                {/*        type='text'*/}
-                                {/*        onChange={ onChangeHandler }*/}
-                                {/*    />*/}
-                                {/*</td>*/}
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>댓글 내용</label>
-                                </td>
-                                <td>
-                                    <input
-                                        name="commentContent"
-                                        placeholder="댓글내용을 입력하세요"
-                                        type="text"
-                                        onChange={onChangeHandler}
-                                    />
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                </div>
+                <div className={CommentModalCSS.inputContainer}>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label>댓글 내용</label>
+                            </td>
+                            <td>
+                                <input
+                                    className={CommentModalCSS.inputField}
+                                    name="commentContent"
+                                    placeholder="댓글내용을 입력하세요"
+                                    type="text"
+                                    onChange={onChangeHandler}
+                                />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </Modal>

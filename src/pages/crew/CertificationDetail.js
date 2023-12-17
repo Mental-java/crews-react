@@ -58,31 +58,32 @@ function CertificationDetail(){
 
     return(
         <>
-            <div>
-            <div>
-            { commentModal ? <CommentModal 
-                     setCommentModal = { setCommentModal }
-                     postId = {params.postId}/> : null }
-                <ul>
-                    <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
-                    <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
-                    <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
-                </ul>
-            </div>
-            <hr className={CrewCSS.crewLine}/>
-                <div> 
-                    <ul className={CertificationCSS.detailTitle}>
-                        <div>{certifications.postTitle}</div>
-                        <div>{certifications.postContent}</div>
+            { commentModal ? <CommentModal
+                setCommentModal = { setCommentModal }
+                postId = {params.postId}/> : null }
+                <div>
+                    <ul>
+                        <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
+                        <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
+                        <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
                     </ul>
                 </div>
-
-                <div>
-                    {Array.isArray(commentList) && commentList.map(
-                        (comment) => (
-                            <CommentHandler key = {comment.commentId} commentInfo = {comment}/>
-                        )
-                    )}
+                <hr className={CrewCSS.crewLine}/>
+                <div className={CertificationDetailCSS.mainDiv}>
+                    <div className={CertificationDetailCSS.titleDiv}>
+                        <div className={CertificationDetailCSS.postTitle}>
+                            {certifications.postTitle}
+                        </div>
+                        <div className={CertificationDetailCSS.postContent}>
+                            {certifications.postContent}
+                        </div>
+                    </div>
+                    <div className={CertificationDetailCSS.contentDiv}>
+                        {Array.isArray(commentList) && commentList.map(
+                            (comment) => (
+                                <CommentHandler key = {comment.commentId} commentInfo = {comment}/>
+                            )
+                        )}
 
                 </div>
                 <div className={styles.btnMain}>
