@@ -1,16 +1,16 @@
 .mainDiv{
-    background-color: lightgrey;
+
     height: 85vh;
 }
 
 .titleDiv{
-    background-color: skyblue;
+
     height: 7%;
     display: flex;
 }
 
 .postTitle{
-    background-color: red;
+
     width: 35%;
     height: 100%;
     font-size: 24px;
@@ -20,7 +20,7 @@
 }
 
 .postContent{
-    background-color: greenyellow;
+
     width: 65%;
     height: 100%;
     font-size: 18px;
@@ -29,14 +29,32 @@
     align-items: center;
 }
 
-.contentDiv{
-    background-color: red;
-    height: 93%;
-}
-
-.trDiv{
-    background-color: #65bd68;
-    height: 140px;
+.tdDiv{
+    display: flex;
+    height: 230px;
     width: 86vw;
     border-bottom: 1px solid #000928;
+    position: relative;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.contentDiv{
+
+    width: 40%;
+}
+
+.nicknameDiv{
+
+    height: 20%;
+}
+
+.imageDiv{
+
+    width: 60%;
+}
+
+.commentDiv{
+
+    height: 80%;
 }
