@@ -1,20 +1,22 @@
-
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
-import AdminUserHandler from "./AdminUserHandler";
-
+import AdminUserHandler from "../admin/AdminUserHandler";
+import { decodeJwt } from "../utils/tokenUtils";
 import {
     callUserListAPI
 } from "../../apis/AdminAPICalls";
+import { useNavigate } from "react-router-dom";
 
 function AdminUser() {
 
     const dispatch = useDispatch();
-    const admin = useSelector(state => state.adminReducer);
+    const admin = useSelector(state => state.adminUserReducer);
     const userList = admin.data;
 
-    console.log("test : ", userList);
+    const token = decodeJwt(window.localStorage.getItem("adminAccessToken"));
+    const navigate = useNavigate();
+
 
     const pageInfo = admin.pageInfo;
 
@@ -27,23 +29,26 @@ function AdminUser() {
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
         }
-        setPageEnd(pageInfo.pageEnd);
     }
 
     useEffect(
         () => {
-            setStart((currentPage - 1) * 5);
-            dispatch(callUserListAPI({
-                currentPage: currentPage
-            }));
-        }
-        ,[currentPage]
-    );
+            if(!token){
+                navigate("/error")
+            }else{
+                setStart((currentPage - 1) * 5);
+                dispatch(
+                    callUserListAPI({
+                    currentPage: currentPage
+                    })
+                );
+            }
+        },[currentPage]);
 
 
     return (
-        <>
-            <div className={styles.ListBox}>
+        
+            <div>
                 <h1>크루원 관리</h1>
                 <div>
                     <input type="text" placeholder="크루원 검색..."/>
@@ -63,17 +68,13 @@ function AdminUser() {
                         </tr>
                         </thead>
                         <tbody className={styles.tableBody}>
-                        {
-                            Array.isArray(userList) && userList.map((user) => (
-                                user && <AdminUserHandler key={ user.userId } user={ user }/>
-                            ))
-                        }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div className={styles.btnMain}>
+                        {Array.isArray(userList) && userList.map(
+                                (user) => (
+                                <AdminUserHandler 
+                                    key={ user.userId } user={ user }/>
+                            )
+                        )}
+                       
                 <div className={styles.btnDiv}>
                     {Array.isArray(userList) &&
                         <button
@@ -104,8 +105,14 @@ function AdminUser() {
                         </button>
                     }
                 </div>
+            
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </>
+
+            
+        
     )
 }
 

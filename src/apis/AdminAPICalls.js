@@ -8,6 +8,7 @@ import {
 } from "../module/AdminModule"
 import {GET_NOTICE, GET_NOTICES} from "../module/NoticeModule";
 import {DELETE_CREW, POST_CREW} from "../module/CrewModule";
+import { GET_USERLIST } from "../module/AdminUserListModule";
 
 export const callNoticeListAPI = ({currentPage}) => {
     let requestURL;
@@ -54,13 +55,13 @@ export const callUserListAPI = ({currentPage}) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept" : "*/*",
-                "Access-Control-Allow-Origin": "*"
+                "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
             }
         })
             .then(response => response.json());
 
         console.log('[AdminAPICalls] AdminUserListAPI RESULT : ', result);
-        dispatch({type: ADMIN_USERLIST, payload: result});
+        dispatch({type: GET_USERLIST, payload: result});
 
     };
 
@@ -139,12 +140,12 @@ export const callCrewReportListAPI = ({currentPage}) => {
                 "Accept" : "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
             },
-            body: JSON.stringify({
-                reporter: {userId: form.reporter.userId},
-                crewId: form.crewId,
-                reportCategory: form.reportCategory,
-                reportContent: form.reportCategory
-            })
+            // body: JSON.stringify({
+            //     reporter: {userId: form.reporter.userId},
+            //     crewId: form.crewId,
+            //     reportCategory: form.reportCategory,
+            //     reportContent: form.reportCategory
+            // })
         })
             .then(response => response.json());
 
