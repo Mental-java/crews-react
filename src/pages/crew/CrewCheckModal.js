@@ -18,9 +18,13 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
 
     const login = useSelector(state => state.LoginReducer);
     const loginUser = login.userData;
-    const captain = crewCheckList[0] && crewCheckList[0].crew ? crewCheckList[0].crew.captain.userId : null;
 
-    console.log('test ===========', crewCheckList);
+    console.log('crewCheckList ====', crewCheckList);
+
+    const captain = crewCheckList.data[0] && crewCheckList.data[0].crew && crewCheckList.data[0].crew.captain ? crewCheckList.data[0].crew.captain.userId : null;
+
+    console.log('test ===========', loginUser.data.userId);
+    console.log('captain ======', captain);
 
     const pageInfo = crewCheckList.pageInfo;
 
@@ -56,6 +60,8 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
         , [test, currentPage]
     );
 
+
+
     const onChangeHandler = (e) => {
         const {name, checked} = e.target;
         setForm({
@@ -67,13 +73,20 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
     const onClickUpdateCrewCheckHandler = () =>{
         console.log('[CrewCheckModal] onClickUpdateCrewCheckHandler form : ', form );
 
-        if(captain === loginUser.data.userId) {
-            dispatch(callCrewCheckUpdateAPI({
-                form: form
-            }));
-            setTest(!test);
 
-            alert('인증 처리 하였습니다.');
+
+        if(captain === loginUser.data.userId) {
+           if(form.today === '') {
+               alert('체크박스를 체크해주세요.');
+               return;
+           } else {
+               dispatch(callCrewCheckUpdateAPI({
+                   form: form
+               }));
+               setTest(!test);
+
+               alert('인증 처리 하였습니다.');
+           }
         } else {
             alert('캡틴만 변경할 수 있습니다.');
             return;
