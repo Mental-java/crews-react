@@ -71,14 +71,12 @@ function CertificationDetail(){
             </div>
             <hr className={CrewCSS.crewLine}/>
                 <div> 
-                    <ul>
-                        <li>{certifications.postTitle}</li>
-                        <li>{certifications.postContent}</li>
+                    <ul className={CertificationCSS.detailTitle}>
+                        <div>{certifications.postTitle}</div>
+                        <div>{certifications.postContent}</div>
                     </ul>
                 </div>
-                <div>
-                    {/* 디자인 css */}
-                </div>
+
                 <div>
                     {Array.isArray(commentList) && commentList.map(
                         (comment) => (
