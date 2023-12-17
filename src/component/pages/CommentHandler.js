@@ -1,16 +1,23 @@
+import CertificationDetailCSS from "../../pages/crew/CertificationDetail.module.css"
 
-import styles from '../../pages/crew/CrewCertification.module.css';
-
-
-function CommentHandler({ commentInfo: { userId, commentContent, writeDate}}){
+function CommentHandler({ commentInfo: { userId, commentContent, writeDate, commentImageUrl}}){
     return(
         <>
-            <tr className={styles.commentTitle}>
+            <tr>
+                <td className={CertificationDetailCSS.tdDiv}>
+                    <div className={CertificationDetailCSS.contentDiv}>
+                        <div className={CertificationDetailCSS.nicknameDiv}>
+                            {userId.nickname}&nbsp;&nbsp;&nbsp;{writeDate}
+                        </div>
+                        <div className={CertificationDetailCSS.commentDiv}>
+                            {commentContent}
+                        </div>
+                    </div>
+                    <div className={CertificationDetailCSS.imageDiv}>
+                        <img src={commentImageUrl}/>
+                    </div>
+                </td>
 
-                    <td>{userId.nickname}</td>
-                    <td>{commentContent}</td>
-                    <td>{writeDate}</td>
-                </div>
             </tr>
         </>
     )

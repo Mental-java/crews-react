@@ -53,3 +53,19 @@
 .thead th:nth-child(3) {
     width: 200px;
 }
+
+.detailTitle {
+    font-size: 20px;
+}
+
+.commentTitle td:nth-child(1) {
+    width: 300px;
+}
+
+.commentTitle td:nth-child(2) {
+    width: 500px;
+}
+
+.commentTitle td:nth-child(3) {
+    width: 200px;
+}
