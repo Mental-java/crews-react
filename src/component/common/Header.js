@@ -8,7 +8,7 @@ function Header(){
 
     const onClickLogo = () => {
 
-        navigate("/", { replace: true })
+        navigate("/main", { replace: true })
     }
 
     return(
@@ -19,12 +19,12 @@ function Header(){
                 </div>
                 <nav className={ HeaderCSS.mainNav }>
                     <div className={ HeaderCSS.logoContainer }>
-                        <Link to="/main/myCalendar" onClick={ onClickLogo }>
+                        <Link to="/main" onClick={ onClickLogo }>
                             <img src={mainLogo} alt="메인 로고" className={HeaderCSS.mainLogo}/>
                         </Link>
                     </div>
                     <ul>                           
-                        <li><NavLink to="/main/myCalendar" className={HeaderCSS.mainLink}>내캘린더</NavLink></li>
+                        <li><NavLink to="/main" className={HeaderCSS.mainLink}>내캘린더</NavLink></li>
                         <li><NavLink to="/main/notice" className={HeaderCSS.mainLink}>공지사항</NavLink></li>
                         <li><NavLink to="/main/crewsearch" className={HeaderCSS.mainLink}>크루찾기</NavLink></li>
                         <li><NavLink to="/main/myPage" className={HeaderCSS.mainLink}>나의 활동</NavLink></li>

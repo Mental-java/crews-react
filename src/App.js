@@ -53,7 +53,7 @@ function App() {
             <Route path="crewsearchdetail/:crewId" element={<CrewSearchDetail/>}/>
             <Route path="crewsearchdetail/mycrew/:crewId" element={<CrewSearchDetailForCaptian/>}/>
             <Route path="createcrew" element={<CreateCrew/>}/>
-            <Route path="myCalendar" element={<MyCalendar/>}/>
+            <Route path="" element={<MyCalendar/>}/>
             <Route path="crewmain/:crewId" element={<CrewMain/>}/>
             <Route path="crewcertification/:crewId" element={<CrewCertification/>}/>
             <Route path="crewcertification/:postId/detail" element={<CertificationDetail/>}/>
