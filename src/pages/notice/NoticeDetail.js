@@ -12,6 +12,10 @@ function NoticeDetail(){
     const notice = useSelector(state => state.noticeReducer);
     const params = useParams();
 
+    const handleBackButton = () => {
+        window.history.back();
+    }
+
     useEffect(
         () => {
             dispatch(callNoticeDetailAPI({
@@ -42,7 +46,7 @@ function NoticeDetail(){
                 </div>
             </div>
             <div className={NoticeDetailCSS.backpage}>
-                <p>목록으로 돌아가기</p>
+                <button onClick={handleBackButton}>목록으로 돌아가기</button>
             </div>  
         </>
     )
