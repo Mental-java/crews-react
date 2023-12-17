@@ -139,12 +139,7 @@ export const callCrewReportListAPI = ({currentPage}) => {
                 "Accept" : "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
             },
-            body: JSON.stringify({
-                reporter: {userId: form.reporter.userId},
-                crewId: form.crewId,
-                reportCategory: form.reportCategory,
-                reportContent: form.reportCategory
-            })
+
         })
             .then(response => response.json());
 
