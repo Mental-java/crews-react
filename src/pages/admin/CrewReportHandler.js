@@ -8,14 +8,19 @@ function CrewReportHandler({report: {reporter, reportTarget, reportReason, repor
     const login = useSelector(state => state.LoginReducer);
     const loginUser = login.userData;
 
+    if(!reporter || !reportTarget) {
+        console.error('reporter or reportTarget is undefined');
+        return null;
+    }
+
     return (
 
         <>
             <tr className={styles.crewList}>
                 <td>{reporter.userId}</td>
                 <td>{reportTarget.crewId}</td>
-                <td>{reportReason}</td>
                 <td>{reportCategory}</td>
+                <td>{reportReason}</td>
             </tr>
         </>
     )
