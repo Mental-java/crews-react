@@ -7,8 +7,10 @@ import { useEffect } from "react";
 import NoticeHandler from "../../../component/pages/NoticeHandler";
 import {callAdminNoticeListAPI, callCrewListAPI} from "../../../apis/AdminAPICalls";
 import {decodeJwt} from "../../utils/tokenUtils";
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import AdminNoticeHandler from "./AdminNoticeHandler";
+import AdminNoticeCSS from './AdminNotice.module.css'
+import CreateModalCSS from "../../Calendar/AddEventModal.module.css";
 
 function AdminNotice() {
 
@@ -57,19 +59,20 @@ function AdminNotice() {
             <div>
                 <table>
                     <div>
-                        <NavLink to={"create"}>등록하기</NavLink>
+                        <button onClick={() => navigate("create")} className={AdminNoticeCSS.createButton}>등록하기</button>
                     </div>
                     <thead>
                     <tr>
-                        <th width="70%">제목</th>
-                        <th width="300px">작성자</th>
-                        <th width="15%">작성일</th>
+                        <th width="70%" className={AdminNoticeCSS.header}>제목</th>
+                        <th width="300px" className={AdminNoticeCSS.header}>작성자</th>
+                        <th width="15%" className={AdminNoticeCSS.header}>작성일</th>
                     </tr>
                     </thead>
                     <tbody>
                     {Array.isArray(noticeList) && noticeList.map(
                         (notice) => (
-                            <AdminNoticeHandler  key={notice.noticeId} notice = {notice}/>
+                            <AdminNoticeHandler
+                                key={notice.noticeId} notice = {notice}/>
                         )
                     )}
                     <div style={{ listStyleType: "none", display: "flex"}}>
@@ -84,7 +87,7 @@ function AdminNotice() {
                         {pageNumber.map((num)=> (
                             <li key={num} onClick={() => setCurrentPage(num)}>
                                 <button
-                                    style={ currentPage === num ? {backgroundColor : '#000928' } : null}
+                                    style={ currentPage === num ? {backgroundColor : 'white' } : null}
                                 >
                                     {num}
                                 </button>

@@ -11,6 +11,8 @@ export const POST_ADMINLOGIN = 'admin/POST_ADMINLOGIN';
 export const ADMIN_DELETE_NOTICE = 'admin/ADMIN_DELETE_NOTICE';
 export const ADMIN_CREATE_NOTICE = 'admin/ADMIN_CREATE_NOTICE';
 
+export const ADMIN_UPDATE_NOTICE = 'admin/ADMIN_UPDATE_NOTICE'
+
 const actions = createActions({
     [ADMIN_NOTICE]: () => {},
     [ADMIN_USERLIST]: () => {},
@@ -19,7 +21,8 @@ const actions = createActions({
     [ADMIN_CREWREPORTLIST]: () => {},
     [POST_ADMINLOGIN]: () => {},
     [ADMIN_DELETE_NOTICE]: () => {},
-    [ADMIN_CREATE_NOTICE]: () => {}
+    [ADMIN_CREATE_NOTICE]: () => {},
+    [ADMIN_UPDATE_NOTICE]: () => {}
 });
 
 const adminReducer = handleActions(
@@ -51,6 +54,9 @@ const adminReducer = handleActions(
             return payload;
         },
         [ADMIN_CREATE_NOTICE]: (state, {payload}) => {
+            return payload;
+        },
+        [ADMIN_UPDATE_NOTICE]: (state, {payload}) => {
             return payload;
         }
     },
