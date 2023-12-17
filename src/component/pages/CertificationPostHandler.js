@@ -13,7 +13,7 @@ function CertificationPostHandler({ postInfo: {postId,postTitle, postContent, po
         <>
             <tr
                 onClick={ () => onClickCertificationHandler(postId) }
-                className={styles.certificationTr}
+                className={styles.certificationTable}
             >
                 <td>{postTitle}</td>
                 <td>{postContent}</td>

@@ -5,6 +5,7 @@ import {
 } from '../../apis/AdminAPICalls';
 import { useDispatch } from 'react-redux';
 import styles from '../../pages/admin/Admin.module.css'
+import mainLogo from '../../img/adminLogo.png';
 
 function AdminNavBar(){
 
@@ -25,7 +26,7 @@ function AdminNavBar(){
     return(
         <aside className={AdminNavBarCSS.sidebar}>
             <div className={AdminNavBarCSS.logoContainer}>
-                <img src="img/real-gray-logo.png" alt="메인 로고" className={AdminNavBarCSS.logo}/>
+                <img src={mainLogo} alt="메인 로고" className={AdminNavBarCSS.logo}/>
             </div>
 
                 <div className={AdminNavBarCSS.menuList}>

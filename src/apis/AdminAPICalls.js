@@ -138,7 +138,8 @@ export const callCrewReportListAPI = ({currentPage}) => {
                 "Content-Type": "application/json",
                 "Accept" : "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
-            },
+
+            }
 
         })
             .then(response => response.json());

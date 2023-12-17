@@ -1,10 +1,12 @@
-import CertificationDetailCSS from "../../pages/crew/CertificationDetail.module.css"
+
+import styles from '../../pages/crew/CrewCertification.module.css';
+
 
 function CommentHandler({ commentInfo: { userId, commentContent, writeDate}}){
     return(
         <>
-            <tr>
-                <div className={CertificationDetailCSS.trDiv}>
+            <tr className={styles.commentTitle}>
+
                     <td>{userId.nickname}</td>
                     <td>{commentContent}</td>
                     <td>{writeDate}</td>
