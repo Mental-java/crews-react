@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import NoticeHandler from "../../../component/pages/NoticeHandler";
 import {callAdminNoticeListAPI, callCrewListAPI} from "../../../apis/AdminAPICalls";
 import {decodeJwt} from "../../utils/tokenUtils";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import AdminNoticeHandler from "./AdminNoticeHandler";
 
 function AdminNotice() {
@@ -32,6 +32,7 @@ function AdminNotice() {
         }
     }
 
+
     useEffect(() => {
         // adminAccessToken이 있는지 확인합니다.
         if (!token) {
@@ -48,11 +49,16 @@ function AdminNotice() {
         }
     }, [currentPage]);
 
+
+
     return (
 
         <div>
             <div>
                 <table>
+                    <div>
+                        <NavLink to={"create"}>등록하기</NavLink>
+                    </div>
                     <thead>
                     <tr>
                         <th width="70%">제목</th>
