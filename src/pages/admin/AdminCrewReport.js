@@ -58,15 +58,16 @@ function AdminCrewReport() {
                     <table>
                         <thead className={styles.tableHead}>
                         <tr>
-                            <td>크루 이름</td>
-                            <td>크루 아이디</td>
-                            <td>캡틴</td>
+                            <td>신고자</td>
+                            <td>크루 번호</td>
+                            <td>신고 내역</td>
+                            <td>신고 사유</td>
                         </tr>
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
                             Array.isArray(crewReport) && crewReport.map((report) => (
-                                report && <CrewReportHandler key={ report.crewId } report={report} userId={report.userId} />
+                                report && <CrewReportHandler key={ report.crewId } report={ report } />
                             ))
                         }
                         </tbody>
