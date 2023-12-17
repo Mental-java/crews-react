@@ -30,7 +30,7 @@
 
 .tdDiv{
     display: flex;
-    height: 80px;
+    height: 230px;
     width: 86vw;
     border-bottom: 1px solid #000928;
     position: relative;
@@ -39,6 +39,7 @@
 }
 
 .contentDiv{
+
     width: 40%;
 }
 
@@ -69,8 +70,9 @@
     overflow-y: auto;
     border: 1px solid #000928;
     padding: 5px;
+}
 
-.image{
+.image {
     background-color: lightgrey;
     width: 90px;
     height: 30px;
@@ -78,4 +80,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.commentsWrapper {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #000928;
+    padding: 5px;
 }
