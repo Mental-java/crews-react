@@ -2,12 +2,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
+import AdminUserHandler from "./AdminUserHandler";
 
 import {
     callUserListAPI
 } from "../../apis/AdminAPICalls";
-
-import AdminUserHandler from "./AdminUserHandler";
 
 function AdminUser() {
 
@@ -38,8 +37,9 @@ function AdminUser() {
                 currentPage: currentPage
             }));
         }
-        ,[]
+        ,[currentPage]
     );
+
 
     return (
         <>
