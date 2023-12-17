@@ -66,14 +66,11 @@
     bottom: 0;
 }
 
-.certificationTr td:nth-child(1){
-    width: 200px;
+.certificationTable td{
+    padding: 10px;
 }
 
-.certificationTr td:nth-child(1){
-    width: 300px;
-}
-
-.certificationTr td:nth-child(1){
-    width: 100px;
+.certificationTable td:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
