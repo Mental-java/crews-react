@@ -8,6 +8,7 @@ import styles from '../../pages/crewSearch/CrewSearch.module.css';
 import {Link, NavLink} from "react-router-dom";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
+import CertificationDetailCSS from "./CertificationDetail.module.css";
 import { useState } from "react";
 import {
     callCommentAPI
@@ -58,73 +59,71 @@ function CertificationDetail(){
 
     return(
         <>
-            <div>
-            <div>
-            { commentModal ? <CommentModal 
-                     setCommentModal = { setCommentModal }
-                     postId = {params.postId}/> : null }
-                <ul>
-                    <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
-                    <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
-                    <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
-                </ul>
-            </div>
-            <hr className={CrewCSS.crewLine}/>
-                <div> 
+            { commentModal ? <CommentModal
+                setCommentModal = { setCommentModal }
+                postId = {params.postId}/> : null }
+                <div>
                     <ul>
-                        <li>{certifications.postTitle}</li>
-                        <li>{certifications.postContent}</li>
+                        <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
+                        <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
+                        <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
                     </ul>
                 </div>
-                <div>
-                    {/* 디자인 css */}
-                </div>
-                <div>
-                    {Array.isArray(commentList) && commentList.map(
-                        (comment) => (
-                            <CommentHandler key = {comment.commentId} commentInfo = {comment}/>
-                        )
-                    )}
+                <hr className={CrewCSS.crewLine}/>
+                <div className={CertificationDetailCSS.mainDiv}>
+                    <div className={CertificationDetailCSS.titleDiv}>
+                        <div className={CertificationDetailCSS.postTitle}>
+                            {certifications.postTitle}
+                        </div>
+                        <div className={CertificationDetailCSS.postContent}>
+                            {certifications.postContent}
+                        </div>
+                    </div>
+                    <div className={CertificationDetailCSS.contentDiv}>
+                        {Array.isArray(commentList) && commentList.map(
+                            (comment) => (
+                                <CommentHandler key = {comment.commentId} commentInfo = {comment}/>
+                            )
+                        )}
 
+                    </div>
                 </div>
                 <div className={styles.btnMain}>
-            <div className={styles.btnDiv}>
-                {Array.isArray(commentList) &&
+                    <div className={styles.btnDiv}>
+                        {Array.isArray(commentList) &&
+                            <button
+                                onClick={() => setCurrentPage(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className={styles.pagingBtn}
+                            >
+                                &lt;
+                            </button>
+                        }
+                        {pageNumber.map((num) => (
+                            <li key={num} onClick={() => setCurrentPage(num)}>
+                                <button
+                                    style={ currentPage === num ? {background : '#000928'} : null}
+                                    className={styles.pagingBtn}
+                                >
+                                    {num}
+                                </button>
+                            </li>
+                        ))}
+                        { Array.isArray(commentList) &&
+                            <button
+                                onClick={() => setCurrentPage(currentPage + 1)}
+                                disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                                className={styles.pagingBtn}
+                            >
+                                &gt;
+                            </button>
+                        }
+                    </div>
                     <button
-                        onClick={() => setCurrentPage(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className={styles.pagingBtn}
-                    >
-                        &lt;
-                    </button>
-                }
-                {pageNumber.map((num) => (
-                    <li key={num} onClick={() => setCurrentPage(num)}>
-                        <button
-                            style={ currentPage === num ? {background : '#000928'} : null}
-                            className={styles.pagingBtn}
-                        >
-                            {num}
-                        </button>
-                    </li>
-                ))}
-                { Array.isArray(commentList) &&
-                    <button
-                        onClick={() => setCurrentPage(currentPage + 1)}
-                        disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
-                        className={styles.pagingBtn}
-                    >
-                        &gt;
-                    </button>
-                }
-            </div>
-
-                <button
-                    onClick={() => setCommentModal(true)}>
+                        onClick={() => setCommentModal(true)}>
                         댓글쓰기
                     </button>
-        </div>
-            </div>
+                </div>
         </>
     )
 }
