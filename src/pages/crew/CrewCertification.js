@@ -30,6 +30,8 @@ function CrewCertification () {
 
     console.log('crewCertificationList ==== ', crewCertificationList);
 
+    const crewIdInfo = params.crewId;
+
     if(pageInfo){
         for(let i =1; i <= pageInfo.pageEnd; i++){
             pageNumber.push(i);
@@ -62,9 +64,9 @@ function CrewCertification () {
         <div>
             <div>
                 <ul>
-                    <li><NavLink to={`/main/crewmain/${params.crewId}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
-                    <li><NavLink to={`/main/crewcertification/${params.crewId}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
-                    <li><NavLink to={`/main/activestatus/${params.crewId}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
+                    <li><NavLink to={`/main/crewmain/${crewIdInfo}`} className={CrewCSS.crewPage}>{crew.crewName}</NavLink></li>
+                    <li><NavLink to={`/main/crewcertification/${crewIdInfo}`} className={`${CrewCSS.crewPage} ${CertificationCSS.certification}`}>인증게시판</NavLink></li>
+                    <li><NavLink to={`/main/activestatus/${crewIdInfo}`} className={CrewCSS.crewPage}>활동현황</NavLink></li>
                 </ul>
             </div>
             <hr className={CrewCSS.crewLine}/>
