@@ -1,0 +1,72 @@
+/* CommentModal.module.css */
+.modalStyle {
+    width: 30%;
+    height: 50%;
+    margin: auto;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.modalContainer {
+    padding: 20px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registerButton, .returnButton, .uploadButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registerButton {
+    background-color: #000928;
+}
+
+.registerButton:hover {
+    background-color: #0088ee;
+}
+
+.returnButton {
+    background-color: #000928;
+}
+
+.returnButton:hover {
+    background-color: #0088ee;
+}
+
+.uploadButton {
+    background-color: #000928;
+}
+
+.uploadButton:hover {
+    background-color: #0088ee;
+}
+
+.imageContainer {
+    margin-top: 20px;
+}
+
+.imagePreview {
+    width: 100%;
+    height: auto;
+}
+
+.inputContainer {
+    margin-top: 20px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
