@@ -40,7 +40,7 @@ function AdminCrew() {
             // adminAccessToken이 있으면 컴포넌트를 계속 진행합니다.
             setStart((currentPage - 1) * 5);
             dispatch(
-                callAdminCrewListAPI({
+                callCrewListAPI({
                     currentPage: currentPage,
                 })
             );
