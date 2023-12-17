@@ -49,7 +49,7 @@ function CreateCrew() {
         }
     };
 
-    const onClickCrewRegistrationHandler = (e) => {
+    const onClickCrewRegistrationHandler = () => {
 
         console.log('[CrewRegistration] onClickCrewRegistrationHandler');
 
@@ -79,7 +79,7 @@ function CreateCrew() {
             form: form
         }));
 
-        alert('크루 등록 성공');
+        alert('크루 등록 성공!! \n 크루원들과 함께 열심히 크루 활동을 해보세요.');
         navigate(`/main/crewsearch`, {replace: true});
         window.location.reload();
     }

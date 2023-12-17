@@ -30,7 +30,7 @@
 
 .tdDiv{
     display: flex;
-    height: 230px;
+    height: 110px;
     width: 86vw;
     border-bottom: 1px solid #000928;
     position: relative;
@@ -61,8 +61,10 @@
 }
 
 .commentDiv{
-
     height: 80%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 .commentsWrapper {
@@ -73,10 +75,11 @@
 }
 
 .image {
-    background-color: lightgrey;
+    background-color: #007bff;
+    color: white;
     width: 90px;
     height: 30px;
-    border-radius: 3px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,4 +90,18 @@
     overflow-y: auto;
     border: 1px solid #000928;
     padding: 5px;
+}
+
+.deleteBtn{
+    background-color: lightgrey;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 5px;
 }

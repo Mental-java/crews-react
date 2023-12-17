@@ -45,8 +45,11 @@ function NoticeDetail(){
                     </p>
                 </div>
             </div>
-            <div className={NoticeDetailCSS.backpage}>
-                <button onClick={handleBackButton}>목록으로 돌아가기</button>
+            <div
+                className={NoticeDetailCSS.backpage}
+                onClick={() => handleBackButton()}
+            >
+               목록으로 돌아가기
             </div>  
         </>
     )

@@ -55,6 +55,7 @@ function CommentModal({ setCommentModal, postId }) {
         dispatch(callCommentRegistAPI({ form }));
         alert("등록되었습니다.");
         setCommentModal(false);
+        window.location.reload();
     };
 
     return (

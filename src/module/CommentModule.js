@@ -3,11 +3,13 @@ import {createActions, handleActions} from "redux-actions";
 const initialState = [];
 
 export const GET_CREWCOMMENT = 'comment/GET_CREWCOMMENT';
-export const POST_CREWCOMMNET = 'comment/POST_CREWCOMMNET'
+export const POST_CREWCOMMENT = 'comment/POST_CREWCOMMENT';
+export const DELETE_CREWCOMMENT = 'comment/DELETE_CREWCOMMENT';
 
 const actions = createActions({
     [GET_CREWCOMMENT] : () => {},
-    [POST_CREWCOMMNET] : () => {}
+    [POST_CREWCOMMENT] : () => {},
+    [DELETE_CREWCOMMENT] : () =>{}
 });
 
 const commentReducer = handleActions(
@@ -16,7 +18,11 @@ const commentReducer = handleActions(
 
             return payload;
         },
-        [POST_CREWCOMMNET]: (state, {payload}) => {
+        [POST_CREWCOMMENT]: (state, {payload}) => {
+
+            return payload;
+        },
+        [DELETE_CREWCOMMENT]: (state, {payload}) => {
 
             return payload;
         }

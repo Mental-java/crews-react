@@ -27,9 +27,12 @@
     height: 30px;
     background-color: lightgray;
     float: right;
-    font-size: 10px;
+    font-size: 13px;
     text-align: center;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .backpage:hover {

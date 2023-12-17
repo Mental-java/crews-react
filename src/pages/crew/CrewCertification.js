@@ -1,4 +1,4 @@
-import {Link, NavLink, useParams} from "react-router-dom";
+import {useNavigate, NavLink, useParams} from "react-router-dom";
 import React, {useEffect,useState} from "react";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
@@ -16,11 +16,15 @@ function CrewCertification () {
 
     const dispatch = useDispatch();
     const params = useParams();
+    const navigate = useNavigate();
 
     const crewCertifications = useSelector(state => state.crewPageReducer);
     const crewCertificationList = crewCertifications ? crewCertifications.data : null;
 
     const crew = useSelector(state => state.crewSearchListReducer);
+
+    const login = useSelector(state => state.LoginReducer);
+    const loginUser = login.userData;
 
     const pageInfo = crewCertifications ? crewCertifications.pageInfo : null;
     const [start, setStart] = useState(0);
@@ -59,6 +63,17 @@ function CrewCertification () {
 
     const formattedDate = `${year}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
 
+    const onClickRegistCertificationPostHandler = (captain) => {
+
+        if(captain === loginUser.data.userId) {
+            navigate(`/main/writePost/${crewIdInfo}`);
+        } else {
+            alert('캡틴만 등록할 수 있습니다.');
+            return;
+        }
+
+    }
+
     return(
 
         <div>
@@ -73,9 +88,12 @@ function CrewCertification () {
 
             <div className={CertificationCSS.bar}>
                 <p className={CertificationCSS.date}>오늘 날짜 : {formattedDate}</p>
-                <Link to="/main/writePost" className={CertificationCSS.writeButton}>
+                <div
+                    className={CertificationCSS.writeButton}
+                    onClick={() => onClickRegistCertificationPostHandler(crew.captain.userId)}
+                >
                     글쓰기
-                </Link>
+                </div>
             </div>
             <hr/>
 

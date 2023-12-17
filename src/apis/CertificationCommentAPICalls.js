@@ -1,7 +1,9 @@
 import {
     GET_CREWCOMMENT,
-    POST_CREWCOMMNET
+    POST_CREWCOMMENT,
+    DELETE_CREWCOMMENT
 } from "../module/CommentModule";
+
 
 export const callCommentAPI = ({postId,currentPage}) => {
 
@@ -56,6 +58,30 @@ export const callCommentRegistAPI = ({form}) => {
 
         console.log('[CertificationCommentAPICalls] callCommentRegistAPI result : ', result);
 
-        dispatch({type: POST_CREWCOMMNET, payload : result});
+        dispatch({type: POST_CREWCOMMENT, payload : result});
     };
 };
+
+export const callCommentDeleteAPI = ({commentId}) => {
+
+    console.log('[callCommentDeleteAPI] start');
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/certificationcomment/commentdelete/${commentId}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*"
+            }
+        })
+            .then(response => response.json());
+
+        console.log('[callCommentDeleteAPI] result : ', result);
+
+        dispatch({type: DELETE_CREWCOMMENT, payload: result});
+    }
+
+}
