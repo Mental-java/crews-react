@@ -27,3 +27,29 @@
 .writeButton:hover {
     background-color: #007bff;
 }
+
+.btnMain {
+    list-style-type: none;
+}
+
+.btnDiv{
+    display: flex;
+    padding: 10px;
+}
+
+.thead th {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.thead th:nth-child(1) {
+    width: 300px;
+}
+
+.thead th:nth-child(2) {
+    width: 500px;
+}
+
+.thead th:nth-child(3) {
+    width: 200px;
+}
