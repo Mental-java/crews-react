@@ -48,7 +48,7 @@ function AdminUser() {
 
     return (
         
-            <div>
+            <div className={styles.ListBox}>
                 <h1>크루원 관리</h1>
                 <div>
                     <input type="text" placeholder="크루원 검색..."/>
