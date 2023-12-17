@@ -10,7 +10,6 @@ function CommentHandler({ commentInfo: { userId, commentContent, writeDate}}){
                     <td>{userId.nickname}</td>
                     <td>{commentContent}</td>
                     <td>{writeDate}</td>
-                </div>
             </tr>
         </>
     )
