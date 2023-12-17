@@ -9,6 +9,9 @@ function AdminNoticeUpdate() {
     const dispatch = useDispatch();
     const { noticeId } = useParams();
 
+    const handleBackButton = () => {
+        window.history.back();
+    }
     const handleUpdateNotice = async () => {
         if (noticeTitle.trim() === "" || noticeContent.trim() === "") {
             alert("제목과 내용을 입력해주세요!");
@@ -61,6 +64,7 @@ function AdminNoticeUpdate() {
                     <tr>
                         <td colSpan="2">
                             <button onClick={handleUpdateNotice}>수정하기</button>
+                            <button onClick={handleBackButton}>돌아가기</button>
                         </td>
                     </tr>
                     </tbody>
