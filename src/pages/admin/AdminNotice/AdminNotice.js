@@ -1,19 +1,23 @@
-
 import {
     callNoticeListAPI
-} from '../../apis/AdminAPICalls'
+} from '../../../apis/NoticeAPICalls'
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
 import { useEffect } from "react";
-import NoticeHandler from "../../component/pages/NoticeHandler";
-import styles from "./Admin.module.css";
+import NoticeHandler from "../../../component/pages/NoticeHandler";
+import {callAdminNoticeListAPI, callCrewListAPI} from "../../../apis/AdminAPICalls";
+import {decodeJwt} from "../../utils/tokenUtils";
+import {useNavigate} from "react-router-dom";
+import AdminNoticeHandler from "./AdminNoticeHandler";
 
-
-function AdminNotice(){
+function AdminNotice() {
 
     const dispatch = useDispatch();
     const notice = useSelector(state => state.noticeReducer);
     const noticeList = notice.data;
+
+    const token = decodeJwt(window.localStorage.getItem("adminAccessToken"));
+    const navigate = useNavigate();
 
     const pageInfo = notice.pageInfo;
 
@@ -28,40 +32,45 @@ function AdminNotice(){
         }
     }
 
-    useEffect(
-        () => {
-            setStart((currentPage -1 )*5);
-            dispatch(callNoticeListAPI({
-                currentPage : currentPage
-            }));
+    useEffect(() => {
+        // adminAccessToken이 있는지 확인합니다.
+        if (!token) {
+            // Error.js 페이지로 리디렉션합니다.
+            navigate("/error")
+        } else {
+            // adminAccessToken이 있으면 컴포넌트를 계속 진행합니다.
+            setStart((currentPage - 1) * 5);
+            dispatch(
+                callAdminNoticeListAPI({
+                    currentPage: currentPage,
+                })
+            );
         }
-        , [currentPage]
-    );
+    }, [currentPage]);
 
-    return(
+    return (
 
-        <div className={styles.noticeMain}>
-            <div className={styles.informationBar}>
-                <table className={ styles.listTable}>
+        <div>
+            <div>
+                <table>
                     <thead>
                     <tr>
-                        <th className={styles.barContent} width="70%">제목</th>
-                        <th className={styles.barContent} width="300px">작성자</th>
-                        <th className={styles.barContent} width="15%">작성일</th>
+                        <th width="70%">제목</th>
+                        <th width="300px">작성자</th>
+                        <th width="15%">작성일</th>
                     </tr>
                     </thead>
-                    <tbody className={ styles.listBody}>
+                    <tbody>
                     {Array.isArray(noticeList) && noticeList.map(
                         (notice) => (
-                            <NoticeHandler  key={notice.noticeId} notice = {notice}/>
+                            <AdminNoticeHandler  key={notice.noticeId} notice = {notice}/>
                         )
                     )}
-                    <div style={{ listStyleType: "none", display: "flex"}} className = {styles.btnStyle}>
+                    <div style={{ listStyleType: "none", display: "flex"}}>
                         {Array.isArray(noticeList) &&
                             <button
                                 onClick={() => setCurrentPage(currentPage - 1)}
                                 disabled={currentPage === 1 }
-                                className = { styles.pagingBtn}
                             >
                                 &lt;
                             </button>
@@ -70,7 +79,6 @@ function AdminNotice(){
                             <li key={num} onClick={() => setCurrentPage(num)}>
                                 <button
                                     style={ currentPage === num ? {backgroundColor : '#000928' } : null}
-                                    className={ styles.pagingBtn }
                                 >
                                     {num}
                                 </button>
@@ -78,7 +86,6 @@ function AdminNotice(){
                         ))}
                         { Array.isArray(noticeList) &&
                             <button
-                                className={ styles.pagingBtn }
                                 onClick={() => setCurrentPage(currentPage + 1)}
                                 disabled={currentPage === pageInfo.pageEnd  || pageInfo.total == 0}
                             >
@@ -92,7 +99,7 @@ function AdminNotice(){
             </div>
         </div>
 
-    );
+    )
 }
 
 export default AdminNotice;
