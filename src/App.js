@@ -25,6 +25,7 @@ import AdminLogin from './pages/admin/AdminLogin';
 import Error from './pages/admin/Error';
 import CertificationDetail from './pages/crew/CertificationDetail';
 import AdminNoticeDetail from "./pages/admin/AdminNotice/AdminNoticeDetail";
+import AdminNoticeCreate from "./pages/admin/AdminNotice/AdminNoticeCreate";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="main" element={ <Layout/> }>
             <Route path="notice" element={<Notice/>}/>
             <Route path="noticeDetail/:noticeId" element={<NoticeDetail/>}/>
+            <Route path="notiec/create" element={<AdminNoticeCreate/>}/>
             <Route path="mypage" element={<MyPage/>}/>
             <Route path="crewsearch" element={<CrewSearchPage/>}/>
             <Route path="crewsearchdetail/:crewId" element={<CrewSearchDetail/>}/>
@@ -67,6 +69,7 @@ function App() {
            
               <Route path="notice" element={<AdminNotice/>}/>
               <Route path="noticedetail/:noticeId" element={<AdminNoticeDetail/>}/>
+              <Route path="notice/create" element={<AdminNoticeCreate/>}/>
               <Route path="crew" element={<AdminCrew/>}/>
               <Route path="user" element={<AdminUser/>}/>
               <Route path="crewreport" element={<AdminCrewReport/>}/>
