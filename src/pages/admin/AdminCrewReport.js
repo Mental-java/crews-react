@@ -5,6 +5,7 @@ import styles from "./Admin.module.css";
 import {useNavigate} from "react-router-dom";
 import {callCrewReportListAPI} from "../../apis/AdminAPICalls";
 import CrewReportHandler from "./CrewReportHandler";
+import {decodeJwt} from "../utils/tokenUtils";
 
 
 function AdminCrewReport() {
@@ -12,6 +13,7 @@ function AdminCrewReport() {
     const dispatch = useDispatch();
     const admin = useSelector(state => state.adminReducer);
     const crewReport = admin.data;
+    const token = decodeJwt(window.localStorage.getItem("adminAccessToken"));
 
     const pageInfo = admin.pageInfo;
 
@@ -64,7 +66,7 @@ function AdminCrewReport() {
                         <tbody className={styles.tableBody}>
                         {
                             Array.isArray(crewReport) && crewReport.map((report) => (
-                                report && <CrewReportHandler key={ report.crewId } report={ report }/>
+                                report && <CrewReportHandler key={ report.crewId } report={report} userId={report.userId} />
                             ))
                         }
                         </tbody>
@@ -74,7 +76,7 @@ function AdminCrewReport() {
 
             <div className={styles.btnMain}>
                 <div className={styles.btnDiv}>
-                    {Array.isArray(crewList) &&
+                    {Array.isArray(admin) &&
                         <button
                             onClick={() => setCurrentPage(currentPage - 1)}
                             disabled={currentPage === 1}
@@ -93,7 +95,7 @@ function AdminCrewReport() {
                             </button>
                         </li>
                     ))}
-                    { Array.isArray(crewList) &&
+                    { Array.isArray(admin) &&
                         <button
                             onClick={() => setCurrentPage(currentPage + 1)}
                             disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
