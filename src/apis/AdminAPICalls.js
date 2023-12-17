@@ -150,10 +150,8 @@ export const callCrewReportListAPI = ({currentPage}) => {
 
 
             }
-
-
-        })
-            .then(response => response.json());
+        )
+         .then(response => response.json());
 
         console.log('[AdminAPICalls] AdminCrewReportListAPI RESULT : ', result);
         dispatch({type: ADMIN_CREWREPORTLIST, payload: result.data});
