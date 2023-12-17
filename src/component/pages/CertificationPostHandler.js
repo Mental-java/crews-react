@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import styles from "../../component/pages/CrewSearchHandler.module.css";
 
 function CertificationPostHandler({ postInfo: {postId,postTitle, postContent, postDate}}){
 
@@ -12,6 +13,7 @@ function CertificationPostHandler({ postInfo: {postId,postTitle, postContent, po
         <>
             <tr
                 onClick={ () => onClickCertificationHandler(postId) }
+                className={styles.certificationTr}
             >
                 <td>{postTitle}</td>
                 <td>{postContent}</td>

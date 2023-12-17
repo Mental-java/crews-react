@@ -65,3 +65,15 @@
     right: 0;
     bottom: 0;
 }
+
+.certificationTr td:nth-child(1){
+    width: 200px;
+}
+
+.certificationTr td:nth-child(1){
+    width: 300px;
+}
+
+.certificationTr td:nth-child(1){
+    width: 100px;
+}
