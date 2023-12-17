@@ -7,6 +7,10 @@ function AdminNoticeCreate() {
     const [noticeContent, setNoticeContent] = useState("");
     const dispatch = useDispatch();
 
+    const handleBackButton = () => {
+        window.history.back();
+    }
+
     const handleCreateNotice = async () => {
         if (noticeTitle.trim() === "" || noticeContent.trim() === "") {
             alert("제목과 내용을 입력해주세요!");
@@ -58,6 +62,7 @@ function AdminNoticeCreate() {
                     <tr>
                         <td colSpan="2">
                             <button onClick={handleCreateNotice}>등록하기</button>
+                            <button onClick={handleBackButton}>돌아가기</button>
                         </td>
                     </tr>
                     </tbody>
