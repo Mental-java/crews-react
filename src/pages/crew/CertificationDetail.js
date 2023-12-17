@@ -81,14 +81,14 @@ function CertificationDetail(){
                             {certifications.postContent}
                         </div>
                     </div>
-                    <div className={CertificationDetailCSS.contentDiv}>
+                    <div className={CertificationDetailCSS.commentsWrapper}>
                         {Array.isArray(commentList) && commentList.map(
                             (comment) => (
-                                <CommentHandler key = {comment.commentId} commentInfo = {comment}/>
+                                <CommentHandler key={comment.commentId} commentInfo={comment} />
                             )
                         )}
+                    </div>
 
-                </div>
                 <div className={styles.btnMain}>
             <div className={styles.btnDiv}>
                 {Array.isArray(commentList) &&

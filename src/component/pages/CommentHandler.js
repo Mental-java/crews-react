@@ -32,7 +32,6 @@ function CommentHandler({ commentInfo: { userId, commentContent, writeDate, comm
                         </div>
                     </div>
                 </td>
-
             </tr>
         </>
     )
