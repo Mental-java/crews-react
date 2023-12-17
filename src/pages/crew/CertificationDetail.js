@@ -14,6 +14,7 @@ import {
 } from "../../apis/CertificationCommentAPICalls";
 import CommentHandler from "../../component/pages/CommentHandler";
 import CommentModal from "../crew/CommentModal";
+import CertificationDetailCSS from "./CertificationDetail.module.css";
 
 function CertificationDetail(){
 
