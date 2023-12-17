@@ -2,24 +2,27 @@ import CertificationDetailCSS from "../../pages/crew/CertificationDetail.module.
 
 function CommentHandler({ commentInfo: { userId, commentContent, writeDate, commentImageUrl}}){
     return(
-        <>
-            <tr>
-                <td className={CertificationDetailCSS.tdDiv}>
-                    <div className={CertificationDetailCSS.contentDiv}>
-                        <div className={CertificationDetailCSS.nicknameDiv}>
-                            {userId.nickname}&nbsp;&nbsp;&nbsp;{writeDate}
+        <div className={CertificationDetailCSS.scrollableWrapper}>
+            <table>
+                <tbody>
+                <tr>
+                    <td className={CertificationDetailCSS.tdDiv}>
+                        <div className={CertificationDetailCSS.contentDiv}>
+                            <div className={CertificationDetailCSS.nicknameDiv}>
+                                {userId.nickname}&nbsp;&nbsp;&nbsp;{writeDate}
+                            </div>
+                            <div className={CertificationDetailCSS.commentDiv}>
+                                {commentContent}
+                            </div>
                         </div>
-                        <div className={CertificationDetailCSS.commentDiv}>
-                            {commentContent}
+                        <div className={CertificationDetailCSS.imageDiv}>
+                            <img src={commentImageUrl} alt="Comment Image"/>
                         </div>
-                    </div>
-                    <div className={CertificationDetailCSS.imageDiv}>
-                        <img src={commentImageUrl}/>
-                    </div>
-                </td>
-
-            </tr>
-        </>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     )
 }
 

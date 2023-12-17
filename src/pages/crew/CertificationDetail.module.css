@@ -1,5 +1,4 @@
 .mainDiv{
-
     height: 85vh;
 }
 
@@ -57,4 +56,11 @@
 .commentDiv{
 
     height: 80%;
+}
+
+.commentsWrapper {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #000928;
+    padding: 5px;
 }
