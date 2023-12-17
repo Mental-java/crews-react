@@ -8,7 +8,7 @@ import CreateCrew from "./pages/crewSearch/CreateCrew";
 import Login from './pages/login/Login';
 import LoginHandler from './pages/login/LoginHandler';
 import AdminLayout from "./layouts/AdminLayout";
-import AdminNotice from "./pages/admin/AdminNotice";
+import AdminNotice from "./pages/admin/AdminNotice/AdminNotice";
 import MyCalendar from "./pages/Calendar/MyCalendar";
 import CrewMain from "./pages/crew/CrewMain";
 import CrewSearchPage from "./pages/crewSearch/CrewSearchPage";
@@ -24,6 +24,7 @@ import AdminUserReport from "./pages/admin/AdminUserReport";
 import AdminLogin from './pages/admin/AdminLogin';
 import Error from './pages/admin/Error';
 import CertificationDetail from './pages/crew/CertificationDetail';
+import AdminNoticeDetail from "./pages/admin/AdminNotice/AdminNoticeDetail";
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
           <Route path="admin" element={ <AdminLayout/> }>
            
               <Route path="notice" element={<AdminNotice/>}/>
+              <Route path="noticedetail/:noticeId" element={<AdminNoticeDetail/>}/>
               <Route path="crew" element={<AdminCrew/>}/>
               <Route path="user" element={<AdminUser/>}/>
               <Route path="crewreport" element={<AdminCrewReport/>}/>

@@ -2,11 +2,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import AdminCrewHandler from "./AdminCrewHandler";
 import styles from "./Admin.module.css";
-import {
-    callCrewListAPI
-} from "../../apis/AdminAPICalls";
 import { decodeJwt } from "../utils/tokenUtils";
 import { useNavigate } from "react-router-dom";
+import {callCrewListAPI} from "../../apis/AdminAPICalls";
 
 function AdminCrew() {
 
@@ -39,7 +37,7 @@ function AdminCrew() {
             // adminAccessToken이 있으면 컴포넌트를 계속 진행합니다.
             setStart((currentPage - 1) * 5);
             dispatch(
-                callAdminCrewListAPI({
+                callCrewListAPI({
                     currentPage: currentPage,
                 })
             );
