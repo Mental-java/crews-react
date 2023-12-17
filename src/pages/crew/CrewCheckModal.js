@@ -21,7 +21,8 @@ function CrewCheckModal({userId, setCrewCheckModal}) {
 
     console.log('crewCheckList ====', crewCheckList);
 
-    const captain = crewCheckList.data[0] && crewCheckList.data[0].crew && crewCheckList.data[0].crew.captain ? crewCheckList.data[0].crew.captain.userId : null;
+    const captain = crewCheckList && crewCheckList.data && crewCheckList.data[0] && crewCheckList.data[0].crew &&
+                                crewCheckList.data[0].crew.captain ? crewCheckList.data[0].crew.captain.userId : null;
 
     console.log('test ===========', loginUser.data.userId);
     console.log('captain ======', captain);

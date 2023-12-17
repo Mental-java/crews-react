@@ -61,7 +61,7 @@ export const callUserListAPI = ({currentPage}) => {
             .then(response => response.json());
 
         console.log('[AdminAPICalls] AdminUserListAPI RESULT : ', result);
-        dispatch({type: GET_USERLIST, payload: result});
+        dispatch({type: GET_USERLIST, payload: result.data});
 
     };
 
