@@ -37,13 +37,18 @@ function MyCalendar() {
         setAddEventModalOpen(false);
     };
     const handleEventDrop = (info) => {
+        console.log("Start Date=========================>:", info.event.start);
+        console.log("End Date=======================>:", info.event.end);
         const updatedEvent = {
             userId: userData.data.userId,
             userCalendarId: info.event.id,
             updatedTitle: info.event.title,
             updatedContent: info.event.extendedProps.content,
             updatedStartDate: info.event.start,
-            updatedEndDate: info.event.end
+            updatedEndDate: info.event.end,
+            updatedColor : info.event.backgroundColor,
+            updatedBorderColor:info.event.borderColor,
+            updatedTextColor:info.event.textColor
         };
 
         dispatch(updateEventAPI(updatedEvent));
@@ -54,6 +59,7 @@ function MyCalendar() {
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}
+                allDay={false}
                 initialView="dayGridMonth"
                 plugins={[dayGridPlugin , interactionPlugin]}
                 events={Array.isArray(myCalendarList)
