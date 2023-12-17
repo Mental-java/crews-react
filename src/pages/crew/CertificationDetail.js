@@ -8,7 +8,6 @@ import styles from '../../pages/crewSearch/CrewSearch.module.css';
 import {Link, NavLink} from "react-router-dom";
 import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
-import CertificationDetailCSS from "./CertificationDetail.module.css";
 import { useState } from "react";
 import {
     callCommentAPI
@@ -86,44 +85,45 @@ function CertificationDetail(){
                             )
                         )}
 
-                    </div>
                 </div>
                 <div className={styles.btnMain}>
-                    <div className={styles.btnDiv}>
-                        {Array.isArray(commentList) &&
-                            <button
-                                onClick={() => setCurrentPage(currentPage - 1)}
-                                disabled={currentPage === 1}
-                                className={styles.pagingBtn}
-                            >
-                                &lt;
-                            </button>
-                        }
-                        {pageNumber.map((num) => (
-                            <li key={num} onClick={() => setCurrentPage(num)}>
-                                <button
-                                    style={ currentPage === num ? {background : '#000928'} : null}
-                                    className={styles.pagingBtn}
-                                >
-                                    {num}
-                                </button>
-                            </li>
-                        ))}
-                        { Array.isArray(commentList) &&
-                            <button
-                                onClick={() => setCurrentPage(currentPage + 1)}
-                                disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
-                                className={styles.pagingBtn}
-                            >
-                                &gt;
-                            </button>
-                        }
-                    </div>
+            <div className={styles.btnDiv}>
+                {Array.isArray(commentList) &&
                     <button
-                        onClick={() => setCommentModal(true)}>
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className={styles.pagingBtn}
+                    >
+                        &lt;
+                    </button>
+                }
+                {pageNumber.map((num) => (
+                    <li key={num} onClick={() => setCurrentPage(num)}>
+                        <button
+                            style={ currentPage === num ? {background : '#000928'} : null}
+                            className={styles.pagingBtn}
+                        >
+                            {num}
+                        </button>
+                    </li>
+                ))}
+                { Array.isArray(commentList) &&
+                    <button
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                        className={styles.pagingBtn}
+                    >
+                        &gt;
+                    </button>
+                }
+            </div>
+
+                <button
+                    onClick={() => setCommentModal(true)}>
                         댓글쓰기
                     </button>
-                </div>
+        </div>
+            </div>
         </>
     )
 }
