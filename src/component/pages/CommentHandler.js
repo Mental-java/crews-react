@@ -17,6 +17,7 @@ function CommentHandler({ commentInfo: { userId, commentContent, writeDate, comm
                         <img src={commentImageUrl}/>
                     </div>
                 </td>
+
             </tr>
         </>
     )
