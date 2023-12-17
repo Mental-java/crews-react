@@ -3,7 +3,7 @@
 }
 
 .titleDiv{
-
+    border-bottom: 3px solid #000928;
     height: 7%;
     display: flex;
 }
@@ -30,7 +30,7 @@
 
 .tdDiv{
     display: flex;
-    height: 230px;
+    height: 80px;
     width: 86vw;
     border-bottom: 1px solid #000928;
     position: relative;
@@ -39,17 +39,23 @@
 }
 
 .contentDiv{
-
     width: 40%;
 }
 
 .nicknameDiv{
-
+    background-color: skyblue;
+    width: 40%;
     height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
 }
 
 .imageDiv{
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 60%;
 }
 
@@ -63,4 +69,13 @@
     overflow-y: auto;
     border: 1px solid #000928;
     padding: 5px;
+
+.image{
+    background-color: lightgrey;
+    width: 90px;
+    height: 30px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
