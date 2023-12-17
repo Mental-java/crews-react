@@ -8,7 +8,6 @@ import {
 } from "../../apis/AdminAPICalls";
 import { decodeJwt } from "../utils/tokenUtils";
 import { useNavigate } from "react-router-dom";
-import {callCrewListAPI} from "../../apis/AdminAPICalls";
 
 function AdminCrew() {
 

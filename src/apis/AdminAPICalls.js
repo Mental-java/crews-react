@@ -94,13 +94,64 @@ export const callCrewListAPI = ({currentPage}) => {
     };
 }
 
-// export const callUserReportListAPI = ({currentPage}) => {
-//
-// }
-//
-// export const callCrewReportListAPI = ({currentPage}) => {
-//
-// }
+export const callUserReportListAPI = ({currentPage}) => {
+
+    let requestURL;
+
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/user?offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/user`;
+    }
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
+            }
+        })
+            .then(response => response.json());
+
+        console.log('[AdminAPICalls] AdminUserReportListAPI RESULT : ', result);
+        dispatch({type: ADMIN_USERREPORTLIST, payload: result});
+
+    };
+}
+
+export const callCrewReportListAPI = ({currentPage}) => {
+    let requestURL;
+
+    if(currentPage !== undefined || currentPage !== null){
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/crew?offset=${currentPage}`;
+    }else {
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/crew`;
+    }
+
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept" : "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("adminAccessToken")
+            },
+            body: JSON.stringify({
+                reporter: {userId: form.reporter.userId},
+                crewId: form.crewId,
+                reportCategory: form.reportCategory,
+                reportContent: form.reportCategory
+            })
+        })
+            .then(response => response.json());
+
+        console.log('[AdminAPICalls] AdminCrewReportListAPI RESULT : ', result);
+        dispatch({type: ADMIN_CREWREPORTLIST, payload: result.data});
+
+    };
+}
 
 export const callAdminLoginAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/admin/login`;
