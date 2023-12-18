@@ -4,9 +4,12 @@ import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 import {decodeJwt} from "../utils/tokenUtils";
 import {useNavigate} from "react-router-dom";
-import {callUserReportListAPI} from "../../apis/AdminAPICalls";
 import UserReportHandler from "./UserReportHandler";
 import adminReducer from "../../module/AdminModule";
+
+import {
+    callUserReportListAPI
+} from "../../apis/AdminAPICalls";
 
 
 function AdminUserReport() {
@@ -23,8 +26,6 @@ function AdminUserReport() {
     const [pageEnd, setPageEnd] = useState(1);
 
     console.log(admin);
-    console.log(userReport);
-    console.log(adminReducer);
 
     const pageNumber = [];
     if(pageInfo){
@@ -46,7 +47,8 @@ function AdminUserReport() {
                 })
             );
         }
-    }, [currentPage]);
+        }, [currentPage]
+    );
 
     return (
         <>
@@ -72,7 +74,7 @@ function AdminUserReport() {
                         <tbody className={styles.tableBody}>
                         {
                             Array.isArray(userReport) && userReport.map((report) => (
-                                report && <UserReportHandler key={ report.crewId } report={ report } />
+                                report && <UserReportHandler key={ report.reportId } report={ report } />
                             ))
                         }
                         </tbody>
@@ -82,7 +84,7 @@ function AdminUserReport() {
 
             <div className={styles.btnMain}>
                 <div className={styles.btnDiv}>
-                    {Array.isArray(admin) &&
+                    {Array.isArray(userReport) &&
                         <button
                             onClick={() => setCurrentPage(currentPage - 1)}
                             disabled={currentPage === 1}
@@ -101,7 +103,7 @@ function AdminUserReport() {
                             </button>
                         </li>
                     ))}
-                    { Array.isArray(admin) &&
+                    { Array.isArray(userReport) &&
                         <button
                             onClick={() => setCurrentPage(currentPage + 1)}
                             disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}

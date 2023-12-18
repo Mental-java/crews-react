@@ -1,41 +1,14 @@
 import {
-    ADMIN_NOTICE,
-    ADMIN_USERLIST,
     ADMIN_CREWLIST,
     ADMIN_USERREPORTLIST,
     ADMIN_CREWREPORTLIST,
-    POST_ADMINLOGIN, DELETE_NOTICE, ADMIN_DELETE_NOTICE, ADMIN_CREATE_NOTICE, ADMIN_UPDATE_NOTICE
+    POST_ADMINLOGIN,
+    ADMIN_DELETE_NOTICE,
+    ADMIN_CREATE_NOTICE,
+    ADMIN_UPDATE_NOTICE
 } from "../module/AdminModule"
 import {GET_NOTICE, GET_NOTICES} from "../module/NoticeModule";
-import {DELETE_CREW, POST_CREW} from "../module/CrewModule";
-import { GET_USERLIST } from "../module/AdminUserListModule";
-
-export const callNoticeListAPI = ({currentPage}) => {
-    let requestURL;
-
-    if(currentPage !== undefined || currentPage !== null){
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list?offset=${currentPage}`;
-    }else {
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/notice/list`;
-    }
-
-
-
-    return async (dispatch, getState) => {
-
-        const result = await fetch(requestURL, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*",
-                "Access-Control-Allow-Origin": "*"
-            }
-        })
-            .then(response => response.json());
-        console.log('[callNoticeList test] Result =======> ', result);
-        dispatch({ type: ADMIN_NOTICE, payload: result.data });
-    };
-}
+import { GET_USERLIST } from "../module/AdminUserModule";
 
 export const callUserListAPI = ({currentPage}) => {
 
@@ -108,7 +81,7 @@ export const callUserReportListAPI = ({currentPage}) => {
 
     return async (dispatch, getState) => {
         const result = await fetch(requestURL, {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Accept" : "*/*",
@@ -118,7 +91,7 @@ export const callUserReportListAPI = ({currentPage}) => {
             .then(response => response.json());
 
         console.log('[AdminAPICalls] AdminUserReportListAPI RESULT : ', result);
-        dispatch({type: ADMIN_USERREPORTLIST, payload: result});
+        dispatch({type: ADMIN_USERREPORTLIST, payload: result.data});
 
     };
 }
