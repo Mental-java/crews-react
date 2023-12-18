@@ -39,7 +39,7 @@ function MyCalendar() {
     const handleAddEventModalClose = () => {
         setAddEventModalOpen(false);
     };
-    // 시작일 하루 전으로 표기되는거 수정하기,날짜 YYYY-MM-DD로 바꾸기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ㅅ
+    // 시작일 하루 전으로 표기되는거 수정하기,날짜 YYYY-MM-DD로 바꾸기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const handleEventDrop = (info) => {
         console.log("Start Date=========================>:", info.event.start);
         console.log("End Date=======================>:", info.event.end);
