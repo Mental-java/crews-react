@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MyCalendarCSS from './MyCalendar.module.css';
-import { callMyCalendarListAPI } from '../../apis/MyCalendarAPICalls';
+import {callMyCalendarListAPI, dragUpdateEventAPI} from '../../apis/MyCalendarAPICalls';
 import { updateEventAPI} from "../../apis/MyCalendarAPICalls";
 import { useDispatch, useSelector } from 'react-redux';
 import FullCalendar from '@fullcalendar/react';
@@ -55,7 +55,7 @@ function MyCalendar() {
             updatedTextColor:info.event.textColor
         };
 
-        dispatch(updateEventAPI(updatedEvent));
+        dispatch(dragUpdateEventAPI(updatedEvent));
     };
 
     return (
