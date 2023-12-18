@@ -74,38 +74,40 @@ function AdminUser() {
                                     key={ user.userId } user={ user }/>
                             )
                         )}
-                       
-                <div className={styles.btnDiv}>
-                    {Array.isArray(userList) &&
-                        <button
-                            onClick={() => setCurrentPage(currentPage - 1)}
-                            disabled={currentPage === 1}
-                            className={styles.pagingBtn}
-                        >
-                            &lt;
-                        </button>
-                    }
-                    {pageNumber.map((num) => (
-                        <li key={num} onClick={() => setCurrentPage(num)}>
-                            <button
-                                style={ currentPage === num ? {background : '#000928'} : null}
-                                className={styles.pagingBtn}
-                            >
-                                {num}
-                            </button>
-                        </li>
-                    ))}
-                    { Array.isArray(userList) &&
-                        <button
-                            onClick={() => setCurrentPage(currentPage + 1)}
-                            disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
-                            className={styles.pagingBtn}
-                        >
-                            &gt;
-                        </button>
-                    }
-                </div>
-            
+
+                        <div className={styles.btnMain}>
+                            <div className={styles.btnDiv}>
+                                {Array.isArray(userList) &&
+                                    <button
+                                        onClick={() => setCurrentPage(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        className={styles.pagingBtn}
+                                    >
+                                        &lt;
+                                    </button>
+                                }
+                                {pageNumber.map((num) => (
+                                    <li key={num} onClick={() => setCurrentPage(num)}>
+                                        <button
+                                            style={ currentPage === num ? {background : '#000928'} : null}
+                                            className={styles.pagingBtn}
+                                        >
+                                            {num}
+                                        </button>
+                                    </li>
+                                ))}
+                                { Array.isArray(userList) &&
+                                    <button
+                                        onClick={() => setCurrentPage(currentPage + 1)}
+                                        disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                                        className={styles.pagingBtn}
+                                    >
+                                        &gt;
+                                    </button>
+                                }
+                            </div>
+                        </div>
+
                         </tbody>
                     </table>
                 </div>
