@@ -51,6 +51,35 @@ export const updateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedC
     };
 };
 
+export const dragUpdateEventAPI = ({ userId,  userCalendarId, updatedTitle, updatedContent, updatedStartDate, updatedEndDate, updatedColor, updatedBorderColor, updatedTextColor }) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/update/drag/${userId}/${userCalendarId}`;
+    return async (dispatch, getState) => {
+        const result = await fetch(requestURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                title: updatedTitle,
+                calendarContent: updatedContent,
+                startDate: updatedStartDate,
+                endDate: updatedEndDate,
+                color: updatedColor,
+                borderColor : updatedBorderColor,
+                textColor : updatedTextColor
+            }),
+        });
+        console.log("result test==============================>" + result.status)
+        if (result.ok) {
+            dispatch({ type: UPDATE_EVENT_SUCCESS });
+        } else {
+            dispatch({ type: UPDATE_EVENT_FAILURE, payload: '데이터베이스 업데이트 실패' });
+        }
+    };
+};
+
 export const createEventAPI = ({ userId, newTitle, newContent, newStartDate, newEndDate, newColor }) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/usercalendar/regist/${userId}`;
     return async (dispatch, getState) => {
