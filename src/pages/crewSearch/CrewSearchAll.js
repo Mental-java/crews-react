@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
     callCrewSearchListAPI
 } from "../../apis/CrewSearchAPICalls";
-import {GET_CREWSEARCHLIST} from "../../module/CrewSearchModule";
 
 function CrewSearchAll() {
     const dispatch = useDispatch();

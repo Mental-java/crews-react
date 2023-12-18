@@ -17,7 +17,6 @@ const adminUserReducer = handleActions(
 
             return payload;
         }
-      
     },
     initialState
 );

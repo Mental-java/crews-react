@@ -15,7 +15,7 @@ import adminReducer from "./AdminModule";
 import crewCheckReducer from "./CrewCheckModule";
 import crewPageReducer from "./CrewPageModule";
 import commentReducer from './CommentModule';
-import adminUserReducer from './AdminUserListModule';
+import adminUserReducer from './AdminUserModule';
 import userReducer from "./UserModule";
 
 // 항상 새로운 모듈을 추가하면 까먹지말고 등록을 해줘야한다.
