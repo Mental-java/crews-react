@@ -47,10 +47,10 @@ function AdminCrewReport() {
         <>
             <div className={styles.ListBox}>
                 <h1>크루 신고 관리</h1>
-                <div>
-                    <input type="text" placeholder="크루 검색..."/>
-                    <button className={styles.btn}>검색</button>
-                </div>
+                {/*<div>*/}
+                {/*    <input type="text" placeholder="크루 검색..."/>*/}
+                {/*    <button className={styles.btn}>검색</button>*/}
+                {/*</div>*/}
 
                 <br/>
 
