@@ -64,7 +64,7 @@ function AdminUser() {
                             <td>크루원 닉네임</td>
                             <td>보석 개수</td>
                             <td>이메일</td>
-                            <td>제재</td>
+                            <td>제재 상태</td>
                         </tr>
                         </thead>
                         <tbody className={styles.tableBody}>

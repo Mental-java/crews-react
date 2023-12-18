@@ -25,10 +25,15 @@ function CrewReportModal({ setReportModal, reportCrewId, reportCrewName}) {
     const onChangeHandler = (e) => {
         const {name, value} = e.target;
         if(name === 'reportCategory') {
-            setForm({
-                ...form,
-                reportCategory: parseInt(value)
-            });
+            if(value === '0'){
+                alert('신고 유형을 선택해주세요.');
+                return;
+            } else{
+                setForm({
+                    ...form,
+                    reportCategory: parseInt(value)
+                });
+            }
         } else {
             setForm({
                 ...form,
@@ -40,6 +45,9 @@ function CrewReportModal({ setReportModal, reportCrewId, reportCrewName}) {
     const onClickCrewReportHandler = () =>{
         if(form.reportContent.length < 10){
             alert('신고 내용은 최소 10글자 이상 작성해야 합니다.');
+            return;
+        } else if(form.reportCategory === 0) {
+            alert('신고 유형을 선택해주세요.');
             return;
         }
 
@@ -71,7 +79,8 @@ function CrewReportModal({ setReportModal, reportCrewId, reportCrewName}) {
                     </div>
                     <div className={ReportModalCSS.reportCategory}>
                         <h5>어떤 유형으로 신고하시겠습니까?&nbsp;&nbsp;&nbsp;</h5>
-                        <select name='reportCategory' required onChange={onChangeHandler}>
+                        <select name='reportCategory' onChange={onChangeHandler}>
+                            <option value="0">유형을 선택해주세요.</option>
                             <option value="1">부적절한 컨텐츠</option>
                             <option value="2">도배</option>
                             <option value="3">스팸/광고</option>
