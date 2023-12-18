@@ -1,7 +1,7 @@
+
 import styles from "./Admin.module.css";
 
 function AdminUserHandler( {user: {nickname, userId, diamondCount}} ) {
- 
 
     return (
 
