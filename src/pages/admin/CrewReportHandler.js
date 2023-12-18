@@ -1,16 +1,18 @@
-
+import {useNavigate} from "react-router-dom";
 import styles from "./Admin.module.css";
 
-function CrewReportHandler({report: {reporter, reportTarget, reportReason, reportCategory}}) {
+function CrewReportHandler({report: {reporter, reportCrew, reportContent, reportCategory}}) {
+
+    const navigate = useNavigate();
 
     return (
 
         <>
             <tr className={styles.crewList}>
-                <td>{reporter.userId}</td>
-                <td>{reportTarget.crewId}</td>
+                <td>{reporter?.userId}</td>
+                <td>{reportCrew?.crewId}</td>
                 <td>{reportCategory}</td>
-                <td>{reportReason}</td>
+                <td>{reportContent}</td>
             </tr>
         </>
     )

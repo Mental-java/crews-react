@@ -3,10 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 import {useNavigate} from "react-router-dom";
-import {callCrewReportListAPI} from "../../apis/AdminAPICalls";
 import CrewReportHandler from "./CrewReportHandler";
 import {decodeJwt} from "../utils/tokenUtils";
 
+import {
+    callCrewReportListAPI
+} from "../../apis/AdminAPICalls";
 
 function AdminCrewReport() {
 
@@ -20,6 +22,8 @@ function AdminCrewReport() {
     const [start, setStart] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageEnd, setPageEnd] = useState(1);
+
+    console.log(admin);
 
     const pageNumber = [];
     if(pageInfo){
@@ -41,7 +45,8 @@ function AdminCrewReport() {
                 })
             );
         }
-    }, [currentPage]);
+        }, [currentPage]
+    );
 
     return (
         <>
@@ -60,14 +65,14 @@ function AdminCrewReport() {
                         <tr>
                             <td>신고자</td>
                             <td>크루 번호</td>
-                            <td>신고 내역</td>
-                            <td>신고 사유</td>
+                            <td>신고 유형</td>
+                            <td>신고 내용</td>
                         </tr>
                         </thead>
                         <tbody className={styles.tableBody}>
                         {
                             Array.isArray(crewReport) && crewReport.map((report) => (
-                                report && <CrewReportHandler key={ report.crewId } report={ report } />
+                                report && <CrewReportHandler key={ report.reportId } report={ report } />
                             ))
                         }
                         </tbody>
@@ -77,7 +82,7 @@ function AdminCrewReport() {
 
             <div className={styles.btnMain}>
                 <div className={styles.btnDiv}>
-                    {Array.isArray(admin) &&
+                    {Array.isArray(crewReport) &&
                         <button
                             onClick={() => setCurrentPage(currentPage - 1)}
                             disabled={currentPage === 1}
@@ -96,7 +101,7 @@ function AdminCrewReport() {
                             </button>
                         </li>
                     ))}
-                    { Array.isArray(admin) &&
+                    { Array.isArray(crewReport) &&
                         <button
                             onClick={() => setCurrentPage(currentPage + 1)}
                             disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
