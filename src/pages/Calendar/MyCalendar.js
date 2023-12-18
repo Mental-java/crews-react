@@ -26,16 +26,20 @@ function MyCalendar() {
             userId: userData.data.userId
         }));
     }, [dispatch, userData.data.userId]);
+
     const handleEventClick = (info) => {
         setSelectedEvent(info.event);
         setModalIsOpen(true);
     };
+
     const handleAddEventClick = () => {
         setAddEventModalOpen(true);
     };
+
     const handleAddEventModalClose = () => {
         setAddEventModalOpen(false);
     };
+    
     const handleEventDrop = (info) => {
         console.log("Start Date=========================>:", info.event.start);
         console.log("End Date=======================>:", info.event.end);
@@ -88,7 +92,7 @@ function MyCalendar() {
                 droppable={true}
                 eventClick={handleEventClick}
                 headerToolbar={{
-                    right: 'myCustomButton,today,prev,next',
+                    right: 'myCustomButton,mySecondButton,today,prev,next',
                 }}
                 customButtons={{
                     myCustomButton: {
@@ -97,7 +101,15 @@ function MyCalendar() {
                             handleAddEventClick();
                         },
                     },
+                    mySecondButton: {
+                        text: '두 번째 버튼',
+                        click(ev, element) {
+                            // 두 번째 버튼이 클릭되었을 때 수행할 동작을 여기에 추가하세요.
+                            // 예: 다른 함수 호출 또는 상태 변경 등
+                        },
+                    },
                 }}
+
             />
 
             {selectedEvent && (
