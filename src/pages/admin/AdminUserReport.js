@@ -4,9 +4,9 @@ import {useEffect, useState} from "react";
 import styles from "./Admin.module.css";
 import {decodeJwt} from "../utils/tokenUtils";
 import {useNavigate} from "react-router-dom";
-import {callCrewReportListAPI} from "../../apis/AdminAPICalls";
-import CrewReportHandler from "./CrewReportHandler";
+import {callUserReportListAPI} from "../../apis/AdminAPICalls";
 import UserReportHandler from "./UserReportHandler";
+import adminReducer from "../../module/AdminModule";
 
 
 function AdminUserReport() {
@@ -21,6 +21,10 @@ function AdminUserReport() {
     const [start, setStart] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageEnd, setPageEnd] = useState(1);
+
+    console.log(admin);
+    console.log(userReport);
+    console.log(adminReducer);
 
     const pageNumber = [];
     if(pageInfo){
@@ -37,7 +41,7 @@ function AdminUserReport() {
         } else {
             setStart((currentPage - 1) * 5);
             dispatch(
-                callCrewReportListAPI({
+                callUserReportListAPI({
                     currentPage: currentPage,
                 })
             );

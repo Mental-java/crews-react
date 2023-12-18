@@ -101,9 +101,9 @@ export const callUserReportListAPI = ({currentPage}) => {
     let requestURL;
 
     if(currentPage !== undefined || currentPage !== null){
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/user?offset=${currentPage}`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/admin/userreportlist?offset=${currentPage}`;
     }else {
-        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/report/user`;
+        requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/admin/userreportlist`;
     }
 
     return async (dispatch, getState) => {
