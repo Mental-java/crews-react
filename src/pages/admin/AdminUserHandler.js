@@ -1,10 +1,7 @@
+
 import styles from "./Admin.module.css";
 import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-
-import {
-    callUpdateUserReportStatusOneAPI
-} from "../../apis/UserAPICalls";
 
 function AdminUserHandler( {user: {nickname, userId, diamondCount, reportStatus}} ) {
 
