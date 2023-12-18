@@ -53,3 +53,18 @@
 
 /* 크루원 관리 */
 
+.userList td:nth-child(1) {
+    width: 300px;
+}
+
+.userList td:nth-child(2) {
+    width: 100px;
+}
+
+.userList td:nth-child(3) {
+    width: 300px;
+}
+
+.userList td:nth-child(4) {
+    width: 60px;
+}
