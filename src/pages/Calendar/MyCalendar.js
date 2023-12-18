@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from "@fullcalendar/interaction";
 import MyModal from "./MyModal";
 import AddEventModal from "./AddEventModal";
+import UserWarningModal from "./UserWarningModal";
 
 
 
@@ -20,6 +21,9 @@ function MyCalendar() {
     const myCalendarList = mycalendar.data;
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
+
+    console.log('reportStatus : ', userData.data.reportStatus);
+    const[userReportStatus, setUserReportStatus] = useState(userData.data.reportStatus === "1" ? true : false);
 
     useEffect(() => {
         dispatch(callMyCalendarListAPI({
@@ -60,6 +64,7 @@ function MyCalendar() {
 
     return (
         <div className={MyCalendarCSS.MyCalendarContainer}>
+            {userReportStatus ? <UserWarningModal userId={userData.data.userId} setUserReportStatus={setUserReportStatus}/> : null};
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}

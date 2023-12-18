@@ -51,6 +51,13 @@ function CommentModal({ setCommentModal, postId }) {
     const onClickCommentRegistHandler = () => {
         if (image) {
             form.commentImage = image;
+            if(form.commentContent === '') {
+                alert('내용을 입력해주세요.');
+                return;
+            }
+        } else {
+            alert('이미지를 등록해주세요.');
+            return;
         }
         dispatch(callCommentRegistAPI({ form }));
         alert("등록되었습니다.");
