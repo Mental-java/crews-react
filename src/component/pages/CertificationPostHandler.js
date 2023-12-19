@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import styles from "../../component/pages/CrewSearchHandler.module.css";
+import styles from "../../pages/crew/CrewCertification.module.css";
 
 import {
     callDeleteCertificationPostAPI
