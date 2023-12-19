@@ -6,12 +6,14 @@ const initialState = [];
 export const GET_SINGLECALENDAR = 'singlecalendar/GET_SINGLECALENDAR';
 export const PUT_SINGLECALENDAR = 'singlecalendar/PUT_SINGLECALENDAR';
 export const DELETE_SINGLECALENDAR = 'singlecalendar/DELETE_SINGLECALENDAR';
+export const UPDATE_SINGLECALENDAR = 'singlecalendar/UPDATE_SINGLECALENDAR';
 
 
 const actions = createActions({
     [GET_SINGLECALENDAR]: () => { },
     [PUT_SINGLECALENDAR]: () => { },
-    [DELETE_SINGLECALENDAR]: () => { }
+    [DELETE_SINGLECALENDAR]: () => { },
+    [UPDATE_SINGLECALENDAR]: () => { }
 });
 
 const singleCalendarReducer = handleActions(
@@ -27,6 +29,10 @@ const singleCalendarReducer = handleActions(
             return payload;
         },
         [DELETE_SINGLECALENDAR]: (state, { payload }) => {
+
+            return payload;
+        },
+        [UPDATE_SINGLECALENDAR]: (state, { payload }) =>{
 
             return payload;
         }

@@ -21,7 +21,7 @@ function MyCalendar() {
     const [addEventModalOpen, setAddEventModalOpen] = useState(false);
     const [addSingleEventOpen, setAddSingleEventOpen] = useState(false);
     const [deleteModal, setDeleteModal] = useState(false);
-    const [selectedSingleEvent, setSelectedSingleEvent] = useState(null);
+
     const dispatch = useDispatch();
     const mycalendar = useSelector((state) => state.myCalendarReducer);
     const myCalendarList = mycalendar.data;
@@ -30,6 +30,10 @@ function MyCalendar() {
     const singleCalendar = useSelector(state => state.singleCalendarReducer);
     const singleCalendarList = singleCalendar.data;
 
+    const [selectedSingleGroupId, setSelectedSingleGroupId] = useState(null);
+    const [selectedSingleTitle, setSelectedSingleTitle] = useState(null);
+    const [selectedSingleStartDate, setSelectedSingleStartDate] = useState(null);
+    const [selectedSingleId, setSelectedSingleId] = useState(null);
 
     console.log('reportStatus : ', userData.data.reportStatus);
     console.log('singlecal===='+singleCalendar);
@@ -48,8 +52,10 @@ function MyCalendar() {
         if (info.event.extendedProps.isSingle) {
             // singleCalendarList의 이벤트를 클릭한 경우
             // 원하는 동작을 수행하세요.
-            setSelectedSingleEvent(info.event.groupId)
-            console.log('info.event.groupId========== : ', selectedSingleEvent);
+            setSelectedSingleGroupId(info.event.groupId);
+            setSelectedSingleId(info.event.id);
+            setSelectedSingleTitle(info.event.title);
+            setSelectedSingleStartDate(info.event.start);
             setDeleteModal(true);
         } else {
             // myCalendarList의 이벤트를 클릭한 경우
@@ -92,7 +98,8 @@ function MyCalendar() {
         <div className={MyCalendarCSS.MyCalendarContainer}>
             {userReportStatus ? <UserWarningModal userId={userData.data.userId} setUserReportStatus={setUserReportStatus}/> : null};
             {addSingleEventOpen ? <AddGroupEventModal setAddSingleEventOpen={setAddSingleEventOpen} userId={userData.data.userId}/> : null};
-            {deleteModal ? <DeleteModal setDeleteModal={setDeleteModal} groupId={selectedSingleEvent} userId={userData.data.userId}/> : null};
+            {deleteModal ?
+                <DeleteModal setDeleteModal={setDeleteModal} groupId={selectedSingleGroupId} userId={userData.data.userId} startDate={selectedSingleStartDate} title={selectedSingleTitle} id={selectedSingleId}/> : null};
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}
@@ -136,7 +143,7 @@ function MyCalendar() {
                         }
                     })) : []),
                     ...(Array.isArray(singleCalendarList) ? singleCalendarList.map((calendar) => ({
-                        // id: calendar.singleCalendarId,
+                        id: calendar.singleCalendarId,
                         start: calendar.startDate,
                         title: calendar.title,
                         groupId: calendar.groupId,
