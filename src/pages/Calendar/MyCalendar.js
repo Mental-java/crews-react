@@ -142,13 +142,13 @@ function MyCalendar() {
                 }}
                 customButtons={{
                     myCustomButton: {
-                        text: '이벤트 생성',
+                        text: '기간 생성',
                         click(ev, element) {
                             handleAddEventClick();
                         },
                     },
                     mySecondButton: {
-                        text: '반복 일정',
+                        text: '일정 생성',
                         click(ev, element) {
                             handleSingleEventClick();
                         },
