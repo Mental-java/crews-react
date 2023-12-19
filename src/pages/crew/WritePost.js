@@ -56,19 +56,21 @@ function WritePost() {
             </div>
             <hr/>
             <div className="post-title">
-                <p>제목</p>
+            <div className={PostCSS.label}>제목</div>
                 <input
                     type="text"
                     name="postTitle"
+                    className={PostCSS.inputField}
                     onChange={onChangeHandler}
                 />
             </div>
             <div className="post-content">
-                <p>내용</p>
+            <div className={PostCSS.label}>내용</div>
                 <textarea
                     rows="15"
                     cols="100"
                     name="postContent"
+                    className={PostCSS.textareaField}
                     onChange={onChangeHandler}
                 />
             </div>
