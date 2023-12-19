@@ -73,7 +73,6 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
     };
 
     const handleUpdateClick = () => {
-        console.log("색깔 잘 바꼈나 맛좀보자 ~ ========================>" + updatedColor)
         if (!updatedStartDate || !updatedEndDate) {
             alert('시작일과 종료일을 입력해주세요.');
             return;
