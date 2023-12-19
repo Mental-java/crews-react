@@ -65,24 +65,3 @@
     right: 0;
     bottom: 0;
 }
-
-.certificationTable td{
-    padding: 10px;
-}
-
-.certificationTable td:hover{
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.deleteBtn{
-    width: 40px;
-    height: 20px;
-    background-color: #000928;
-    color: white;
-    border-radius: 5px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

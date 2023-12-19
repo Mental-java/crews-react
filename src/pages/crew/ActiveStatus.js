@@ -67,7 +67,7 @@ function ActiveStatus () {
                 </table>
             </div>
             <div className={styles.btnMain}>
-                <div className={styles.btnDiv}>
+                <div className={styles.btnDiv2}>
                     {Array.isArray(usersList) &&
                         <button
                             onClick={() => setCurrentPage(currentPage - 1)}

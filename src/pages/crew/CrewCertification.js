@@ -4,6 +4,8 @@ import CrewCSS from "./CrewCommon.module.css";
 import CertificationCSS from "./CrewCertification.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import styles from './CrewCertification.module.css';
+import btnStyles from '../crewSearch/CrewSearch.module.css';
+
 import {
     callCrewSearchDetailAPI
 } from "../../apis/CrewSearchAPICalls";
@@ -97,7 +99,7 @@ function CrewCertification () {
             </div>
             <hr/>
 
-            <div>
+            <div className={CertificationCSS.tableDiv}>
                 <table>
                     <thead>
                     <tr className={CertificationCSS.thead}>
@@ -113,42 +115,39 @@ function CrewCertification () {
                                 )
                             )}
                     </tbody>
-
-                    <div className={styles.btnMain}>
-                        <div className={styles.btnDiv}>
-                            {Array.isArray(crewCertificationList) &&
-                                <button
-                                    onClick={() => setCurrentPage(currentPage - 1)}
-                                    disabled={currentPage === 1}
-                                    className={styles.pagingBtn}
-                                >
-                                    &lt;
-                                </button>
-                            }
-                            {pageNumber.map((num) => (
-                                <li key={num} onClick={() => setCurrentPage(num)}>
-                                    <button
-                                        style={ currentPage === num ? {background : '#000928'} : null}
-                                        className={styles.pagingBtn}
-                                    >
-                                        {num}
-                                    </button>
-                                </li>
-                            ))}
-                            { Array.isArray(crewCertificationList) &&
-                                <button
-                                    onClick={() => setCurrentPage(currentPage + 1)}
-                                    disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
-                                    className={styles.pagingBtn}
-                                >
-                                    &gt;
-                                </button>
-                            }
-                        </div>
-                    </div>
-
-
                 </table>
+            </div>
+            <div className={btnStyles.btnMain}>
+                <div className={btnStyles.btnDiv2}>
+                    {Array.isArray(crewCertificationList) &&
+                        <button
+                            onClick={() => setCurrentPage(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className={btnStyles.pagingBtn}
+                        >
+                            &lt;
+                        </button>
+                    }
+                    {pageNumber.map((num) => (
+                        <li key={num} onClick={() => setCurrentPage(num)}>
+                            <button
+                                style={ currentPage === num ? {background : '#000928'} : null}
+                                className={btnStyles.pagingBtn}
+                            >
+                                {num}
+                            </button>
+                        </li>
+                    ))}
+                    { Array.isArray(crewCertificationList) &&
+                        <button
+                            onClick={() => setCurrentPage(currentPage + 1)}
+                            disabled={currentPage === pageInfo.pageEnd || pageInfo.total ==0}
+                            className={btnStyles.pagingBtn}
+                        >
+                            &gt;
+                        </button>
+                    }
+                </div>
             </div>
 
 
