@@ -104,6 +104,7 @@ function MyCalendar() {
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}
+                displayEventTime={false}
                 allDay={false}
                 initialView="dayGridMonth"
                 plugins={[dayGridPlugin , interactionPlugin]}
