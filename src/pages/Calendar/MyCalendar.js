@@ -10,6 +10,8 @@ import MyModal from "./MyModal";
 import AddEventModal from "./AddEventModal";
 import UserWarningModal from "./UserWarningModal";
 import { callSingleCalendarListAPI } from '../../apis/SingleCalendarAPICalls';
+import AddGroupEventModal from "./AddGroupEventModal";
+import DeleteModal from "./DeleteModal";
 
 
 
@@ -18,6 +20,8 @@ function MyCalendar() {
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [addEventModalOpen, setAddEventModalOpen] = useState(false);
     const [addSingleEventOpen, setAddSingleEventOpen] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [selectedSingleEvent, setSelectedSingleEvent] = useState(null);
     const dispatch = useDispatch();
     const mycalendar = useSelector((state) => state.myCalendarReducer);
     const myCalendarList = mycalendar.data;
@@ -41,8 +45,17 @@ function MyCalendar() {
     }, [dispatch, userData.data.userId]);
 
     const handleEventClick = (info) => {
-        setSelectedEvent(info.event);
-        setModalIsOpen(true);
+        if (info.event.extendedProps.isSingle) {
+            // singleCalendarList의 이벤트를 클릭한 경우
+            // 원하는 동작을 수행하세요.
+            setSelectedSingleEvent(info.event.groupId)
+            console.log('info.event.groupId========== : ', selectedSingleEvent);
+            setDeleteModal(true);
+        } else {
+            // myCalendarList의 이벤트를 클릭한 경우
+            setSelectedEvent(info.event);
+            setModalIsOpen(true);
+        }
     };
 
     const handleAddEventClick = () => {
@@ -78,6 +91,8 @@ function MyCalendar() {
     return (
         <div className={MyCalendarCSS.MyCalendarContainer}>
             {userReportStatus ? <UserWarningModal userId={userData.data.userId} setUserReportStatus={setUserReportStatus}/> : null};
+            {addSingleEventOpen ? <AddGroupEventModal setAddSingleEventOpen={setAddSingleEventOpen} userId={userData.data.userId}/> : null};
+            {deleteModal ? <DeleteModal setDeleteModal={setDeleteModal} groupId={selectedSingleEvent} userId={userData.data.userId}/> : null};
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}
@@ -125,9 +140,9 @@ function MyCalendar() {
                         start: calendar.startDate,
                         title: calendar.title,
                         groupId: calendar.groupId,
+                        isSingle: true
                     })) : [])
                 ]}
-                
 
                 eventDrop={handleEventDrop}
                 height={'95vh'}
@@ -145,10 +160,8 @@ function MyCalendar() {
                         },
                     },
                     mySecondButton: {
-                        text: '두 번째 버튼',
+                        text: '반복 일정',
                         click(ev, element) {
-                            // 두 번째 버튼이 클릭되었을 때 수행할 동작을 여기에 추가하세요.
-                            // 예: 다른 함수 호출 또는 상태 변경 등
                             handleSingleEventClick();
                         },
                     },
