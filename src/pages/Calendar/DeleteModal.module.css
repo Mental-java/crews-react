@@ -13,8 +13,8 @@
 
 .modalContainer{
     position: absolute;
-    width: 400px;
-    height: 200px;
+    width: 500px;
+    height: 400px;
     padding: 10px;
     text-align: center;
     background-color: rgb(255, 255, 255);
@@ -25,7 +25,7 @@
 
 .infoDiv{
     width: 100%;
-    height: 60%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,11 +34,22 @@
 
 .btnDiv{
     width: 100%;
-    height: 40%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
+}
+
+.updateBtn{
+    background-color: #000928;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .deleteBtn{
@@ -50,6 +61,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 20px;
 }
 
 .cancleBtn{
@@ -62,4 +74,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.titleDiv{
+    width: 400px;
+    height: 80px;
+    background-color: lightgrey;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.titleInput{
+    width: 300px;
+    height: 25px;
+    border-radius: 3px;
+}
+
+.startDiv{
+    width: 400px;
+    height: 80px;
+    background-color: lightgrey;
+    position: absolute;
+    top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.startInput{
+    width: 300px;
+    height: 25px;
+    border-radius: 3px;
 }
