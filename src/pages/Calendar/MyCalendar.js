@@ -77,6 +77,7 @@ function MyCalendar() {
     };
     // 시작일 하루 전으로 표기되는거 수정하기,날짜 YYYY-MM-DD로 바꾸기 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const handleEventDrop = (info) => {
+
         console.log("Start Date=========================>:", info.event.start);
         console.log("End Date=======================>:", info.event.end);
         const updatedEvent = {
@@ -106,26 +107,6 @@ function MyCalendar() {
                 allDay={false}
                 initialView="dayGridMonth"
                 plugins={[dayGridPlugin , interactionPlugin]}
-                // events={Array.isArray(myCalendarList)
-                //     ? myCalendarList.map((calendar) => ({
-                //         id: calendar.userCalendarId, //해당 코드로 변경하면 일정 다수 조회 가능
-                //         //id: userData.data.userId, // 일정은 하나밖에 조회 안되지만 이벤트 수정 가능(DB상 같은 userId로 캘린더가 다수 존재시 마비)
-                //         end: calendar.endDate,
-                //         start: calendar.startDate,
-                //         title: calendar.title,
-                //         backgroundColor : calendar.color,
-                //         borderColor : calendar.borderColor,
-                //         textColor:  calendar.textColor,
-                //         extendedProps: {
-                //             content: calendar.calendarContent,
-                //             color: calendar.color,
-                //             borderColor : calendar.borderColor,
-                //             textColor : calendar.textColor
-                //         }
-                //     }))
-                //     : []
-                // }
-
                 events={[
                     ...(Array.isArray(myCalendarList) ? myCalendarList.map((calendar) => ({
                         id: calendar.userCalendarId,

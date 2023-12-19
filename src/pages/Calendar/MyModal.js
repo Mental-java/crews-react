@@ -128,9 +128,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
                     <h2>일정 내용</h2>
                     <p>{event.extendedProps?.content}</p>
                     <h2>시작일</h2>
-                    <p>{event.start?.toISOString()}</p>
+                    <p>{event.start && new Date(new Date(event.start).getTime() + 1000 * 60 * 60 * 24).toISOString().split('T')[0]}</p>
                     <h2>종료일</h2>
-                    <p>{event.end?.toISOString()}</p>
+                    <p>{event.end?.toISOString().split('T')[0]}</p>
                 </div>
                 <div className={MyModalCSS.updateInfo}>
                     {isEditMode ? (
@@ -140,9 +140,9 @@ function MyModal({ isOpen, onRequestClose, event, onUpdated ,onDelete }) {
                             <h2>수정할 일정</h2>
                             <textarea placeholder="일정 내용" value={updatedContent} onChange={handleContentChange} />
                             <h2>수정할 시작일</h2>
-                            <input type="datetime-local" value={updatedStartDate} onChange={handleStartDateChange} />
+                            <input type="date" value={updatedStartDate} onChange={handleStartDateChange} />
                             <h2>수정할 종료일</h2>
-                            <input type="datetime-local" value={updatedEndDate} onChange={handleEndDateChange} />
+                            <input type="date" value={updatedEndDate} onChange={handleEndDateChange} />
                             <div className="colorContainer" style={{ display: "flex", flexDirection: "row" }}>
                                 <div>
                                     <h3>배경 색상</h3>

@@ -84,8 +84,8 @@ function AddEventModal({ isOpen, onRequestClose, onAdded }) {
                     <h2>새 일정 추가</h2>
                     <input type="text" placeholder="제목을 입력하세요" value={newTitle} onChange={handleTitleChange} />
                     <textarea placeholder="일정 내용" value={newContent} onChange={handleContentChange} />
-                    <input type="datetime-local" placeholder="시작일" value={newStartDate} onChange={handleStartDateChange} />
-                    <input type="datetime-local" placeholder="종료일" value={newEndDate} onChange={handleEndDateChange} />
+                    <input type="date" placeholder="시작일" value={newStartDate} onChange={handleStartDateChange} />
+                    <input type="date" placeholder="종료일" value={newEndDate} onChange={handleEndDateChange} />
                     <button onClick={handleAddClick}>추가</button>
                 </div>
                 <button className={CreateModalCSS.closeButton} onClick={onRequestClose}>
