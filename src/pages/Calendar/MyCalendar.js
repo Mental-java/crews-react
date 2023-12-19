@@ -96,10 +96,10 @@ function MyCalendar() {
 
     return (
         <div className={MyCalendarCSS.MyCalendarContainer}>
-            {userReportStatus ? <UserWarningModal userId={userData.data.userId} setUserReportStatus={setUserReportStatus}/> : null};
-            {addSingleEventOpen ? <AddGroupEventModal setAddSingleEventOpen={setAddSingleEventOpen} userId={userData.data.userId}/> : null};
+            {userReportStatus ? <UserWarningModal userId={userData.data.userId} setUserReportStatus={setUserReportStatus}/> : null}
+            {addSingleEventOpen ? <AddGroupEventModal setAddSingleEventOpen={setAddSingleEventOpen} userId={userData.data.userId}/> : null}
             {deleteModal ?
-                <DeleteModal setDeleteModal={setDeleteModal} groupId={selectedSingleGroupId} userId={userData.data.userId} startDate={selectedSingleStartDate} title={selectedSingleTitle} id={selectedSingleId}/> : null};
+                <DeleteModal setDeleteModal={setDeleteModal} groupId={selectedSingleGroupId} userId={userData.data.userId} startDate={selectedSingleStartDate} title={selectedSingleTitle} id={selectedSingleId}/> : null}
             <FullCalendar
                 firstDay={1}
                 allDayContent={false}
