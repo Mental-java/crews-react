@@ -1,4 +1,4 @@
-import {GET_SINGLECALENDAR} from "../module/singleCalendarModule";
+import {GET_SINGLECALENDAR} from "../module/SingleCalendarModule";
 
 export const callSingleCalendarListAPI = ({userId}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8080/api/v1/singleCalendar/${userId}/list`
@@ -13,6 +13,7 @@ export const callSingleCalendarListAPI = ({userId}) => {
             }
         })
             .then(response => response.json());
+            console.log("single====="+result);
         dispatch({ type: GET_SINGLECALENDAR, payload: result.data });
     };
 }

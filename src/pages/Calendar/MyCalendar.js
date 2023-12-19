@@ -9,6 +9,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import MyModal from "./MyModal";
 import AddEventModal from "./AddEventModal";
 import UserWarningModal from "./UserWarningModal";
+import { callSingleCalendarListAPI } from '../../apis/SingleCalendarAPICalls';
 
 
 
@@ -16,17 +17,25 @@ function MyCalendar() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [addEventModalOpen, setAddEventModalOpen] = useState(false);
+    const [addSingleEventOpen, setAddSingleEventOpen] = useState(false);
     const dispatch = useDispatch();
     const mycalendar = useSelector((state) => state.myCalendarReducer);
     const myCalendarList = mycalendar.data;
     const navBar = useSelector(state => state.LoginReducer);
     const userData = navBar.userData;
+    const singleCalendar = useSelector(state => state.singleCalendarReducer);
+    const singleCalendarList = singleCalendar.data;
+
 
     console.log('reportStatus : ', userData.data.reportStatus);
+    console.log('singlecal===='+singleCalendar);
     const[userReportStatus, setUserReportStatus] = useState(userData.data.reportStatus === "1" ? true : false);
 
     useEffect(() => {
         dispatch(callMyCalendarListAPI({
+            userId: userData.data.userId
+        }));
+        dispatch(callSingleCalendarListAPI({
             userId: userData.data.userId
         }));
     }, [dispatch, userData.data.userId]);
@@ -38,6 +47,10 @@ function MyCalendar() {
 
     const handleAddEventClick = () => {
         setAddEventModalOpen(true);
+    };
+
+    const handleSingleEventClick = () => {
+        setAddSingleEventOpen(true);
     };
 
     const handleAddEventModalClose = () => {
@@ -71,25 +84,50 @@ function MyCalendar() {
                 allDay={false}
                 initialView="dayGridMonth"
                 plugins={[dayGridPlugin , interactionPlugin]}
-                events={Array.isArray(myCalendarList)
-                    ? myCalendarList.map((calendar) => ({
-                        id: calendar.userCalendarId, //해당 코드로 변경하면 일정 다수 조회 가능
-                        //id: userData.data.userId, // 일정은 하나밖에 조회 안되지만 이벤트 수정 가능(DB상 같은 userId로 캘린더가 다수 존재시 마비)
+                // events={Array.isArray(myCalendarList)
+                //     ? myCalendarList.map((calendar) => ({
+                //         id: calendar.userCalendarId, //해당 코드로 변경하면 일정 다수 조회 가능
+                //         //id: userData.data.userId, // 일정은 하나밖에 조회 안되지만 이벤트 수정 가능(DB상 같은 userId로 캘린더가 다수 존재시 마비)
+                //         end: calendar.endDate,
+                //         start: calendar.startDate,
+                //         title: calendar.title,
+                //         backgroundColor : calendar.color,
+                //         borderColor : calendar.borderColor,
+                //         textColor:  calendar.textColor,
+                //         extendedProps: {
+                //             content: calendar.calendarContent,
+                //             color: calendar.color,
+                //             borderColor : calendar.borderColor,
+                //             textColor : calendar.textColor
+                //         }
+                //     }))
+                //     : []
+                // }
+
+                events={[
+                    ...(Array.isArray(myCalendarList) ? myCalendarList.map((calendar) => ({
+                        id: calendar.userCalendarId,
                         end: calendar.endDate,
                         start: calendar.startDate,
                         title: calendar.title,
-                        backgroundColor : calendar.color,
-                        borderColor : calendar.borderColor,
-                        textColor:  calendar.textColor,
+                        backgroundColor: calendar.color,
+                        borderColor: calendar.borderColor,
+                        textColor: calendar.textColor,
                         extendedProps: {
                             content: calendar.calendarContent,
                             color: calendar.color,
-                            borderColor : calendar.borderColor,
-                            textColor : calendar.textColor
+                            borderColor: calendar.borderColor,
+                            textColor: calendar.textColor,
                         }
-                    }))
-                    : []
-                }
+                    })) : []),
+                    ...(Array.isArray(singleCalendarList) ? singleCalendarList.map((calendar) => ({
+                        // id: calendar.singleCalendarId,
+                        start: calendar.startDate,
+                        title: calendar.title,
+                        groupId: calendar.groupId,
+                    })) : [])
+                ]}
+                
 
                 eventDrop={handleEventDrop}
                 height={'95vh'}
@@ -111,6 +149,7 @@ function MyCalendar() {
                         click(ev, element) {
                             // 두 번째 버튼이 클릭되었을 때 수행할 동작을 여기에 추가하세요.
                             // 예: 다른 함수 호출 또는 상태 변경 등
+                            handleSingleEventClick();
                         },
                     },
                 }}
@@ -139,8 +178,13 @@ function MyCalendar() {
                     dispatch(callMyCalendarListAPI({
                         userId: userData.data.userId
                     }));
+                    dispatch(callSingleCalendarListAPI({
+                        userId: userData.data.userId
+                    }));
                 }}
             />
+            
+
         </div>
     );
 }
